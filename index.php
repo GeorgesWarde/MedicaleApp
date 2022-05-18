@@ -30,9 +30,9 @@
             <span class="navbar-toggler-icon"></span>
           </button>
     
-          <div class="collapse navbar-collapse  " id="navbarsExample05">
+          <div class="collapse navbar-collapse   " id="navbarsExample05">
            
-            <ul class="navbar-nav f">
+            <ul class="navbar-nav f WhiteColor">
               
               <li class="nav-item dropdown navbar-items ">
 
@@ -71,25 +71,27 @@
       </nav></header>
       <div class="container firstWrapper">
         <div class="row align-items-start">
-          <div class="col">
-            <h1>Putting Patients First</h1>
-            <div>Our cancer center team, led by Dr. Matthew Kulke, works every day in the fight against cancer. They go above and beyond because people need more and because it matters.
+          <div class="col-md-6 col-12">
+            <h1 class="blueColor">Putting Patients First</h1>
+            <div class="blueColor">Our cancer center team, led by Dr. Matthew Kulke, works every day in the fight against cancer. They go above and beyond because people need more and because it matters.
 
               Learn more</div>
           </div>
-          <div class="col">
-            <img src="IMAGES/patientpIC.jpg" width="450px" height="200px">
+          <div class="col-md-3 col-12">
+            <img src="IMAGES/patientpIC.jpg" width="100%" height="200px">
           </div>
           </div>
         </div>
-        <div class="secondWrapper">
+        <div class="secondWrapper roundedCorners1">
 
-          <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">Toggle link</a>
-<a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active toggle link</a>
+          <button href="Regsitration.php" class="btn btn-primary" role="button" data-bs-toggle="button">Request an Appointment</button>
+
+
+<button style="margin-left:20px" onClick="window.location.href='http://localhost/FinalProject/MedicalCenter/Registaration.php'" type="submit" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Register Now</button>
 
         </div>
         <div><h1 class="newsText">Latest News</h1>
-       <div class="thirdWrapper">
+       <div class="thirdWrapper roundedCorners2">
         
         <section>
         <div class="product">
@@ -97,7 +99,7 @@
               <img src="images/patientpIC.jpg" alt="">
             </picture>
             <div class="detail">
-              <p class="text-size">
+              <p class="textSize">
               New Research from the Grayken Center for Addiction Suggests
               
 </p>
@@ -109,9 +111,10 @@
               <img src="images/patientpIC.jpg" alt="">
             </picture>
             <div class="detail">
-              <p>
-                hey
-              </p>
+            <p class="textSize">
+              New Research from the Grayken Center for Addiction Suggests
+              
+</p>
            
           </div>
            </div>
@@ -120,9 +123,10 @@
               <img src="images/patientpIC.jpg" alt="">
             </picture>
             <div class="detail">
-              <p>
-                hey
-              </p>
+            <p class="textSize">
+              New Research from the Grayken Center for Addiction Suggests
+              
+</p>
            
           </div>
            </div>
@@ -131,9 +135,10 @@
               <img src="images/patientpIC.jpg" alt="">
             </picture>
             <div class="detail">
-              <p>
-                hey
-              </p>
+            <p class="textSize">
+              New Research from the Grayken Center for Addiction Suggests
+              
+</p>
            
           </div>
            </div>
@@ -322,4 +327,4 @@
   
 
 </body>
-</html>  
+</html> 
