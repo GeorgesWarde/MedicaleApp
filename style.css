@@ -1,5 +1,5 @@
 nav{
-  background:#1a7595;
+  background-color:#1a7595  ;
   color: white;
 }
   
@@ -11,14 +11,19 @@ nav{
     -moz-user-select: none;
     user-select: none;
   }
-  @media (max-width: 1000px) {
+  @media (max-width: 992px) {
     .bd-placeholder-img-lg {
       font-size: 3.5rem;
     }
-    
+    .searchBox{
+      margin-left:0px;
+    }
   }
-  
-
+  @media(min-width:992px){
+    .searchBox{
+      margin-left: auto;
+    }
+  }
 .firstWrapper{
   padding-top: 35px;
   padding-bottom: 35px;
@@ -31,10 +36,7 @@ nav{
   align-items: center;;
   display: flex;
 }
-.btn{
-  background-color:lightgreen ;
-  margin-left:20px;
-}
+
 .navbar-brand{
 color:white;
 }
@@ -50,11 +52,7 @@ color:white;
 a.nav-link{
   color:white;
 }
-.f{
-  justify-content: right;
-  align-items: right;
-  display: flex;
-}
+
 .navbar-items{
   font-size: 15px;
   padding-top: 15px;
@@ -67,12 +65,14 @@ a.nav-link{
 
 
 .thirdWrapper{
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   background:white ;
   justify-content: center;
   align-items: center;;
   display: flex;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 .text{
   padding: 10px;
@@ -172,7 +172,6 @@ a{
     font-size: 15px;
     margin: 5px 0 0 20px;
     display: inline-block;
-    background: #6773ff;
     color: white;
 }
 p.star{
@@ -181,7 +180,7 @@ p.star{
     font-size: 25px;
     color: #808080;
 }
-@media (max-width: 768px) {
+@media (max-width: 940px) {
   .text h1{
     font-size: 35px;
   }
@@ -195,7 +194,7 @@ p.star{
     font-size: 30px;
   }
   section .product {
-    min-width: 49%;
+    min-width: 50%;
     margin:  0 10px  0 0;
   }
   .detail, .button{
@@ -204,4 +203,101 @@ p.star{
   a{
     padding: 6px 10px;
   }
+}
+@media (max-width: 650px) {
+  .text h1{
+    font-size: 35px;
+  }
+  .text p{
+    width: 90%;
+  }
+  header h1{
+    font-size: 25px;
+  }
+  header p span{
+    font-size: 30px;
+  }
+  section .product {
+    min-width: 100%;
+    margin:  0 10px  0 0;
+  }
+  .detail, .button{
+    font-size: 16px;
+  }
+  a{
+    padding: 6px 10px;
+  }
+}
+
+
+/*footer*/
+footer{
+  font-size: 14px;
+  overflow-y: auto;
+}
+
+footer .logo{
+  margin-top: 0;
+}
+footer .blur{
+  margin-top: 1.5rem;
+  font-size: 12px;
+}
+footer .inline{
+  padding: 0;
+  list-style: none;
+  display: -webkit-inline-flex;
+}
+footer .social-link{
+  width: 2.6rem;
+  height: 2.6rem;
+  opacity: .6;
+}
+footer .social-link:hover{
+  opacity: 1;
+}
+footer .links{
+  display: grid;
+  line-height: 39px;
+}
+footer .link{
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #08526b;
+}
+footer .link:hover{
+  text-decoration: underline;
+  color: #08526b;
+}
+footer .images{
+  text-align: center;
+  opacity: .6;
+}
+footer .images:hover{
+  opacity: 1;
+}
+footer .foot_image{
+  margin-top: 30px;
+}
+.text-size{
+  font-size:15px;
+  color:white;
+}
+@media(max-width:1100px){
+  .text-size{
+    font-size:10px;
+    color:white;
+  }
+}
+@media(max-width:400px){
+  .text-size{
+    font-size:10px;
+    color:white;
+    padding-top: 7px;
+  }
+}
+.newsText{
+  padding-left:100px;
+  padding-top:15px
 }
