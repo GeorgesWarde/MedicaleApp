@@ -171,9 +171,7 @@ picture img{
 small{color: #555;}
 a{
   text-decoration: none;
-  padding: 6px 14px;
     font-size: 15px;
-    margin: 5px 0 0 20px;
     display: inline-block;
     color: white;
 }

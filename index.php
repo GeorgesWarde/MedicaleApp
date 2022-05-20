@@ -87,7 +87,7 @@
           <button href="Regsitration.php" class="btn btn-primary" role="button" data-bs-toggle="button">Request an Appointment</button>
 
 
-<button style="margin-left:20px" onClick="window.location.href='http://localhost/FinalProject/MedicalCenter/Registaration.php'" type="submit" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Register Now</button>
+<button style="margin-left:20px" onClick="window.location.href='Registration.php'" type="submit" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Register Now</button>
 
         </div>
         <div><h1 class="newsText">Latest News</h1>
