@@ -151,8 +151,8 @@
   </div>
 
   <div class="b-example-divider"></div>
-  <form class="mergeCenter">
-    
+  <div class="mergeCenter">
+    <form>
     <h1 class="h3 mb-3 fw-normal">Fill your Request Please!</h1>
 
     <div style="margin-top:10px;">
@@ -171,11 +171,43 @@
     </div>
    
     <button style="margin-top:50px;" class="w-100 btn btn-lg btn-primary" type="submit">Request</button>
-    
-  </form>
-</main>
+    </form>
+    <h4>Request History</h4>
+    <table style="width:800px;" class="content-table">
+  <thead>
+    <tr>
+      <th>Patient Name</th>
+      <th>Doctor</th>
+      <th>Schedule Time</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Domenic</td>
+      <td>88,110</td>
+      <td>dcode</td>
+    </tr>
+    <tr class="active-row">
+      <td>2</td>
+      <td>Sally</td>
+      <td>72,400</td>
+      <td>Students</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Nick</td>
+      <td>52,300</td>
+      <td>dcode</td>
+    </tr>
+  </tbody>
+</table>
 
 
+
+    </div>
+    </main>
 
 
     <?php include_once 'footer.php';?>
