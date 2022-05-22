@@ -52,7 +52,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr Georges warde</strong>
           <small>Wed 8AM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -60,7 +60,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr Anthony Saliba</strong>
           <small class="text-muted">Tues 11AM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -68,7 +68,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr Jules Warde</strong>
           <small class="text-muted">Mon 11AM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -77,7 +77,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr Elie Ghafary</strong>
           <small class="text-muted">Wed 8AM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -85,7 +85,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">List group item heading</strong>
           <small class="text-muted">Tues 5PM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -93,7 +93,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr Charbel Warde</strong>
           <small class="text-muted">Mon 3PM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -101,7 +101,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr Ralph Saliba</strong>
           <small class="text-muted">Wed 6PM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -109,7 +109,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr Elie Warde</strong>
           <small class="text-muted">Tues 2PM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -118,7 +118,7 @@
           <strong class="mb-1">Dr Ali Mawla</strong>
 
           <small class="text-muted">Mon 8PM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -126,7 +126,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr Omar Zeaiter</strong>
           <small class="text-muted">Wed 2PM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -134,7 +134,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr John Smith</strong>
           <small class="text-muted">Tues 1AM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>
@@ -142,7 +142,7 @@
         <div class="d-flex w-100 align-items-center justify-content-between relativePic">
           <strong class="mb-1">Dr Fadi Hanna</strong>
           <small class="text-muted">Mon 12AM</small>
-          <img class="doctorIcon" src="Images/doctor.png" height="20px" width="20px">
+          <img class="doctorIcon" src="images/doctor.png" height="20px" width="20px">
         </div>
         <div class="col-10 mb-1 small">Neurology Specialist</div>
       </a>

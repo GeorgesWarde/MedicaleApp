@@ -72,13 +72,13 @@
         </div>
         <div class="row" style="margin-top:30px;">
             <div class="col-md-4 images">
-                 <a href="http://"><img src="./images/logo_heath_net_plan.webp"></a> 
+                 <a href="http://"><img src="./images/net_plan.webp"></a> 
             </div>
             <div class="col-md-4 images">
-                  <a href="#"><img src="./images/logo_boston_university.webp"></a>
+                  <a href="#"><img src="./images/university.webp"></a>
             </div>
             <div class="col-md-4 images">
-                  <a href="#"><img src="./images/logo_boston_health_net.webp"></a>
+                  <a href="#"><img src="./images/health_net.webp"></a>
             </div>
             
         </div>
