@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarsExample05">
 
           <ul class="navbar-nav f WhiteColor ms-auto">
-
+ 
             <li class="nav-item dropdown navbar-items ">
 
               <a class="nav-link dropdown-toggle " href="#dropdown1" id="dropdown05" data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-controls="dropdown" aria-expanded="false" aria-label="Toggle navigation">Dropdown</a>

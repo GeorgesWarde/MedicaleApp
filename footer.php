@@ -13,7 +13,7 @@
    
     <footer class="footer container-xl">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3"> 
                 <div class="logo"><a href="#"><img src="./images/bmc_logo_blue.svg"></a></div>
                 <div class="blur">Boston Medical Center (BMC) is a 514-bed academic medical center located in Boston's historic South End, providing medical care for infants, children, teens and adults.</div>
                 <div class="address"><img src="https://www.bmc.org/themes/custom/bmc_base_theme/assets/images/icons/icon-location-pin.svg"><br>

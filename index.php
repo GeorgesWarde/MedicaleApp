@@ -23,7 +23,7 @@
   <link href="style.css" rel="stylesheet">
 </head>
 
-<body>
+<body> 
   <?php include_once 'header.php'; ?>
   <div class="container firstWrapper">
     <div class="row align-items-start">
