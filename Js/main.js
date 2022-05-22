@@ -10,7 +10,7 @@ if(mediaQuery2.matches && !loc.classList.contains("f")){
 }
 let span = document.getElementsByTagName('span');
 	let product = document.getElementsByClassName('product')
-	let product_page = Math.ceil(product.length/4);
+	let product_page = Math.ceil(product.length/5);
 	let l = 0;
 	let movePer = 25.34;
 	let maxMove = 203;
@@ -41,5 +41,4 @@ let span = document.getElementsByTagName('span');
 			}
 		}
 	}
-	span[1].onclick = ()=>{right_mover();}
-	span[0].onclick = ()=>{left_mover();}
+	

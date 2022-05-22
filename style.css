@@ -15,14 +15,10 @@ nav{
     .bd-placeholder-img-lg {
       font-size: 3.5rem;
     }
-    .searchBox{
-      margin-left:0px;
-    }
+    
   }
   @media(min-width:992px){
-    .searchBox{
-      margin-left: auto;
-    }
+    
   }
 .firstWrapper{
   padding-top: 35px;
@@ -245,6 +241,7 @@ padding-top: 15px;
 footer{
   font-size: 14px;
   overflow-y: auto;
+  padding-top: 20px;
 }
 
 footer .logo{
@@ -338,13 +335,82 @@ footer .foot_image{
   box-shadow:0 4px 6px -5px hsl(0,0%,40%),inset 0px 4px 6px -5px black;
   border-radius: 0.5em;
 }
-.roundedCorners1{
-border-radius: 10px;
-}
-.roundedCorners2{
-border-radius:30px;
-}
+
 .blueColor{
-color:#1a7595  ;
-font-weight:500;
+font-size: 20px;
+}
+/*SECTION OF BUTTON*/
+.section{
+  background-color: #f1f1f1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+}
+.section a{
+  background-color: #9fd6e0;
+  width: 100%;
+  padding: 10px 10px;
+  color: #222;
+  text-decoration: none;
+  font-size: 15px;
+  box-shadow:  5px 5px rgba(51, 55, 58, 0.1)
+}
+.section a:hover{
+  box-shadow:  5px 5px rgba(42, 115, 189, 0.1);
+  color: #222;
+  font-weight: bold;
+}
+.swiper-button-next {
+  position: absolute;
+  top: auto!important;
+}
+.swiper-button-prev{
+  position: absolute;
+  top: auto!important;
+
+}
+.slider .image{
+  position: relative;
+}
+.slider .text{
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  color: #000000;
+  font-weight: bold;
+  font-size: 25px;
+  width: 80%;
+  text-align: left;
+}
+.slider .date{
+  position: absolute;
+  top: 30px;
+  left: -2px;
+  border: 1px solid transparent;
+  background-color: #08526b;
+  color:#FFFFFF;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  
+}
+.donate{
+  background-image: url("https://www.bmc.org/themes/custom/bmc_base_theme/assets/images/backgrounds/circles-blue.svg");
+  background-repeat: no-repeat;
+  background-color: #1a7595;
+  margin-top: 20px;
+}
+.donate .donate{
+  background-color: rgb(8 82 107 / 75%);
+  padding: 20px 30px;
+  border: none;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-size: 16px;
+  margin-bottom: 10PX;
+}
+@media (max-width:500px) {
+  .slider .text{
+    font-size: 12px;
+  width: 100%;
+  }
 }
