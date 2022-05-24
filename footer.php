@@ -8,12 +8,39 @@
     <title>footer</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
 </head>
 <body>
    
     <footer class="footer container-xl">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3"> 
                 <div class="logo"><a href="#"><img src="./images/bmc_logo_blue.svg"></a></div>
                 <div class="blur">Boston Medical Center (BMC) is a 514-bed academic medical center located in Boston's historic South End, providing medical care for infants, children, teens and adults.</div>
                 <div class="address"><img src="https://www.bmc.org/themes/custom/bmc_base_theme/assets/images/icons/icon-location-pin.svg"><br>
@@ -72,13 +99,13 @@
         </div>
         <div class="row" style="margin-top:30px;">
             <div class="col-md-4 images">
-                 <a href="http://"><img src="./images/logo_heath_net_plan.png"></a> 
+                 <a href="http://"><img src="./images/net_plan.webp"></a> 
             </div>
             <div class="col-md-4 images">
-                  <a href="#"><img src="./images/logo_boston_university.png"></a>
+                  <a href="#"><img src="./images/university.webp"></a>
             </div>
             <div class="col-md-4 images">
-                  <a href="#"><img src="./images/logo_boston_health_net.png"></a>
+                  <a href="#"><img src="./images/health_net.webp"></a>
             </div>
             
         </div>
@@ -92,5 +119,6 @@ Website Terms of Use
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
 </body>
 </html>
