@@ -41,11 +41,11 @@
     <footer class="footer container-xl">
         <div class="row">
             <div class="col-md-3"> 
-                <div class="logo"><a href="#"><img src="./images/bmc_logo_blue.svg"></a></div>
-                <div class="blur">Boston Medical Center (BMC) is a 514-bed academic medical center located in Boston's historic South End, providing medical care for infants, children, teens and adults.</div>
-                <div class="address"><img src="https://www.bmc.org/themes/custom/bmc_base_theme/assets/images/icons/icon-location-pin.svg"><br>
-                    One Boston Medical Center Place<br>Boston, MA 02118<br>
-                    <a href="tel:+617.638.8000">617.638.8000</a>
+                <div class="logo"></div>
+                <div class="blur"></div>
+                <div class="address">
+            <br>
+                    
                 </div>
                 <ul class="inline">
                     <li class="social-link">
@@ -111,11 +111,7 @@
         </div>
         <div class="row">
             <div class="col-12" style="text-align:center;margin-top:20px">BMC Privacy Policy 
-Code of Conduct 
-Nondiscrimination Statement 
-Patient Privacy/HIPAA 
-Website Terms of Use
-© 2022 Boston Medical Center. All rights reserved.</div>
+</div>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

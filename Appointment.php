@@ -10,7 +10,7 @@
     <div class="col">
     <main class="sideBar">
    
-    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white " style="width:100%;margin-top:40px;">
     <h5 style="padding-left:45px;" class="department">Find a Doctor by department</h5>
     <ul class="nav nav-pills flex-column mb-auto departments">
       <li class="nav-item department">

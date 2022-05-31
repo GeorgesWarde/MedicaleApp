@@ -48,3 +48,4 @@ let span = document.getElementsByTagName('span');
           new bootstrap.Tooltip(tooltipTriggerEl)
         })
       })()
+	 

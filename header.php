@@ -11,7 +11,7 @@
           <ul class="navbar-nav f WhiteColor ms-auto">
  
             <li class="nav-item dropdown navbar-items ">
-              <a class="nav-link dropdown-toggle " href="#dropdown1" id="dropdown05" data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-controls="dropdown" aria-expanded="false" aria-label="Toggle navigation">Dropdown</a>
+              <a class="nav-link dropdown-toggle " href="#dropdown1" id="dropdown05" data-bs-toggle="collapse" data-bs-target="#dropdown1" aria-controls="dropdown" aria-expanded="false" aria-label="Toggle navigation">Labs</a>
               <ul class="dropdown-menu collapse" id="dropdown1">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -19,7 +19,7 @@
               </ul>
             </li>
             <li class="nav-item dropdown navbar-items">
-              <a class="nav-link dropdown-toggle " href="#dropdown2" id="dropdown05" data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-controls="dropdown" aria-expanded="false" aria-label="Toggle navigation">Dropdown</a>
+              <a class="nav-link dropdown-toggle " href="#dropdown2" id="dropdown05" data-bs-toggle="collapse" data-bs-target="#dropdown2" aria-controls="dropdown" aria-expanded="false" aria-label="Toggle navigation">Departments</a>
               <ul class="dropdown-menu collapse" id="dropdown2">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -27,7 +27,7 @@
               </ul>
             </li>
             <li class="nav-item dropdown navbar-items">
-              <a class="nav-link dropdown-toggle " href="#dropdown3" id="dropdown05" data-bs-toggle="collapse" data-bs-target="#dropdown3" aria-controls="dropdown" aria-expanded="false" aria-label="Toggle navigation">Dropdown</a>
+              <a class="nav-link dropdown-toggle " href="#dropdown3" id="dropdown05" data-bs-toggle="collapse" data-bs-target="#dropdown3" aria-controls="dropdown" aria-expanded="false" aria-label="Toggle navigation">Patients</a>
               <ul class="dropdown-menu collapse" id="dropdown3">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>

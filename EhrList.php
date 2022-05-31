@@ -2,13 +2,13 @@
 <html>
 
     <head><title>Doctor Page</title>
-    <link rel="stylesheet" href="style.css">
+    
     <script src="Js/EHR.js"></script>
     
  
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link href="style.css" rel="stylesheet">
      </head>
    <body>
    <?php include_once 'header.php';  ?>
@@ -21,25 +21,25 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item ">
-        <button onclick="window.location.href='EhrList'" class="nav-link active" aria-current="page" style="width:100%;">
+        <button class="nav-link active" aria-current="page" style="width:100%;">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
           Check patients EHR's
 </button>
       </li>
       <li class="doctorOptions">
-        <button onclick="window.location.href='AppointmentsList'"  class="nav-link active"style="width:100%";>
+        <button onclick="window.location.href='AppointmentsList'" href="#" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
           Check Appointments
 </button>
       </li>
       <li class="doctorOptions">
-        <button  onclick="window.location.href='addEHR'" class="nav-link active"style="width:100%";>
+        <button onclick="window.location.href='addEHR'" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Add Patient EHR
+          Add Patients EHR
 </button>
       </li>
       <li class="doctorOptions">
-        <button onclick="window.location.href='Statistics'" href="#" class="nav-link active"style="width:100%";>
+        <button  onclick="window.location.href='statistics'"href="#" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
           Patients Statistics
 </button>
@@ -66,21 +66,54 @@
       </ul>
     </div>
   </div>
-  <div id="EHR" style="width:100%;">
+  
+  <div class="wrap" >
+     
+         <div class="search">
+            <input type="text" class="searchTerm" placeholder="Search for Patients EHRs?">
+            <button type="submit" class="searchButton">
+              '<i class="fa fa-search"></i>
+           </button>
+         </div>
+      </div>
+ <div class="container-fluid">
+        <div class="row" >
+         
+         <div style="margin-top:50px;" class="list-group ">
+         <a style="position:relative;" href="#" class="list-group-item list-group-item-action active" aria-current="true">
+           <div class="d-flex w-100 justify-content-between">
+             <h5 class="mb-1">Elie Warde</h5>
+             <button onClick="window.location.href='Labs.php'" style="position:absolute;Right:0;top:40%;border-radius:8px;">Check Labs</button>
+             <small>3 days ago</small>
+          </div>
+           <p class="mb-1">Some placeholder content in a paragraph.</p>
+          <small>And some small print.</small>
+        </a>
+         <a style="position:relative;"  href="#" class="list-group-item list-group-item-action">
+           <div class="d-flex w-100 justify-content-between">
+             <h5 class="mb-1">Joe Saliba</h5>
+             <button style="position:absolute;Right:0;top:40%;border-radius:8px;">Check Labs</button>
+             <small class="text-muted">3 days ago</small>
+           </div>
+           <p class="mb-1">Some placeholder content in a paragraph.</p>
+          <small class="text-muted">And some muted small print.</small>
+        </a>
+         <a   style="position:relative;" href="#" class="list-group-item list-group-item-action">
+           <div class="d-flex w-100 justify-content-between">
+             <h5 class="mb-1">Maha Warde</h5>
+             <button style="position:absolute;Right:0;top:40%;border-radius:8px;">Check Labs</button>
+             <small class="text-muted">3 days ago</small>
+          </div>
+           <p class="mb-1">Some placeholder content in a paragraph.</p>
+           <small class="text-muted">And some muted small print.</small>
+        </a>
+      </div>
+      </div>
+      </div>
+
   
   
-  </div>
 
-
-
-    
-  
-
-  
-
-
-  </body>
-</html>
 </div>
 </main>
   <?php include_once 'footer.php';?>

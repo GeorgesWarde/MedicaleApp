@@ -16,38 +16,38 @@
    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      <span class="fs-4">Doctor</span>
+      <span class="fs-4">Patient Labs History</span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item ">
         <button onclick="window.location.href='EhrList'" class="nav-link active" aria-current="page" style="width:100%;">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-          Check patients EHR's
+          Blood Test
 </button>
       </li>
       <li class="doctorOptions">
         <button onclick="window.location.href='AppointmentsList'"  class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-          Check Appointments
+          Cranial CT Scan
 </button>
       </li>
       <li class="doctorOptions">
         <button  onclick="window.location.href='addEHR'" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Add Patient EHR
+          Lunges Scan
 </button>
       </li>
       <li class="doctorOptions">
         <button onclick="window.location.href='Statistics'" href="#" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-          Patients Statistics
+          Bone Dexa Scan
 </button>
       </li>
       <li class="doctorOptions">
         <button href="#" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-          Customers
+          Pcr
 </button>
       </li>
     </ul>

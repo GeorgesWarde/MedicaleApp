@@ -329,7 +329,7 @@ footer .foot_image{
 }
 .inputs{
   margin-top:5px;
-  
+
 }
 .borders{
   box-shadow:0 4px 6px -5px hsl(0,0%,40%),inset 0px 4px 6px -5px black;
@@ -712,4 +712,18 @@ body{
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+.addEHR{
+  background-color:lightskyblue;
+  border-radius: 10px;
+  height:50px;
+   width:120px;
+}
+
+.date {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.2rem;
+  display: block;
+  padding: 0.5rem 1rem;
+  
 }

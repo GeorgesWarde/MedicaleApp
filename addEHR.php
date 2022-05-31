@@ -2,13 +2,14 @@
 <html>
 
     <head><title>Doctor Page</title>
-    <link rel="stylesheet" href="style.css">
+  
     <script src="Js/EHR.js"></script>
     
  
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link href="style.css" rel="stylesheet">
+    <link href="ehr.css" rel="stylesheet">
      </head>
    <body>
    <?php include_once 'header.php';  ?>
@@ -27,19 +28,19 @@
 </button>
       </li>
       <li class="doctorOptions">
-        <button onclick="window.location.href='AppointmentsList'"  class="nav-link active"style="width:100%";>
+        <button onclick="window.location.href='AppointmentsList'" href="#" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
           Check Appointments
 </button>
       </li>
       <li class="doctorOptions">
-        <button  onclick="window.location.href='addEHR'" class="nav-link active"style="width:100%";>
+        <button onclick="window.location.href='addEHR'" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Add Patient EHR
+          Add patient EHR
 </button>
       </li>
       <li class="doctorOptions">
-        <button onclick="window.location.href='Statistics'" href="#" class="nav-link active"style="width:100%";>
+        <button onclick="window.location.href='statistics'"  href="#" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
           Patients Statistics
 </button>
@@ -66,22 +67,91 @@
       </ul>
     </div>
   </div>
-  <div id="EHR" style="width:100%;">
   
-  
-  </div>
-
-
-
-    
   
 
   
+  
 
-
-  </body>
-</html>
 </div>
+
+
+<div class="container  ">
+  <div class="row align-items-start">
+    <div class="col   " style="justify-content:center;align-items:center;display:flex;">
+    <form id="addDoctor">
+  <div  class="mb-3">
+    <label for="exampleInputName" class="form-label">First Name</label>
+    <input style="width:100%;" type="text" class="form-control" id="exampleInputEmail1" name="doctor" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputName" class="form-label">Last Name</label>
+    <input style="width:100%;"type="text" class="form-control" id="exampleInputEmail1" name="doctor" required>
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleInputAge" class="form-label">Age</label>
+    <input style="width:100%;"type="number" name="agedoctor" class="form-control">
+    
+  </div>
+ 
+  <div class="mb-3">
+    <label for="exampleInputGenre" class="form-label">Blood Type</label><br>
+    <select name="genre"style="width:100%; border-radius:8px;">
+        <option value="male">A+</option>
+        <option value="female">B+</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputAge" class="form-label">City</label>
+    <input style="width:100%;"type="number" name="agedoctor" class="form-control ">
+    
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputGenre" class="form-label">Gender</label><br>
+    <select name="genre"style="width:100%;border-radius:8px;">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputGenre" class="form-label">Allergies</label><br>
+    <select name="genre"style="width:100%;border-radius:8px;">
+        <option value="male">Food</option>
+        <option value="female">Salt</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputGenre" class="form-label" style="font-weight:bold;font-size:20px;">Medication</label><br>
+    <select name="genre"style="width:100%;border-radius:8px;">
+        <option value="male">Panadol</option>
+        <option value="female">Aspirin</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputAge" class="form-label">Dosage</label>
+    <input style="width:100%;"type="number" name="agedoctor" class="form-control ">
+    
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputAge" class="form-label">Start Date</label>
+    <input style="width:100%;"type="number" name="agedoctor" class="form-control ">
+    
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputAge" class="form-label">End Date</label>
+    <input style="width:100%;"type="number" name="agedoctor" class="form-control ">
+    
+  </div>
+  <button type="submit" class="btn btn-primary" name="addDoc">Add EHR</button>
+</form>
+
+</div>
+</div>
+</div>
+     
+</div>  
+
 </main>
   <?php include_once 'footer.php';?>
 

@@ -44,62 +44,10 @@
     <button onClick="window.location.href='Appointment.php'" class="btn btn-primary" role="button" data-bs-toggle="button">Request an Appointment</button>
 
 
-    <button style="margin-left:20px" onClick="window.location.href='Doctor.php'" type="submit" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Register Now</button>
+    <button style="margin-left:20px" onClick="window.location.href='admin.php'" type="submit" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Register Now</button>
 
   </div>
-  <div>
-    <h1 class="newsText">Latest News</h1>
-    <div class="thirdWrapper roundedCorners2">
-
-      <section>
-        <div class="product">
-          <picture>
-            <img src="images/patientpIC.jpg" alt="">
-          </picture>
-          <div class="detail">
-            <p class="textSize">
-              New Research from the Grayken Center for Addiction Suggests
-
-            </p>
-
-          </div>
-        </div>
-        <div class="product">
-          <picture>
-            <img src="images/patientpIC.jpg" alt="">
-          </picture>
-          <div class="detail">
-            <p class="textSize">
-              New Research from the Grayken Center for Addiction Suggests
-
-            </p>
-
-          </div>
-        </div>
-        <div class="product">
-          <picture>
-            <img src="images/patientpIC.jpg" alt="">
-          </picture>
-          <div class="detail">
-            <p class="textSize">
-              New Research from the Grayken Center for Addiction Suggests
-
-            </p>
-
-          </div>
-        </div>
-        <div class="product">
-          <picture>
-            <img src="images/patientpIC.jpg" alt="">
-          </picture>
-          <div class="detail">
-            <p class="textSize">
-              New Research from the Grayken Center for Addiction Suggests
-
-            </p>
-
-          </div>
-        </div>
+  
 
       </section>
     </div>
@@ -111,21 +59,21 @@
           <a href="#">Covid Vaccin update</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="#">Our Doctors</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="#">Our Nurses</a>
         </div>
       </div>
       <div class="row" style="margin-top: 10px;">
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="#">Lab tests</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="#">Covid symptoms</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="#">Pricing</a>
         </div>
       </div>
     </div>

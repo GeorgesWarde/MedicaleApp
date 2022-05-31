@@ -21,25 +21,25 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item ">
-        <button onclick="window.location.href='EhrList'" class="nav-link active" aria-current="page" style="width:100%;">
+        <button onclick="window.location.href='EhrList'"   class="nav-link active"  style="width:100%;">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
           Check patients EHR's
 </button>
       </li>
       <li class="doctorOptions">
-        <button onclick="window.location.href='AppointmentsList'"  class="nav-link active"style="width:100%";>
+        <button  href="#" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
           Check Appointments
 </button>
       </li>
       <li class="doctorOptions">
-        <button  onclick="window.location.href='addEHR'" class="nav-link active"style="width:100%";>
+        <button onclick="window.location.href='addEHR'" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Add Patient EHR
+          Add patient EHR
 </button>
       </li>
       <li class="doctorOptions">
-        <button onclick="window.location.href='Statistics'" href="#" class="nav-link active"style="width:100%";>
+        <button onclick="window.location.href='Statistics'"href="#" class="nav-link active"style="width:100%";>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
           Patients Statistics
 </button>
@@ -66,19 +66,50 @@
       </ul>
     </div>
   </div>
-  <div id="EHR" style="width:100%;">
+  <div class="wrap">
+         <div class="search">
+            <input type="text" class="searchTerm" placeholder="Search for current Appointments?">
+            <button type="submit" class="searchButton">
+              '<i class="fa fa-search"></i>
+           </button>
+         </div>
+      </div>
+ <div class="container-fluid">
+        <div class="row" >
+         
+         <div style="margin-top:50px;" class="list-group ">
+         <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+           <div class="d-flex w-100 justify-content-between">
+             <h5 class="mb-1">Tony kanaan</h5>
+             <small>3 days ago</small>
+          </div>
+           <p class="mb-1">Gender:Male</p>
+           <p class="mb-1">Age:28</p>
+          <small>Dr.John tanios</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+           <div class="d-flex w-100 justify-content-between">
+             <h5 class="mb-1">Elie haber</h5>
+             <small>3 days ago</small>
+          </div>
+           <p class="mb-1">Gender:Male</p>
+           <p class="mb-1">Age:22</p>
+          <small>Dr.Rima kahwaji</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+           <div class="d-flex w-100 justify-content-between">
+             <h5 class="mb-1">Maha hanna</h5>
+             <small>3 days ago</small>
+          </div>
+           <p class="mb-1">Gender:Female</p>
+           <p class="mb-1">Age:18</p>
+          <small>Dr.Ali Mawla</small>
+        </a>
+      </div>
+      </div>
+      </div>
+
   
-  
-  </div>
-
-
-
-    
-  
-
-  
-
-
   </body>
 </html>
 </div>
