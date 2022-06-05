@@ -20,11 +20,16 @@
 
 
 
-  <link href="style.css" rel="stylesheet">
+  <link href="./style/style.css" rel="stylesheet">
 </head>
 
 <body> 
-  <?php include_once 'header.php'; ?>
+<ul class="myChart">
+    <li class="mychart">
+      <a href="#" class="is_active">My chart</a>
+    </li>
+  </ul> 
+  <?php include_once './require/header.php'; ?>
   <div class="container firstWrapper">
     <div class="row align-items-start">
       <div class="col-md-6 col-12" style="margin: auto;">
@@ -177,7 +182,7 @@
      </div>
    </div>
  </div>
-  <?php include_once 'footer.php';  ?>
+  <?php include_once './require/footer.php';  ?>
   <script src="Js/main.js"></script>
 
 

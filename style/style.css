@@ -1,3 +1,32 @@
+/*myChart*/
+.myChart{
+  list-style: none;
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  width: 1152px;
+  margin: 0;
+}
+.myChart li{
+  padding: 10px 10px;
+  background-color: #f5ebe9;
+
+}
+.myChart a{
+  background-color: #f5ebe9;
+  background-image: url("https://www.bmc.org/themes/custom/bmc_base_theme/assets/images/icons/icon-mychart.svg");
+  background-repeat: no-repeat;
+  background-position: .75rem 50%;
+  padding-left: calc(1.5rem + 26px);
+  color: #000000;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: bold;
+}
+.myChart a:hover{
+  color: #000000;
+}
+/**/
 nav{
   background-color:#1a7595  ;
   color: white;
@@ -561,4 +590,81 @@ font-size: 20px;
 .content-table tbody tr.active-row {
   font-weight: bold;
   color: #009879;
+}
+/*Appointment*/
+.appointment .top{
+    background-image: url('https://www.bmc.org/themes/custom/bmc_base_theme/assets/images/backgrounds/page-header.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 60px 60px ;
+}
+.appointment h1{
+  color: #000000;
+}
+.appointment .list{
+  background-color: #08526b;
+  padding: 20px 20px;
+  border-radius: 10px;
+}
+.appointment .list .existing{
+  text-decoration: none;
+  color: #dddddd;
+  padding: 10px;
+}
+.appointment .list div{
+ border-bottom: 1px solid #dedede;
+}
+.appointment .list .existing:hover{
+  color: #1a7595;
+}
+@media (max-width:768px){
+.appointment .block1 table tbody{
+  font-size: 14px;
+}
+
+}
+.appointment #prepare a{
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 20px 20px;
+  text-decoration: none;
+}
+/**/
+/*doctors.php*/
+.doctors .image{
+  background-image: url('../images/TopDoctors2020.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+.doctors .text{
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
+  color: #08526b;
+  padding: 100px;
+}
+.doctors .form{
+  text-align: center;
+}
+.doctors label{
+  float: left;
+  color: #08526b;
+}
+.doctors input{
+  width: 100%;
+}
+.doctors .row{
+  padding-top: 30px;
+}
+
+.doctors input[type=submit]{
+  background-color: #08526b;
+  padding: 20px 20px ;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  border: none;
+  
 }
