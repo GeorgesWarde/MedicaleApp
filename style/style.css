@@ -621,6 +621,7 @@ font-size: 20px;
 @media (max-width:768px){
 .appointment .block1 table tbody{
   font-size: 14px;
+
 }
 
 }
@@ -631,7 +632,7 @@ font-size: 20px;
   text-decoration: none;
 }
 /**/
-/*doctors.php*/
+/*make.php*/
 .doctors .image{
   background-image: url('../images/TopDoctors2020.jpg');
   background-size: cover;
@@ -644,7 +645,7 @@ font-size: 20px;
   font-size: 30px;
   font-weight: bold;
   color: #08526b;
-  padding: 100px;
+  padding: 50px;
 }
 .doctors .form{
   text-align: center;
@@ -667,4 +668,54 @@ font-size: 20px;
   text-transform: uppercase;
   border: none;
   
+}
+/**/
+/*doctor.php*/
+.doctors .dr{
+  background-image: url('../images/TopDoctors2020.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+.ourPatient{
+  overflow: auto;
+}
+.doctor .patient{
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.doctor .info{
+  position: absolute;
+  top: 0;
+font-size: 20px;
+  color: #08526b;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/**/
+/*ehrfiles.php*/
+.ehr h2 {
+  text-align: center;
+}
+.ehr form{
+  text-align: center;
+}
+.ehr .firstname{
+  margin-bottom: 20px;
+}
+.ehr input[type=text],[type=number],[type=date], select{
+  width: 100%;
+}
+.ehr .submit{
+  margin-bottom: 20px;
+  
+}
+.ehr input[type=submit]{
+  background-color: #08526b;
+  padding: 20px 20px;
+  border: none;
+  color: #FFFFFF;
+  text-transform: uppercase;
 }

@@ -47,8 +47,8 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <label for="">Email</label><br>
-                  <input type="email" name="emailPatient" id="" placeholder="Email">
+                  <label for="">Age</label><br>
+                  <input type="number" name="agePatient" id="" placeholder="Age">
                 </div>
                 <div class="col-md-6">
                   <label for="">Gender</label><br>
@@ -56,6 +56,18 @@
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="">Disease</label><br>
+                  <input type="text" name="disease" id="" placeholder="Disease">
+                </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="">Symptoms</label><br>
+                  <input type="text" name="symptoms" id="" placeholder="Symptoms">
+
                 </div>
               </div>
               <div class="row">

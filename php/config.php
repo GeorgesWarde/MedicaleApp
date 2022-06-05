@@ -1,4 +1,5 @@
 <?php
+session_start();
 define('HOSTNAME','localhost');
 define('ROOTNAME','root');
 define('PASSWORD','');

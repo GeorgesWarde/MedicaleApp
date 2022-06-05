@@ -1,3 +1,6 @@
+<?php
+include_once './php/config.php';
+?>
 <header>
 
     <nav class="navbar navbar-expand-lg navbar-light " aria-label="Fifth navbar example">
@@ -21,6 +24,12 @@
             <li class="nav-item dropdown navbar-items">
 
               <a class="nav-link" href="login.php">Login</a>
+            </li>
+            <li class="nav-item dropdown navbar-items">
+              <?php
+              if($_SESSION){?>
+              <a class="nav-link" href="php/logout.php">Logout</a>
+             <?php } ?>
             </li>
           </ul>
 
