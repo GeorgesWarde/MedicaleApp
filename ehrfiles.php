@@ -44,6 +44,12 @@
                     <input type="text" name="test" id="" value="PCR">
                 </div>
                 <div class="firstname">
+                    Medical:
+                    <select name="medical">
+                        <option value="1">Panadol</option>
+                    </select>
+                </div>
+                <div class="firstname">
                     Payment in LL:
                     <input type="number" name="payment" id="" placeholder="Payment">
                 </div>

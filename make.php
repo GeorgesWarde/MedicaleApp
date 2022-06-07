@@ -2,8 +2,7 @@
 <html>
 
     <head><title>Make an appointment Online</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="Js/EHR.js"></script>
+    
     
  <link rel="stylesheet" href="./style/style.css">
     

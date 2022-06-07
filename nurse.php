@@ -4,57 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurse</title>
     <link rel="stylesheet" href="./style/style.css">
-
-    <title>Welcome Dr.Georges</title>
 </head>
 <body>
     <?php include_once './require/header.php';?>
-    <div class="doctors">
-   <div class="row dr">
-   
-      <div class="col-12 text">
-        Welcome Dr.Georges
-      </div>
-    </div>
-    </div>
-    <div class="doctor">
+    <div class="nurse">
         <div class="container-xl">
-            <div class="row">
-            <h2 class="text">Our Patients</h2>
-                <div class="col-md-3 patient" >
-                    <div class="info">
-                        Patients 14
-                       
+            <div class="row bg">
+                <div class="col-md-6">
+                    <div class="information">
+                        <h2>Nurse</h2>
+                        <p>Nurses have many duties, including caring for patients, communicating with doctors, administering medicine and checking vital signs. </p>
+                        <br>
+                        <h2>Nurse:Nour</h2>
                     </div>
                 </div>
-                <div class="col-md-3 patient" >
-                    <div class="info">
-                        Man 5
-                       
-                    </div>
-                </div>
-                <div class="col-md-3 patient" >
-                    <div class="info">
-                        Women 5
-                       
-                    </div>
-                </div>
-                <div class="col-md-3 patient" >
-                    <div class="info">
-                        Child 4
-                       
-                    </div>
+                <div class="col-md-6">
+                    <img src="./images/compressed.jpg" alt="" width="100%" height="100%">
                 </div>
             </div>
+            
         </div>
     </div>
-    <div class="ourPatient">
-        
+    
+    <div class="row">
+                <div class="col-12 case" style="text-align:center ;margin-top:30px;">
+                    <h2>Patient Case</h2>
+                </div>
+            
+            </div>
             <div class="row">
-                <div class="col-12">
-                    
-                <table class="table" style="overflow-x:auto ;">
+                <div class="col-12"  style="overflow-x:auto ;">
+                <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -85,7 +67,7 @@
       <td>13:09</td>
       <td>Common cold</td>
       <td>a blocked or runny nose,a sore throat.,headaches.</td>
-      <td><a href="ehrfiles.php">EHR e-file</a></td>
+      <td><a href="medical.php">Edit preExam</a></td>
 
     </tr>
     
@@ -93,9 +75,8 @@
 </table>
                 </div>
             </div>
-       
-    </div>
-    <?php include_once './require/footer.php';?>
     
+    
+    <?php include_once './require/footer.php';?>
 </body>
 </html>

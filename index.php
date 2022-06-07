@@ -26,7 +26,7 @@
 <body> 
 <ul class="myChart">
     <li class="mychart">
-      <a href="#" class="is_active">My chart</a>
+      <a href="mychart.php" class="is_active">My chart</a>
     </li>
   </ul> 
   <?php include_once './require/header.php'; ?>
