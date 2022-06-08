@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="col table" >
+        <div class="col table" style="overflow-x:auto ;">
             <div class="" id="allInfo" style="display: block;">
         <table class="table" >
   <thead>
@@ -240,7 +240,7 @@
   <thead>
     <tr>
       <th scope="col">Symptoms</th>
-      <th scope="col">Number patients</th>
+      <th scope="col">Nbr patients</th>
       <th scope="col">Percentage</th>
 
       
