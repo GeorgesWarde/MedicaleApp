@@ -239,15 +239,18 @@
 <table class="table" >
   <thead>
     <tr>
-      <th scope="col">Disease</th>
-      <th scope="col">Percentage/patient</th>
+      <th scope="col">Symptoms</th>
+      <th scope="col">Number patients</th>
+      <th scope="col">Percentage</th>
+
       
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">corona</th>
-      <td>40%</td>
+      <th scope="row">Diabets</th>
+      <td>40</td>
+      <td>35%</td>
     </tr>
     
   </tbody>
@@ -255,14 +258,18 @@
 <table class="table" >
   <thead>
     <tr>
-      <th scope="col">Test</th>
-      <th scope="col">Percentage/patient</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Percentage</th>
       
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">corona</th>
+      <td scope="row">Male</td>
+      <td>90%</td>
+    </tr>
+    <tr>
+      <td scope="row">Female</td>
       <td>90%</td>
     </tr>
     
