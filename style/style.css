@@ -320,6 +320,7 @@ footer .link:hover{
 footer .images{
   text-align: center;
   opacity: .6;
+  
 }
 footer .images:hover{
   opacity: 1;
@@ -683,7 +684,7 @@ font-size: 20px;
 }
 /**/
 /*doctor.php*/
-.doctors .dr{
+.doctors.dr{
   background-image: url('../images/TopDoctors2020.jpg');
   background-size: cover;
   background-position: center;

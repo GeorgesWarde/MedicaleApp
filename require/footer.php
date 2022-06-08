@@ -14,7 +14,7 @@
         <div  class="container-xl">
         <div class="row">
             <div class="col-md-3"> 
-                <div class="logo"><a href="#"><img src="./images/bmc_logo_blue.svg"></a></div>
+                <div class="logo"><a href="#"><img src="./images/footerimg.jpg" width="100%"></a></div>
                 <div class="blur">Boston Medical Center (BMC) is a 514-bed academic medical center located in Boston's historic South End, providing medical care for infants, children, teens and adults.</div>
                 <div class="address"><img src="https://www.bmc.org/themes/custom/bmc_base_theme/assets/images/icons/icon-location-pin.svg"><br>
                     One Boston Medical Center Place<br>Boston, MA 02118<br>
@@ -72,13 +72,13 @@
         </div>
         <div class="row" style="margin-top:30px;">
             <div class="col-md-4 images">
-                 <a href="http://"><img src="./images/net_plan.webp"></a> 
+                 <a href="https://www.facebook.com/Flowmcenter/"><img src="./images/sponsor(1).png"></a> 
             </div>
             <div class="col-md-4 images">
-                  <a href="#"><img src="./images/university.webp"></a>
+                  <a href="https://www.facebook.com/aamedicalcenter/"><img src="./images/sponsor(2).png"></a>
             </div>
             <div class="col-md-4 images">
-                  <a href="#"><img src="./images/health_net.webp"></a>
+                  <a href="https://www.facebook.com/American.European.MC/"><img src="./images/sponsor(3).png"></a>
             </div>
             
         </div>

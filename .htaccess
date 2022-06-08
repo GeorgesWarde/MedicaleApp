@@ -1,0 +1,44 @@
+RewriteEngine on
+
+
+RewriteRule ^appointment appointment.php 
+RewriteRule ^Appointment appointment.php 
+RewriteRule ^APPOINTMENT appointment.php 
+
+RewriteRule ^MAKE make.php 
+RewriteRule ^mAKE make.php 
+RewriteRule ^Make make.php 
+RewriteRule ^make make.php 
+
+RewriteRule ^admin admin.php 
+RewriteRule ^Admin admin.php 
+RewriteRule ^AdMin admin.php 
+RewriteRule ^ad admin.php 
+
+RewriteRule ^doctor doctor.php
+
+RewriteRule ^nurse nurse.php
+
+RewriteRule ^mychart mychart.php
+RewriteRule ^chart mychart.php
+RewriteRule ^myChart mychart.php
+
+RewriteRule ^registration Registration.php
+RewriteRule ^register Registration.php
+
+RewriteRule ^login login.php
+
+RewriteRule ^department department.php
+
+RewriteRule ^ehrfiles ehrfiles.php
+RewriteRule ^ehr ehrfiles.php
+
+
+
+
+
+
+
+
+
+

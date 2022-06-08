@@ -97,7 +97,7 @@ prescription refills';
                        
                        </div>
                 </div>
-                <div class="col-md-6 order-1" style="padding:101px ; font-size:22px;font-weight:bold;">
+                <div class="col-md-6 order-1" style=" font-size:22px;font-weight:bold;">
                    Scan to login on your phone
                 </div>
             </div>

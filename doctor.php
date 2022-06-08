@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +11,14 @@
 </head>
 <body>
     <?php include_once './require/header.php';?>
-    <div class="doctors">
-   <div class="row dr">
+    <div class="doctors dr">
+    <div class="container-xl">
+   <div class="row ">
    
       <div class="col-12 text">
         Welcome Dr.Georges
       </div>
+    </div>
     </div>
     </div>
     <div class="doctor">
@@ -47,10 +50,11 @@
                     </div>
                 </div>
             </div>
+        
         </div>
     </div>
     <div class="ourPatient">
-        
+        <div class="container-xl">
             <div class="row">
                 <div class="col-12">
                     
@@ -85,7 +89,7 @@
       <td>13:09</td>
       <td>Common cold</td>
       <td>a blocked or runny nose,a sore throat.,headaches.</td>
-      <td><a href="ehrfiles.php">EHR e-file</a></td>
+      <td><a href="ehrfiles.php" style="font-size:12px ;">EHR e-file</a></td>
 
     </tr>
     
@@ -93,7 +97,7 @@
 </table>
                 </div>
             </div>
-       
+            </div>
     </div>
     <?php include_once './require/footer.php';?>
     

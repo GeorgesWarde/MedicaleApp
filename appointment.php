@@ -37,7 +37,7 @@
                     </div>
                     
                 </div>
-                <div class="col-md-9 block">
+                <div class="col-md-9 block" style="overflow-x:auto ;">
                     <div class="row block1" id="existing">
                         <h2>Existing patients</h2>
                         <p>In-person and virtual appointments are both available for our patients.<a href="infoCovid.php">Learn more about coming to BMC, and book an appointment below.</a> </p>
