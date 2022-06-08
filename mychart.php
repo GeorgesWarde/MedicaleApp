@@ -59,7 +59,7 @@ prescription refills';
                 </div>
                 <div class="col-md-4 can">
                     <img src="./images/Mobile_Consultant_icon.webp" alt="">
-                    <h5>cmmunicate with<br>providers</h5>
+                    <h5>communicate with<br>providers</h5>
                     <p><?=$COMMUNICATEWITHPROVIDERS?></p>
                 </div>
                 <div class="col-md-4 can">
