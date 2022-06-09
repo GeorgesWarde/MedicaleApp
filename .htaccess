@@ -33,6 +33,9 @@ RewriteRule ^department department.php
 RewriteRule ^ehrfiles ehrfiles.php
 RewriteRule ^ehr ehrfiles.php
 
+RewriteRule ^bloodresult bloodresult.php
+RewriteRule ^dexascanresult dexaScanResult.php
+
 
 
 
