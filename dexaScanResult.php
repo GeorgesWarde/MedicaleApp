@@ -13,7 +13,7 @@
 
 <body>
     <?php include_once './require/header.php' ?>
-
+<div id="tab">
     <h3 style="justify-content:center;align-items:center;display:flex;">Anthony Saliba </h3>
     <div class="container" style="color:#00556f">
         <div class="row align-items-start">
@@ -67,11 +67,13 @@
 
                     </thead>
                 </table>
-                <button style="padding:5px;background-color:#00556f;color:white;border-radius:3px;">Print your Test</button>
             </div>
         </div>
     </div>
+    </div>
+    <div class="container-xl"><button style="padding:5px;background-color:#00556f;color:white;border-radius:3px;" onclick="createpdf()">Print your Test</button></div>
+
     <?php include_once './require/footer.php' ?>
 </body>
-
+<script src="./Js/main.js"></script>
 </html>
