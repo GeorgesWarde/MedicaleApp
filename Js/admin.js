@@ -43,4 +43,19 @@ function showMenu() {
     document.getElementById("addNurse").style.display = "none";
     document.getElementById("statistics").style.display="block";
   }
+  function bloodshow(){
+    document.getElementById("allInfo").style.display = "none";
+    document.getElementById("Medical").style.display = "none";
+    document.getElementById("addDoctor").style.display = "none";
+    document.getElementById("addNurse").style.display = "none";
+    document.getElementById("statistics").style.display="none";
+  }
+  function dexashow(){
+    document.getElementById("allInfo").style.display = "none";
+    document.getElementById("Medical").style.display = "none";
+    document.getElementById("addDoctor").style.display = "none";
+    document.getElementById("addNurse").style.display = "none";
+    document.getElementById("statistics").style.display="none";
+  }
+  
   

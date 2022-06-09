@@ -89,7 +89,9 @@
       <td>13:09</td>
       <td>Common cold</td>
       <td>a blocked or runny nose,a sore throat.,headaches.</td>
-      <td><a href="ehrfiles.php" style="font-size:12px ;">EHR e-file</a></td>
+      <td><a href="ehrfiles.php" style="font-size:12px ;">EHR e-file</a>
+      <a href="ehrfiles.php" style="font-size:12px ;">Result</a>
+    </td>
 
     </tr>
     

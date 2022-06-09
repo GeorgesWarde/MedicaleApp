@@ -13,19 +13,36 @@
         <div class="container-xl">
             <h2>Patient e-file form</h2>
             <form action="" method="post">
-                <div class="radio">
-                    <input type="radio" name="detail" id="" value="Dr">Dr
-                    <input type="radio" name="detail" id="" value="Mrs">Mrs
-                    <input type="radio" name="detail" id="" value="Miss">Miss
-                    <input type="radio" name="detail" id="" value="Mr">Mr
-                </div>
+               
                 <div class="firstname">
                     First name:
                     <input type="text" name="fname" id="" placeholder="first name">
                 </div>
                 <div class="firstname">
                     Last name:
-                    <input type="text" name="fname" id="" placeholder="last name">
+                    <input type="text" name="lname" id="" placeholder="last name">
+                </div>
+               
+                <div class="firstname">
+                    Date of birth:
+                    <input type="date" name="dateBirth" id="">
+                </div>
+                <div class="firstname">
+                    Blood Type:
+                    <select name="typeBlood" id="">
+                        <option value="A+">A+</option>
+                        <option value="O-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB">AB</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+
+                    </select>
+                </div>
+                <div class="firstname">
+                    City:
+                    <input type="text" name="city" id="" placeholder="City">
                 </div>
                 <div class="firstname">
                     Gender:
@@ -36,22 +53,32 @@
                     </select>
                 </div>
                 <div class="firstname">
-                    Date of birth:
-                    <input type="date" name="fname" id="">
+                    Date of Visit:
+                    <input type="date" name="dateVisit" id="">
+                </div>
+                
+               
+                <div class="firstname">
+                    Symptoms:
+                    <input type="text" name="symptoms" id="">
                 </div>
                 <div class="firstname">
-                    Test:
-                    <input type="text" name="test" id="" value="PCR">
+                    Allergy:
+                    <input type="text" name="allergy" id="">
                 </div>
                 <div class="firstname">
-                    Medical:
-                    <select name="medical">
-                        <option value="1">Panadol</option>
+                    Test Recomended:
+                    <select name="Test" id="">
+                        <option value="male">Blood Test</option>
+                        <option value="female">Dexa Scan</option>
+                        <option value="female">Covid-19</option>
+
+
                     </select>
                 </div>
                 <div class="firstname">
-                    Payment in LL:
-                    <input type="number" name="payment" id="" placeholder="Payment">
+                    Payment:
+                    <input type="text" name="payment" id="" placeholder="payment in LL">
                 </div>
                 <div class="submit">
                     <input type="submit" name="submit" value="Submit">

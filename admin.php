@@ -34,10 +34,10 @@
                                 <a href="#" class="nav-link px-0" onclick="medShow()"> <span class="d-sm-inline">Medical </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-sm-inline">Blood Lab</a>
+                                <a href="#" class="nav-link px-0" onclick="bloodshow()"> <span class="d-sm-inline">Blood Lab</a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-sm-inline">DexaScan Lab</a>
+                                <a href="#" class="nav-link px-0" onclick="dexashow()"> <span class="d-sm-inline">DexaScan Lab</a>
                             </li>
                         </ul>
                     </li>
