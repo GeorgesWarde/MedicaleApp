@@ -1,5 +1,7 @@
 RewriteEngine on
 
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
 
 RewriteRule ^appointment appointment.php 
 RewriteRule ^Appointment appointment.php 

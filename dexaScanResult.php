@@ -13,67 +13,60 @@
 
 <body>
     <?php include_once './require/header.php' ?>
-<div id="tab">
-    <h3 style="justify-content:center;align-items:center;display:flex;">Anthony Saliba </h3>
-    <div class="container" style="color:#00556f">
-        <div class="row align-items-start">
-            <div class="col" style="overflow-x: auto;">
-                <table class="table mytable">
-                    <thead style="color:#00556f" ;>
-                        <tr>
-                            <th>Region</th>
-                            <th>Area(cm*cm)</th>
-                            <th>BMC(g)</th>
-                            <th>BMD(g/cm*cm)</th>
-                            <th>T-score</th>
-                            <th>Z-score</th>
-                        </tr>
-                        <tr>
-                            <th>Neck</th>
-                            <th>5.42</th>
-                            <th>5.73</th>
-                            <th>1.057</th>
-                            <th>1.9</th>
-                            <th>2.6</th>
+    <div id="tab">
+        <h3 style="justify-content:center;align-items:center;display:flex;">Anthony Saliba </h3>
+        <div class="container" style="color:#00556f">
+            <div class="row align-items-start">
+                <div class="col" style="overflow-x: auto;">
+                    <table class="table mytable">
+                        <thead style="color:#00556f" ;>
+                            <tr>
 
-                        </tr>
-                        <tr>
-                            <th>Troch</th>
-                            <th>5.42</th>
-                            <th>5.73</th>
-                            <th>1.057</th>
-                            <th>1.9</th>
-                            <th>2.6</th>
+                                <th>Area(cm*cm)</th>
+                                <th>BMC(g)</th>
+                                <th>BMD(g/cm*cm)</th>
+                                <th>T-score</th>
+                                <th>Z-score</th>
+                            </tr>
+                            <tr>
 
-                        </tr>
-                        <tr>
-                            <th>Inter</th>
-                            <th>5.42</th>
-                            <th>5.73</th>
-                            <th>1.057</th>
-                            <th>1.9</th>
-                            <th>2.6</th>
+                                <th>5.42</th>
+                                <th>5.73</th>
+                                <th>1.057</th>
+                                <th>1.9</th>
+                                <th>2.6</th>
 
-                        </tr>
-                        <tr>
-                            <th>Total</th>
-                            <th>5.42</th>
-                            <th>5.73</th>
-                            <th>1.057</th>
-                            <th>1.9</th>
-                            <th>2.6</th>
+                            </tr>
+                            <tr>
 
-                        </tr>
+                                <th>5.42</th>
+                                <th>5.73</th>
+                                <th>1.057</th>
+                                <th>1.9</th>
+                                <th>2.6</th>
 
-                    </thead>
-                </table>
+                            </tr>
+                            <tr>
+
+                                <th>5.42</th>
+                                <th>5.73</th>
+                                <th>1.057</th>
+                                <th>1.9</th>
+                                <th>2.6</th>
+
+                            </tr>
+
+
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     <div class="container-xl"><button style="padding:5px;background-color:#00556f;color:white;border-radius:3px;" onclick="createpdf()">Print your Test</button></div>
 
     <?php include_once './require/footer.php' ?>
 </body>
 <script src="./Js/main.js"></script>
+
 </html>
