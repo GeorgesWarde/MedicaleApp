@@ -30,7 +30,7 @@
             </li>
             <li>
               <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white" onclick="showMenu()">
-                <i class="fa-solid fa-plus dash"></i> <span class="ms-1 d-none d-sm-inline ">Dashboard</span> </a>
+                <i class="fa-solid fa-plus dash"></i> <span class="ms-1 d-none d-sm-inline ">Labs/Medical</span> </a>
               <ul class="collapse  nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                 <li class="w-100">
                   <a href="#" class="nav-link px-0" onclick="medShow()"> <span class="d-sm-inline">Medical </a>
@@ -72,7 +72,7 @@
         </div>
       </div>
       <div class="col table" style="overflow-x:auto ;">
-        <div class="" id="allInfo" style="display: none;">
+        <div class="" id="allInfo" style="display: block;">
           <table class="table">
             <thead>
               <tr>
@@ -382,7 +382,41 @@
               <input type="text" name="testosterone" id="" style="width:100% ;" placeholder="Testosterone(nmol/L)">
             </div>
           </div>
-          <input type="submit" value="add result" name="addresult" class="btn btn-primary">
+          <input type="submit" value="add result" name="addresultBlood" class="btn btn-primary">
+        </form>
+        <form id="dexa" method="post" enctype="multipart/form-data" style="display:none ;">
+          <div class="row">
+            <div class="col-md-6">
+              Patient:
+              <input type="text" name="patientDexa" id="" required style="width:100% ;">
+            </div>
+            <div class="col-md-6">
+            BMC(g):
+              <input type="text" name="bmc" id="" required style="width:100% ;">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+            Area(cm*cm):
+              <input type="text" name="area" id="" required style="width:100% ;">
+            </div>
+            <div class="col-md-6">
+            Z-score:
+              <input type="text" name="zscore" id="" required style="width:100% ;">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+            BMD(g/cm*cm):
+              <input type="text" name="bmd" id="" required style="width:100% ;">
+            </div>
+            <div class="col-md-6">
+            T-score:
+              <input type="text" name="tscore" id="" required style="width:100% ;">
+            </div>
+          </div>
+          <input type="submit" value="add result" name="addresultDexa" class="btn btn-primary">
+
         </form>
       </div>
     </div>

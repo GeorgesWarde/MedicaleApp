@@ -37,24 +37,7 @@
                                 <th>2.6</th>
 
                             </tr>
-                            <tr>
-
-                                <th>5.42</th>
-                                <th>5.73</th>
-                                <th>1.057</th>
-                                <th>1.9</th>
-                                <th>2.6</th>
-
-                            </tr>
-                            <tr>
-
-                                <th>5.42</th>
-                                <th>5.73</th>
-                                <th>1.057</th>
-                                <th>1.9</th>
-                                <th>2.6</th>
-
-                            </tr>
+                          
 
 
                         </thead>
@@ -63,7 +46,7 @@
             </div>
         </div>
     </div>
-    <div class="container-xl"><button style="padding:5px;background-color:#00556f;color:white;border-radius:3px;" onclick="createpdf()">Print your Test</button></div>
+    <div class="container-xl"><button style="padding:5px;background-color:#00556f;color:white;border-radius:3px;" onclick="createpdf()">Print your Test</button>*Bring the test with you when you visit our center</div>
 
     <?php include_once './require/footer.php' ?>
 </body>
