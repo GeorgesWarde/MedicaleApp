@@ -26,7 +26,7 @@
 <body> 
 <ul class="myChart">
     <li class="mychart">
-      <a href="mychart.php" class="is_active">My chart</a>
+      <a href="mychart" class="is_active">My chart</a>
     </li>
   </ul> 
   <?php include_once './require/header.php'; ?>
@@ -46,7 +46,7 @@
   </div>
   <div class="secondWrapper roundedCorners1">
 
-    <button href="Regsitration.php" class="btn btn-primary" role="button" data-bs-toggle="button">Request an Appointment</button>
+    <button href="Regsitration.php" class="btn btn-primary" role="button" data-bs-toggle="button" disabled>Request an Appointment</button>
 
 
     <button style="margin-left:20px" onClick="window.location.href='Registration.php'" type="submit" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Register Now</button>
@@ -113,24 +113,24 @@
     <div class="container-xl">
       <div class="row">
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="login">Blood test</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="login">Dexa Scan </a>
         </div>
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="login">Lunge Scan</a>
         </div>
       </div>
       <div class="row" style="margin-top: 10px;">
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="login">Ct Scan</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="login">E-files</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="login">Appointment</a>
         </div>
       </div>
     </div>
@@ -174,9 +174,9 @@
      <div class="row">
        <div class="col-12" style="text-align:center ;padding-top:60px;">
          <h1>Donate Now</h1>
-         <p style="font-size:20px;">Philanthropic support is essential to helping Boston Medical Center provide exceptional care, 
-           without exception to the people of Greater Boston. Whether you are an individual, 
-           a corporation or a community organization, there are many ways you can support BMC.</p>
+         <p style="font-size:20px;">Philanthropic support is essential to helping Lebanon Medical Center provide exceptional care, 
+           without exception to the people of Greater Lebanon. Whether you are an individual, 
+           a corporation or a community organization, there are many ways you can support LMC.</p>
            <button class="donate">Donate Now</button>
        </div>
      </div>

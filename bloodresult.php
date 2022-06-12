@@ -152,8 +152,7 @@
         </div>
     </div>
     </div>
-  <div class="container-xl">  <button style="padding:5px;background-color:#00556f;color:white;border-radius:3px;" onclick="createpdf()">*Bring the test with you when you visit our center</button>
-  </div>
+    <div class="container-xl"><button style="padding:5px;background-color:#00556f;color:white;border-radius:3px;" onclick="createpdf()">Print your Test</button>*Bring the test with you when you visit our center</div>  </div>
     <?php include_once './require/footer.php' ?>
 </body>
 <script src="./Js/main.js"></script>
