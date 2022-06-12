@@ -68,9 +68,7 @@ window.onscroll = function () {
 	myFunction()
 
 };
-window.onscroll = function () {
-	myFunction2()
-};
+
 var box = document.getElementById("box");
 var box2 = document.getElementById("boxapp");
 var sticky = 400;
@@ -86,12 +84,5 @@ function myFunction() {
 	}
 
 }
-function myFunction2() {
-	if (window.pageYOffset > sticky2 && window.pageYOffset < 729.41) {
-		box2.classList.add("sticky");
-	}
-	else {
-		box2.classList.remove("sticky")
-	}
-}
+
 

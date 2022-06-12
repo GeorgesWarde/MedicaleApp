@@ -42,7 +42,8 @@
                 <div class="col-md-9 block" style="overflow-x:auto ;">
                     <div class="row block1" id="existing">
                         <h2>Existing patients</h2>
-                        <p>In-person and virtual appointments are both available for our patients.<a href="infoCovid.php">Learn more about coming to BMC, and book an appointment below.</a>
+                        <p>In-person and virtual appointments are both available for our patients.<a
+                                href="infoCovid.php">Learn more about coming to BMC, and book an appointment below.</a>
                         </p>
                         <h3>Make an Appointment by Phone</h3>
                         <p>See our department listings to find the direct contact number for the department you wish to
@@ -99,6 +100,21 @@
         </div>
         <?php include_once './require/footer.php' ?>
 </body>
-<script src="./js/main.js"></script>
+<script>
+window.onscroll = function() {
+    myFunction2()
+};
+var box2 = document.getElementById("boxapp");
+
+var sticky2 = 200;
+
+function myFunction2() {
+    if (window.pageYOffset > sticky2 && window.pageYOffset < 729.41) {
+        box2.classList.add("sticky");
+    } else {
+        box2.classList.remove("sticky")
+    }
+}
+</script>
 
 </html>
