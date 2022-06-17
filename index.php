@@ -20,11 +20,16 @@
 
 
 
-  <link href="style.css" rel="stylesheet">
+  <link href="./style/style.css" rel="stylesheet">
 </head>
 
 <body> 
-  <?php include_once 'header.php'; ?>
+<ul class="myChart">
+    <li class="mychart">
+      <a href="mychart" class="is_active">My chart</a>
+    </li>
+  </ul> 
+  <?php include_once './require/header.php'; ?>
   <div class="container firstWrapper">
     <div class="row align-items-start">
       <div class="col-md-6 col-12" style="margin: auto;">
@@ -41,13 +46,65 @@
   </div>
   <div class="secondWrapper roundedCorners1">
 
-    <button onClick="window.location.href='Appointment.php'" class="btn btn-primary" role="button" data-bs-toggle="button">Request an Appointment</button>
+    <button href="Regsitration.php" class="btn btn-primary" role="button" data-bs-toggle="button" disabled>Request an Appointment</button>
 
 
-    <button style="margin-left:20px" onClick="window.location.href='admin.php'" type="submit" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Register Now</button>
+    <button style="margin-left:20px" onClick="window.location.href='login.php'" type="submit" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Register Now</button>
 
   </div>
-  
+  <div>
+    <h1 class="newsText">Latest News</h1>
+    <div class="thirdWrapper roundedCorners2">
+
+      <section>
+        <div class="product">
+          <picture>
+            <img src="images/patientpIC.jpg" alt="">
+          </picture>
+          <div class="detail">
+            <p class="textSize">
+              New Research from the Grayken Center for Addiction Suggests
+
+            </p>
+
+          </div>
+        </div>
+        <div class="product">
+          <picture>
+            <img src="images/patientpIC.jpg" alt="">
+          </picture>
+          <div class="detail">
+            <p class="textSize">
+              New Research from the Grayken Center for Addiction Suggests
+
+            </p>
+
+          </div>
+        </div>
+        <div class="product">
+          <picture>
+            <img src="images/patientpIC.jpg" alt="">
+          </picture>
+          <div class="detail">
+            <p class="textSize">
+              New Research from the Grayken Center for Addiction Suggests
+
+            </p>
+
+          </div>
+        </div>
+        <div class="product">
+          <picture>
+            <img src="images/patientpIC.jpg" alt="">
+          </picture>
+          <div class="detail">
+            <p class="textSize">
+              New Research from the Grayken Center for Addiction Suggests
+
+            </p>
+
+          </div>
+        </div>
 
       </section>
     </div>
@@ -56,24 +113,24 @@
     <div class="container-xl">
       <div class="row">
         <div class="col-md-4">
-          <a href="#">Covid Vaccin update</a>
+          <a href="login">Blood test</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Our Doctors</a>
+          <a href="login">Dexa Scan </a>
         </div>
         <div class="col-md-4">
-          <a href="#">Our Nurses</a>
+          <a href="login">Lunge Scan</a>
         </div>
       </div>
       <div class="row" style="margin-top: 10px;">
         <div class="col-md-4">
-          <a href="#">Lab tests</a>
+          <a href="login">Ct Scan</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Covid symptoms</a>
+          <a href="login">E-files</a>
         </div>
         <div class="col-md-4">
-          <a href="#">Pricing</a>
+          <a href="login">Appointment</a>
         </div>
       </div>
     </div>
@@ -117,15 +174,15 @@
      <div class="row">
        <div class="col-12" style="text-align:center ;padding-top:60px;">
          <h1>Donate Now</h1>
-         <p style="font-size:20px;">Philanthropic support is essential to helping Boston Medical Center provide exceptional care, 
-           without exception to the people of Greater Boston. Whether you are an individual, 
-           a corporation or a community organization, there are many ways you can support BMC.</p>
+         <p style="font-size:20px;">Philanthropic support is essential to helping Lebanon Medical Center provide exceptional care, 
+           without exception to the people of Greater Lebanon. Whether you are an individual, 
+           a corporation or a community organization, there are many ways you can support LMC.</p>
            <button class="donate">Donate Now</button>
        </div>
      </div>
    </div>
  </div>
-  <?php include_once 'footer.php';  ?>
+  <?php include_once './require/footer.php';  ?>
   <script src="Js/main.js"></script>
 
 

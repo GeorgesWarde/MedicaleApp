@@ -1,0 +1,51 @@
+.myCharte{
+    text-align: center;
+padding: 101px;
+}
+.imgtext{
+    display: flex;
+}
+.imgtext img{
+    width: 50px!important;
+    
+}
+.imgtext h3{
+    transform: translateY(10px);
+}
+.mychart .text{
+    text-align: left;
+}
+.can{
+    text-align: center;
+}
+.can img{
+    width: 100px;
+    height: 108px;
+}
+.can p{
+    font-size: 18px;
+}
+.mychart .box{
+    box-shadow: -1px 3px 5px rgb(0 0 0 / 30%);
+    background-color: #ffffff;
+    border-radius: 25px;
+    padding: 70px;
+}
+.mychart ul.dashed{
+    list-style-type: none;
+}
+.mychart ul.dashed > li:before{
+    content: "-";
+    
+}
+.mychart span{
+    margin: 10px;
+}
+.mychart li{
+    padding: 10px;
+}
+@media (max-width:500px){
+#qrcode img{
+    width: 100%;
+}
+}

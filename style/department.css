@@ -1,0 +1,31 @@
+
+.depSide{
+    margin-left:7%;
+    width:300px;
+    height:350px;
+    background-color:white;
+    padding-top:20px;
+    padding-left:15px;
+    padding-right:15px;
+    display: inline-block;
+}
+.flexwrapper{
+    display:flex;
+    margin-top:30px;
+}
+.depContent{
+    padding-top:20px;
+    padding-left:15px;
+}
+.doctorList{
+    background-color:lightblue;
+border-radius:7px;
+
+padding-left:10px;
+}
+.doctorList1{
+    background-color:lightblue;
+border-radius:7px;
+
+padding-left:10px;
+}
