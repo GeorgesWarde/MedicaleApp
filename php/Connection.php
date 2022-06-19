@@ -1,7 +1,7 @@
 <?php
 function connect(){
-    if(!isset($_SESSION["id"])){
-    session_start();
+    if(!isset($_SESSION['id'])){
+   session_start();
     }
 $host='localhost';
 $user='root';

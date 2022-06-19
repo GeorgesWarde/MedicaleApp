@@ -9,16 +9,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <title>Admin</title>
 </head>
-<body>
+<body> 
+    
+<?php include_once './require/header.php';?>
+    <?php include_once './php/Controllers/ehrController.php';?>
+    <?php include_once './php/Controllers/preExamsController.php';?>
+    <?php include_once './php/Controllers/userController.php';?>
+    
+    
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <a href="/"
                         class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <span class="fs-5 d-none d-sm-inline">Admin</span>
+                        <span class="fs-5 d-none d-sm-inline"><?php echo  $_SESSION["firstname"];?></span>
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                         id="menu">
@@ -33,10 +45,7 @@
                                 <i class="fa-solid fa-plus dash"></i> <span
                                     class="ms-1 d-none d-sm-inline ">Labs/Medical</span> </a>
                             <ul class="collapse  nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="#" class="nav-link px-0" onclick="medShow()"> <span
-                                            class="d-sm-inline">Medical </a>
-                                </li>
+                            
                                 <li>
                                     <a href="#" class="nav-link px-0" onclick="bloodshow()"> <span
                                             class="d-sm-inline">Blood Lab</a>
@@ -88,10 +97,10 @@
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                             id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./images/images.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                            <span class="d-none d-sm-inline mx-1">anthony</span>
+                            <span class="d-none d-sm-inline mx-1"><?php echo $_SESSION['firstname'];?></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li><a class="dropdown-item" href="#" >Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -212,25 +221,40 @@
                     <div>Total number of medicals:</div>
                     <div>Total number of tests:</div>
                 </div>
-                <form id="addDoctor" style="display:none ;">
+                <div id="addDoctor" style="display:none;">
+                <h3>Add a Doctor</h3>
+                <form method="POST" action=<?php createDoctor();?>  >
                     <div class="mb-3">
-                        <label for="exampleInputName" class="form-label">Doctor name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="doctor" required>
+                        <label for="exampleInputName" class="form-label">Doctor First Name</label>
+                        <input type="text" class="form-control"  name="FName" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputGenre" class="form-label">Genre</label><br>
-                        <select name="genre">
+                        <label for="exampleInputName" class="form-label">Doctor Last Name</label>
+                        <input type="text" class="form-control"  name="LName" required>
+                    </div>
+                    <div class="mb-3">
+                    <label class="form-label">Year of Birth</label><br>
+                    <input type="text" class="form-control"  name="year" required>
+                  </div>
+                    <div class="mb-3">
+                        <label for="exampleInputGenre" class="form-label">Gender</label><br>
+                        <select name="gender">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputAge" class="form-label">Age</label>
-                        <input type="number" name="agedoctor" class="form-control">
+                        <label for="exampleInputName" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="userName" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputCertificate" class="form-label">Certificate</label><br>
-                        <select name="certificate">
+                        <label for="exampleInputName" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="password" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputCertificate" class="form-label">Department</label><br>
+                        <select name="department">
                             <option value="1">Neurology</option>
                             <option value="2">Dentistry</option>
                             <option value="3">Cardiovascular</option>
@@ -238,17 +262,25 @@
                             <option value="5">Dermatology</option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputShedule" class="form-label">Schedule(Day and time)</label>
-                        <input type="text" name="agedoctor" class="form-control">
-                    </div>
+                 
                     <button type="submit" class="btn btn-primary" name="addDoc">Add</button>
                 </form>
-                <form id="addNurse" style="display:none ;">
+              </div>
+              <div id="addNurse" style="display:none">
+              <h3>Add a Nurse</h3>
+                <form >
                     <div class="mb-3">
-                        <label for="exampleInputName" class="form-label">Nurse name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="nurse" required>
+                        <label for="exampleInputName" class="form-label">Doctor First Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="doctorFName" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Doctor Last Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="doctorLName" required>
+                    </div>
+                    <div class="mb-3">
+                    <label class="form-label">Year of Birth</label><br>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="year" required>
+                  </div>
                     <div class="mb-3">
                         <label for="exampleInputGenre" class="form-label">Genre</label><br>
                         <select name="genre">
@@ -257,22 +289,28 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputAge" class="form-label">Age</label>
-                        <input type="number" name="agedoctor" class="form-control">
+                        <label for="exampleInputName" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="userName" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputCertificate" class="form-label">Certificate</label>
-                        <input type="number" name="certificateNurse" class="form-control">
+                        <label for="exampleInputName" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="password" required>
                     </div>
+
                     <div class="mb-3">
-                        <label for="exampleInputShedule" class="form-label">Schedule(shift)</label>
-                        <select class="form-control" name="shift">
-                            <option value="Am">AM</option>
-                            <option value="Pm">PM</option>
+                        <label for="exampleInputCertificate" class="form-label">Department</label><br>
+                        <select name="department">
+                            <option value="1">Neurology</option>
+                            <option value="2">Dentistry</option>
+                            <option value="3">Cardiovascular</option>
+                            <option value="4">Gastroenterology</option>
+                            <option value="5">Dermatology</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="addNur">Add</button>
+                 
+                    <button type="submit" class="btn btn-primary" name="addDoc">Add</button>
                 </form>
+                </div>
                 <div id="statistics" style="display:none ;">
                     <table class="table">
                         <thead>
@@ -309,154 +347,151 @@
                         </tbody>
                     </table>
                 </div>
-                <form id="blood" method="post" enctype="multipart/form-data" style="display:none ;">
-                    <div class="row">
-                        <div class="col-md-6">
-                            Patient:
-                            <input type="text" name="patient" id="" style="width:100% ;" placeholder="Name">
-                        </div>
-                        <div class="col-md-6">
-                            Sodium (mmol/L):
-                            <input type="text" name="sodium" id="" style="width:100% ;" placeholder="mmol/L">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            Chloriode(mmol/L):
-                            <input type="text" name="chloriode" id="" style="width:100% ;" placeholder="mmol/L">
-                        </div>
-                        <div class="col-md-6">
-                            Bicarbonate(mmol/L):
-                            <input type="text" name="bicarbonate" id="" style="width:100% ;" placeholder="mmol/L">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            Urea(mmol/L):
-                            <input type="text" name="urea" id="" style="width:100% ;" placeholder="mmol/L">
-                        </div>
-                        <div class="col-md-6">
-                            Creatinine(nmol/L):
-                            <input type="text" name="creatinine" id="" style="width:100% ;" placeholder="mmol/L">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            eGFR(mL/min/1.73m*m):
-                            <input type="text" name="egfr" id="" style="width:100% ;"
-                                placeholder="eGFR(mL/min/1.73m*m)">
-                        </div>
-                        <div class="col-md-6">
-                            Corrected Calcium(mmol/L):
-                            <input type="text" name="calcium" id="" style="width:100% ;"
-                                placeholder="Corrected Calcium(mmol/L)">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            Potasium(mmol/L):
-                            <input type="text" name="potasium" id="" style="width:100% ;" placeholder="mmol/L">
-                        </div>
-                        <div class="col-md-6">
-                            Blood Glucose(mmol/L):
-                            <input type="text" name="glucose" id="" style="width:100% ;"
-                                placeholder="Blood Glucose(mmol/L)">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            Phosphate(mmol/L):
-                            <input type="text" name="phosphate" id="" style="width:100% ;"
-                                placeholder="Phosphate(mmol/L)">
-                        </div>
-                        <div class="col-md-6">
-                            Magnesium(mmol/L):
-                            <input type="text" name="magnesium" id="" style="width:100% ;"
-                                placeholder="Magnesium(mmol/L)">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            Albumin(g/L):
-                            <input type="text" name="albumin" id="" style="width:100% ;" placeholder="Albumin(g/L)">
-                        </div>
-                        <div class="col-md-6">
-                            Haemoglobin(g/L):
-                            <input type="text" name="haemoglobin" id="" style="width:100% ;"
-                                placeholder="Haemoglobin(g/L)">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            White Cell Count(x100000/L):
-                            <input type="text" name="white" id="" style="width:100% ;"
-                                placeholder="White Cell Count(x100000/L)">
-                        </div>
-                        <div class="col-md-6">
-                            Platelets(x100000/L):
-                            <input type="text" name="platelets" id="" style="width:100% ;"
-                                placeholder="Platelets(x100000/L)">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            Thyroid Stimulating Hormone(mIU/L):
-                            <input type="text" name="thyroid" id="" style="width:100% ;"
-                                placeholder="Thyroid Stimulating Hormone(mIU/L)">
-                        </div>
-                        <div class="col-md-6">
-                            Free triiodothyronine(T3)(PMOL/l):
-                            <input type="text" name="triiodothyronine" id="" style="width:100% ;"
-                                placeholder="Free triiodothyronine(T3)(PMOL/l)">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            Follicide stimulating hormone(mIU/mL):
-                            <input type="text" name="follicide" id="" style="width:100% ;"
-                                placeholder="Follicide stimulating hormone(mIU/mL)">
-                        </div>
-                        <div class="col-md-6">
-                            Testosterone(nmol/L):
-                            <input type="text" name="testosterone" id="" style="width:100% ;"
-                                placeholder="Testosterone(nmol/L)">
-                        </div>
-                    </div>
-                    <input type="submit" value="add result" name="addresultBlood" class="btn btn-primary">
-                </form>
-                <form id="dexa" method="post" enctype="multipart/form-data" style="display:none ;">
-                    <div class="row">
-                        <div class="col-md-6">
-                            Patient:
-                            <input type="text" name="patientDexa" id="" required style="width:100% ;">
-                        </div>
-                        <div class="col-md-6">
-                            BMC(g):
-                            <input type="text" name="bmc" id="" required style="width:100% ;">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            Area(cm*cm):
-                            <input type="text" name="area" id="" required style="width:100% ;">
-                        </div>
-                        <div class="col-md-6">
-                            Z-score:
-                            <input type="text" name="zscore" id="" required style="width:100% ;">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            BMD(g/cm*cm):
-                            <input type="text" name="bmd" id="" required style="width:100% ;">
-                        </div>
-                        <div class="col-md-6">
-                            T-score:
-                            <input type="text" name="tscore" id="" required style="width:100% ;">
-                        </div>
-                    </div>
-                    <input type="submit" value="add result" name="addresultDexa" class="btn btn-primary">
-                </form>
+                <div id="blood"style="display:none ;">
+             
+    <div class="ourPatient">
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-12">
+                         
+                <table class="table" style="overflow-x:auto ;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Date of birth</th>
+      <th scope="col">BloodType</th>
+      <th scope="col">Gender</th>
+    
+      <th scope="col">Date visit</th>
+
+      <th scope="col">Disease</th>
+      <th scope="col">Symptoms</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+            <?php
+            require_once("./php/Controllers/ehrController.php");
+            createBlood();
+            ?>
+  </tbody>
+                </table>
+            </div>
+            </div>
+            </div>
+    </div>
+                  </div>
+                  <div id="dexa" style="display:none;">
+                  <div class="ourPatient">
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-12">
+                         
+                <table class="table" style="overflow-x:auto ;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Date of birth</th>
+      <th scope="col">BloodType</th>
+      <th scope="col">Gender</th>
+    
+      <th scope="col">Date visit</th>
+
+      <th scope="col">Disease</th>
+      <th scope="col">Symptoms</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+            <?php
+            require_once("./php/Controllers/ehrController.php");
+            createDexa();
+            ?>
+  </tbody>
+                </table>
+            </div>
+            </div>
+            </div>
+                </div>
+</div>
+<div id="ct" style="display:none;">
+                  <div class="ourPatient">
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-12">
+                         
+                <table class="table" style="overflow-x:auto ;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Date of birth</th>
+      <th scope="col">BloodType</th>
+      <th scope="col">Gender</th>
+    
+      <th scope="col">Date visit</th>
+
+      <th scope="col">Disease</th>
+      <th scope="col">Symptoms</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+            <?php
+            require_once("./php/Controllers/ehrController.php");
+            createCT();
+            ?>
+  </tbody>
+                </table>
+            </div>
+            </div>
+            </div>
+                </div>
+</div>
+<div id="lunge" style="display:none;">
+                  <div class="ourPatient">
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-12">
+                         
+                <table class="table" style="overflow-x:auto ;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Date of birth</th>
+      <th scope="col">BloodType</th>
+      <th scope="col">Gender</th>
+    
+      <th scope="col">Date visit</th>
+
+      <th scope="col">Disease</th>
+      <th scope="col">Symptoms</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+            <?php
+            require_once("./php/Controllers/ehrController.php");
+            createLunge();
+            ?>
+  </tbody>
+                </table>
+            </div>
+            </div>
+            </div>
+                </div>
+</div>
                 <form id="lunge" method="post" enctype="multipart/form-data" style="display:none ;">
                     Scan 1:
                     <input type="file" name="pic1" id="">
@@ -465,18 +500,7 @@
                     <input type="submit" value="add scan" name="addlungescan" class="btn btn-primary"
                         style="text-transform:uppercase ;">
                 </form>
-                <form id="ct" method="post" enctype="multipart/form-data" style="display:none ;">
-                    Scan 1:
-                    <input type="file" name="pic1" id="">
-                    Scan 2:
-                    <input type="file" name="pic2"><br>
-                    Scan 3:
-                    <input type="file" name="pic3">
-                    Scan 4:
-                    <input type="file" name="pic4"><br><br>
-                    <input type="submit" value="add scan" name="addctscan" class="btn btn-primary"
-                        style="text-transform:uppercase ;">
-                </form>
+             
                 <form method="post" id="ad" enctype="multipart/form-data" style="text-align:center ;display:none">
                     <div class="form-floating inputs">
                         <input type="text" class="form-control borders" id="floatingInput" placeholder="Username"
@@ -536,6 +560,62 @@
             </div>
         </div>
     </div>
+    <script>function bloodshow() {
+  document.getElementById("allInfo").style.display = "none";
+  document.getElementById("Medical").style.display = "none";
+  document.getElementById("addDoctor").style.display = "none";
+  document.getElementById("addNurse").style.display = "none";
+  document.getElementById("statistics").style.display = "none";
+  document.getElementById("blood").style.display = "block";
+  document.getElementById("dexa").style.display = "none";
+  document.getElementById("lunge").style.display = "none";
+  document.getElementById("ct").style.display = "none";
+  document.getElementById("ad").style.display = "none";
+  document.getElementById("new").style.display = "none";
+}
+function dexashow() {
+  document.getElementById("allInfo").style.display = "none";
+  document.getElementById("Medical").style.display = "none";
+  document.getElementById("addDoctor").style.display = "none";
+  document.getElementById("addNurse").style.display = "none";
+  document.getElementById("statistics").style.display = "none";
+  document.getElementById("blood").style.display = "none";
+  document.getElementById("dexa").style.display = "block";
+  document.getElementById("lunge").style.display = "none";
+  document.getElementById("ct").style.display = "none";
+  document.getElementById("ad").style.display = "none";
+  document.getElementById("new").style.display = "none";
+}
+function ctshow() {
+  document.getElementById("allInfo").style.display = "none";
+  document.getElementById("Medical").style.display = "none";
+  document.getElementById("addDoctor").style.display = "none";
+  document.getElementById("addNurse").style.display = "none";
+  document.getElementById("statistics").style.display = "none";
+  document.getElementById("blood").style.display = "none";
+  document.getElementById("dexa").style.display = "none";
+  document.getElementById("lunge").style.display = "none";
+  document.getElementById("ct").style.display = "block";
+  document.getElementById("ad").style.display = "none";
+  document.getElementById("new").style.display = "none";
+
+}
+
+function lungeshow() {
+  document.getElementById("allInfo").style.display = "none";
+  document.getElementById("Medical").style.display = "none";
+  document.getElementById("addDoctor").style.display = "none";
+  document.getElementById("addNurse").style.display = "none";
+  document.getElementById("statistics").style.display = "none";
+  document.getElementById("blood").style.display = "none";
+  document.getElementById("dexa").style.display = "none";
+  document.getElementById("lunge").style.display = "block";
+  document.getElementById("ct").style.display = "none";
+  document.getElementById("ad").style.display = "none";
+  document.getElementById("new").style.display = "none";
+
+}
+</script>
 </body>
 <script src="Js/admin.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

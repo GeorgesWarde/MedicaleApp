@@ -69,7 +69,29 @@ class Ehr
         }
         return $ehrs;
     }
-
+    public static function getEhrById($mysqli,$id)
+    {
+        $ehrs = array();
+        $query = "select * from ehr_patients where id=$id;";
+        $result = mysqli_query($mysqli, $query);
+        if (mysqli_num_rows($result) > 0) {
+            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            foreach ($result as $r) {
+                array_push($ehrs, new Ehr(
+                    $r["id"],
+                    $r["firstname"],
+                    $r["lastname"],
+                    $r["gender"],
+                    $r["dateofbirth"],
+                    $r["bloodtype"],
+                    $r["city"],
+                    $r["date"],
+                    $r["userid"]
+                ));
+            }
+        }
+        return $ehrs;
+    }
       
     public static function getAllPatients($mysqli)
     {
@@ -94,4 +116,27 @@ class Ehr
         }
         return $ehrs;
     }
+    public static function findById($mysqli, $id)
+    {
+        $query = "select * from ehr_patients where id = '" . $id . "';";
+        $result = mysqli_query($mysqli, $query);
+        if (mysqli_num_rows($result) > 0) {
+            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            $result = $result[0];
+            return new Ehr(
+                $result["id"],
+                $result["firstname"],
+                $result["lastname"],
+                $result["gender"],
+                $result["dateofbirth"],
+                $result["bloodtype"],
+                $result["city"],
+                $result["date"],
+                $result["userid"]
+            );
+        }
+        return false;
+    }
+
+
 }

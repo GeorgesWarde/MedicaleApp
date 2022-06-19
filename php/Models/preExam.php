@@ -44,27 +44,28 @@ class PreExam
         return false;
     }
 
-    public static function findById($mysqli, $id)
-    {
-        $query = "select * from pre_exams where id = '" . $id . "';";
+    public static function findById($mysqli,$id)
+    {      $preExams=array();
+        $query = "select * from pre_exams where user_id = '" . $id . "';";
         $result = mysqli_query($mysqli, $query);
         if (mysqli_num_rows($result) > 0) {
             $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
-            $result = $result[0];
-            return new PreExam(
-                $result["id"],
-                $result["date"],
-                $result["temperature"],
-                $result["pulse_rate"],
-                $result["blood_pressure"],
-                $result["user_id"],
-                $result["ehr_patient_id"],
-                $result["pain_type_id"]
-            );
+            foreach ($result as $r) {
+           array_push($preExams,new PreExam(
+            $r["id"],
+            $r["date"],
+            $r["temperature"],
+            $r["pulse_rate"],
+            $r["blood_pressure"],
+            $r["user_id"],
+            $r["ehr_patient_id"],
+            $r["pain_type_id"]
+           ));
         }
-        return false;
+        
     }
-
+    return $preExams;
+    }
     public static function getAll($mysqli)
     {
         $exams = array();

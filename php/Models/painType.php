@@ -12,12 +12,13 @@ class PainType
         $this->desc = $desc;
     }
 
-    public static function getPainTypeById($mysqli, $id)
+    public static function getPainTypeById($mysqli, $name)
     {
-        $query = "select * from pain_types where id = " . $id . ";";
+        $query = "select * from pain_types where name = " . $name . ";";
         $result = mysqli_query($mysqli, $query);
         $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
         $result = $result[0];
+        
         return new PainType($result["id"], $result["name"], $result["description"]);
     }
 
@@ -34,11 +35,9 @@ class PainType
     }
     public static function getPainTypeByName($mysqli, $name)
     {
-        $query = "select * from pain_types where name = " . $name . ";";
+        $query = "select id from pain_types where name = " . $name . ";";
         $result = mysqli_query($mysqli, $query);
-        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        $result = $result[0];
-        return new PainType($result["id"], $result["name"], $result["description"]);
+      return $result;
     }
 
 }
