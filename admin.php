@@ -1,3 +1,11 @@
+<?php
+include_once './php/Models/model.php';
+$model = new model;
+$model->getConnection();
+$date = date('Y-m-d h:i:m', time());
+echo $date;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
