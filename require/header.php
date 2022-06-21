@@ -29,8 +29,8 @@ include_once './php/config.php';
                     </li>
                     <li class="nav-item dropdown navbar-items">
                         <?php
-            if ($_SESSION) { ?>
-                        <a class="nav-link" href="php/logout.php">Logout</a>
+                        if ($_SESSION) { ?>
+                        <a class="nav-link" href="logout">Logout</a>
                         <?php } ?>
                     </li>
                 </ul>

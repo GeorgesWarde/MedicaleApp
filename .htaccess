@@ -38,6 +38,8 @@ RewriteRule ^ehr ehrfiles.php
 RewriteRule ^bloodresult bloodresult.php
 RewriteRule ^dexascanresult dexaScanResult.php
 
+RewriteRule ^logout ./php/Controller/logout.php
+
 
 
 

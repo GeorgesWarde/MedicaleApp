@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +21,12 @@
 
                 <div class="col-md-6">
                     <h1>Health Care Solution</h1>
-                    <h2>Welcome Anthony</h2>
+                    <h2>Welcome <?php
+                                if (isset($_SESSION['fname'])) {
+                                    $uname = $_SESSION['fname'];
+                                    echo $uname;
+                                }
+                                ?></h2>
                     <div class="txt">
                         <div>We take care Of</div>
                         <p>Your healthy <br>health</p>

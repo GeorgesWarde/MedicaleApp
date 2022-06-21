@@ -1,7 +1,6 @@
 <?php
 
-
-class model
+class Model
 {
     private $connection;
 
@@ -20,12 +19,12 @@ class model
         }
         return $sql;
     }
-    function insert(array $fields)
+    function insert(array $fields, $table)
     {
         $this->_escape($fields);
-        if (isset($this->created)) $fields[$this->created] = date("Y-m-d h:i:s", time());
+        if (isset($this->created)) $fields[$this->created] = date("Y-m-d H:i:s", time());
 
-        $sql = "insert into {$this->table_name} ";
+        $sql = "insert into {$table} ";
         // $field = array_keys($fields);
 
         foreach ($fields as $key => $value) {
@@ -37,14 +36,12 @@ class model
                   $sql .= ") values ('";
                   $sql .= implode("','", $fields);
                   $sql .= "');";*/
-        echo $sql;
-        die;
+        return $sql;
 
         //  }
 
 
-        $res = mysqli_query(self::getConnection(), $sql);
-        return $res;
+
     }
     private function _escape($fields)
     {
