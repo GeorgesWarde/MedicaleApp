@@ -1,9 +1,21 @@
 <?php
 include_once './php/Models/model.php';
-$model = new model;
-$model->getConnection();
-$date = date('Y-m-d h:i:m', time());
-echo $date;
+include_once './php/Controller/news.php';
+include_once './php/Controller/file.php';
+$news = new news;
+$file = new file;
+if (isset($_POST['addnews'])) {
+
+    $field = [
+        'title' => $_POST['title'],
+        'content' => $_POST['content'],
+        'published_by' => 'anthony',
+        'image' => $file->getFile('file')
+    ];
+    $news->insert_news($field);
+}
+$res = $news->getNews();
+
 
 ?>
 <!DOCTYPE html>
@@ -106,7 +118,7 @@ echo $date;
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
 
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li><a class="dropdown-item" href="./php/Controller/logout.php">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -193,13 +205,16 @@ echo $date;
                             <th>Action</th>
                         </thead>
                         <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($res)) { ?>
                             <tr>
-                                <td>1</td>
-                                <td>med</td>
-                                <td>2-2-8000</td>
-                                <td>anthony</td>
+                                <td><?= $row['id'] ?></td>
+                                <td><?= $row['title'] ?></td>
+                                <td><?= $row['created_at'] ?></td>
+                                <td><?= $row['published_by'] ?></td>
                                 <td><a href="">Edit</a> <a href="">Delete</a></td>
                             </tr>
+                            <?php } ?>
+
                         </tbody>
                     </table>
                     <div>Total number of patients:<span>4</span></div>
@@ -557,14 +572,14 @@ echo $date;
                     <button class="w-100 btn btn-lg btn-primary" type="submit"
                         style="background-color:#000000 ;">Add</button>
                 </form>
-                <form action="" method="post" id="new" style="display:none ;">
+                <form action="" method="post" id="new" style="display:none ;" enctype="multipart/form-data">
                     Title:
                     <input type="text" name="title" id="" style="width:100% ;" placeholder="Title" required>
                     Content:
                     <textarea name="content" id="" cols="30" rows="10" style="width:100% ;" required
                         placeholder="body"></textarea>
                     Image:
-                    <input type="file" name="image" id=""><br>
+                    <input type="file" name="file" accept="image/*" id=""><br>
                     <input type="submit" value="add news" name="addnews" class="btn btn-primary"
                         style="margin-top: 10px;">
                 </form>
