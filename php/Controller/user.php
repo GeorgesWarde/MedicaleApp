@@ -1,18 +1,20 @@
 <?php
 session_start();
-class user extends model
+class user extends Model
 {
     protected  $table = "users";
     protected $created = 'created_at';
-    // public static function findByUsername($username, $password)
-    // {
-    //     $query = "select * from users where username = " . $username . " and password= " . $password;
-    //     $result = mysqli_query(self::getConnection(), $query);
-    //     if (mysqli_num_rows($result) > 0) {
-    //         header("location:user.php");
-    //     }
-    //     return false;
-    // }
+    public function findByUsername($username, $password)
+    {
+        $query = parent::Read('*', $this->table, 'username= "' . $username . '" and password="' . md5($password) . '"');
+        $result = mysqli_query(self::getConnection(), $query);
+        $row = mysqli_fetch_row($result);
+        if ($row > 0) {
+            header("location:user");
+        } else {
+            echo "no user found";
+        }
+    }
     public function register(array $field)
     {
         $query = parent::insert($field, $this->table);
