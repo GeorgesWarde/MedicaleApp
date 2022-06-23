@@ -10,10 +10,27 @@ class user extends Model
         $result = mysqli_query(self::getConnection(), $query);
         $row = mysqli_fetch_row($result);
         if ($row > 0) {
-            header("location:user");
+
+            if ($row[7] == 1) {
+                $_SESSION['adminfname'] = $row[1];
+                header("location:admin");
+            }
+            if ($row[7] == 2) {
+                $_SESSION['doctorfname'] = $row[1];
+                header("location:doctor");
+            }
+            if ($row[7] == 3) {
+                $_SESSION['nursefname'] = $row[1];
+                header("location:nurse");
+            }
+            if ($row[7] == 4) {
+                $_SESSION['fname'] = $row[1];
+                header("location:user");
+            }
         } else {
             echo "no user found";
         }
+        return $result;
     }
     public function register(array $field)
     {
@@ -24,6 +41,29 @@ class user extends Model
             $row = mysqli_fetch_assoc($select);
             $_SESSION['fname'] = $row['first_name'];
             header("location:user");
+        } else {
+            echo "error occured";
+        }
+    }
+    public function registerDoctor(array $field)
+    {
+        $query = parent::insert($field, $this->table);
+        $res = mysqli_query($this->getConnection(), $query);
+        if ($res) {
+
+
+            echo "<script>alert('Doctor added successfully give it the username and password')</script>";
+        } else {
+            echo "error occured";
+        }
+    }
+    public function registerNurse(array $field)
+    {
+        $query = parent::insert($field, $this->table);
+        $res = mysqli_query($this->getConnection(), $query);
+        if ($res) {
+
+            header("location:nurse");
         } else {
             echo "error occured";
         }

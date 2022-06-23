@@ -2,8 +2,10 @@
 include_once './php/Models/model.php';
 include_once './php/Controller/news.php';
 include_once './php/Controller/file.php';
+include_once './php/Controller/user.php';
 $news = new news;
 $file = new file;
+$user = new user;
 if (isset($_POST['addnews'])) {
 
     $field = [
@@ -15,7 +17,19 @@ if (isset($_POST['addnews'])) {
     $news->insert_news($field);
 }
 $res = $news->getNews();
-
+if (isset($_POST['addDoc'])) {
+    $field = [
+        'first_name' => $_POST['fdoctor'],
+        'last_name' => $_POST['ldoctor'],
+        'year_of_birth' => $_POST['agedoctor'],
+        'gender' => $_POST['genre'],
+        'username' => $_POST['udoctor'],
+        'password' => md5($_POST['pdoctor']),
+        'role_id' => 2,
+        'email' => $_POST['edoctor']
+    ];
+    $user->registerDoctor($field);
+}
 
 ?>
 <!DOCTYPE html>
@@ -249,37 +263,42 @@ $res = $news->getNews();
                     <div>Total number of medicals:</div>
                     <div>Total number of tests:</div>
                 </div>
-                <form id="addDoctor" style="display:none ;">
+                <form id="addDoctor" style="display:none ;" method="POST">
                     <div class="mb-3">
                         <label for="exampleInputName" class="form-label">Doctor name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="doctor" required>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="fdoctor" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputGenre" class="form-label">Genre</label><br>
+                        <label for="exampleInputName" class="form-label">Last name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="ldoctor" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="edoctor" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="udoctor" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="pdoctor" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputGenre" class="form-label">Gender</label><br>
                         <select name="genre">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputAge" class="form-label">Age</label>
-                        <input type="number" name="agedoctor" class="form-control">
+                        <label for="exampleInputAge" class="form-label">Birth</label>
+                        <input type="date" name="agedoctor" class="form-control">
 
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputCertificate" class="form-label">Certificate</label><br>
-                        <select name="certificate">
-                            <option value="1">Neurology</option>
-                            <option value="2">Dentistry</option>
-                            <option value="3">Cardiovascular</option>
-                            <option value="4">Gastroenterology</option>
-                            <option value="5">Dermatology</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputShedule" class="form-label">Schedule(Day and time)</label>
-                        <input type="text" name="agedoctor" class="form-control">
-                    </div>
+
+
+
                     <button type="submit" class="btn btn-primary" name="addDoc">Add</button>
                 </form>
                 <form id="addNurse" style="display:none ;">
