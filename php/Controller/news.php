@@ -24,8 +24,8 @@ class news extends Model
     }
     public function getLatestNews()
     {
-        $now = date("Y-m-d", strtotime("yesterday"));
-        $query = parent::Read('*', $this->table, "created_at LIKE '%{$now}%'");
+        $now = date("Y-m-d", time());
+        $query = parent::Read('*', $this->table, "created_at like '%{$now}%'");
         $res = mysqli_query($this->getConnection(), $query);
         return $res;
     }

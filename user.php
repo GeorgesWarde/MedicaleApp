@@ -1,6 +1,8 @@
 <?php
 session_start();
-
+if (!isset($_SESSION['fname'])) {
+    header("location:login");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +25,7 @@ session_start();
                     <h1>Health Care Solution</h1>
                     <h2>Welcome <?php
                                 if (isset($_SESSION['fname'])) {
-                                    $uname = $_SESSION['fname'];
-                                    echo $uname;
+                                    echo $_SESSION['fname'];
                                 }
                                 ?></h2>
                     <div class="txt">
@@ -106,16 +107,16 @@ session_start();
                     <div id="check">
                         <div class="row" style="margin-top: 30px;">
                             <h3 align="center">Results</h3>
-                            <div class="col-sm-3">
+                            <div class="col-3">
                                 <a href="bloodresult">Blood Result</a>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-3">
                                 <a href="lungescan">Lunge scan Result</a>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-3">
                                 <a href="dexascanresult">Dexa Scan Result</a>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-3">
                                 <a href="ctscanresult">Ct Scan Result</a>
                             </div>
                         </div>
