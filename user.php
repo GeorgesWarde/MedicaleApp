@@ -97,10 +97,13 @@ if (!isset($_SESSION['fname'])) {
                     <div id="make">
                         <div class="row" style="margin-top:30px ;">
                             <div class="col-md-6">
-                                to make an appointment: to arrange, to organize a visit, a date
+                                <h1>Choose a department to make a appointment</h1>
                             </div>
                             <div class="col-md-6">
-                                <a href="make">Make an appointment</a>
+                                <div><a href="make">Make an appointment</a></div>
+                                <div><a href="make">Make an appointment</a></div>
+                                <div><a href="make">Make an appointment</a></div>
+                                <div><a href="make">Make an appointment</a></div>
                             </div>
                         </div>
                     </div>

@@ -63,7 +63,7 @@
                                     <th scope="col">Department</th>
                                     <th scope="col">PhoneNumber</th>
                                     <th scope="col">created</th>
-                                    <th scope="col">Action</th>
+
 
                                 </tr>
 
@@ -73,7 +73,7 @@
                                     <td>Family Medicine</td>
                                     <td>76197840</td>
                                     <td>20-20-2022</td>
-                                    <td><a href="#">Visit</a></td>
+
                                 </tr>
                             </tbody>
                         </table>

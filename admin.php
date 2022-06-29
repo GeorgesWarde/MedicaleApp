@@ -1,8 +1,14 @@
 <?php
+
+
 include_once './php/Models/model.php';
 include_once './php/Controller/news.php';
 include_once './php/Controller/file.php';
 include_once './php/Controller/user.php';
+include_once './php/Controller/medical.php';
+if (!isset($_SESSION['adminfname'])) {
+    header("location:login");
+}
 $news = new news;
 $file = new file;
 $user = new user;
@@ -16,7 +22,11 @@ if (isset($_POST['addnews'])) {
     ];
     $news->insert_news($field);
 }
-$res = $news->getNews();
+
+//Read news
+$resNews = $news->getNews();
+
+//
 if (isset($_POST['addDoc'])) {
     $field = [
         'first_name' => $_POST['fdoctor'],
@@ -26,11 +36,83 @@ if (isset($_POST['addDoc'])) {
         'username' => $_POST['udoctor'],
         'password' => md5($_POST['pdoctor']),
         'role_id' => 2,
-        'email' => $_POST['edoctor']
+        'email' => $_POST['edoctor'],
+        'creator' => $_SESSION['adminfname'],
+        'creator_ip' => gethostbyname(gethostname()),
     ];
-    $user->registerDoctor($field);
+    $result = $user->findByEmailUsername($_POST['udoctor'], $_POST['edoctor']);
+    $row = mysqli_fetch_row($result);
+    if ($row) {
+        if ($field['email'] == $row[1]) {
+            echo "email already exist";
+        } else if ($field['username'] == $row[0]) {
+            echo "username already exist";
+        }
+    } else {
+        $user->registerDoctor($field);
+    }
 }
-
+if (isset($_POST['addNur'])) {
+    $field = [
+        'first_name' => $_POST['fnurse'],
+        'last_name' => $_POST['lnurse'],
+        'year_of_birth' => $_POST['agenurse'],
+        'gender' => $_POST['genre'],
+        'username' => $_POST['unurse'],
+        'password' => md5($_POST['pnurse']),
+        'role_id' => 3,
+        'email' => $_POST['enurse'],
+        'creator' => $_SESSION['adminfname'],
+        'creator_ip' => gethostbyname(gethostname()),
+    ];
+    $result = $user->findByEmailUsername($_POST['unurse'], $_POST['enurse']);
+    $row = mysqli_fetch_row($result);
+    if ($row) {
+        if ($field['email'] == $row[1]) {
+            echo "email already exist";
+        } else if ($field['username'] == $row[0]) {
+            echo "username already exist";
+        }
+    } else {
+        $user->registerNurse($field);
+    }
+}
+if (isset($_POST['addadmin'])) {
+    $field = [
+        'first_name' => $_POST['fadmin'],
+        'last_name' => $_POST['ladmin'],
+        'year_of_birth' => $_POST['ageadmin'],
+        'gender' => $_POST['genre'],
+        'username' => $_POST['uadmin'],
+        'password' => md5($_POST['padmin']),
+        'role_id' => 1,
+        'email' => $_POST['eadmin'],
+        'creator' => $_SESSION['adminfname'],
+        'creator_ip' => gethostbyname(gethostname()),
+    ];
+    $result = $user->findByEmailUsername($_POST['uadmin'], $_POST['eadmin']);
+    $row = mysqli_fetch_row($result);
+    if ($row) {
+        if ($field['email'] == $row[1]) {
+            echo "email already exist";
+        } else if ($field['username'] == $row[0]) {
+            echo "username already exist";
+        }
+    } else {
+        $user->registerAdmin($field);
+    }
+}
+$med = new medical;
+if (isset($_POST['addMedical'])) {
+    $field = [
+        'name' => $_POST['medname'],
+        'description' => $_POST['meddesc'],
+        'qty' => $_POST['qtymed'],
+        'stockId' => rand(),
+        'price' => $_POST['price'] . "LL"
+    ];
+    $med->AddMedical($field);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,11 +210,11 @@ if (isset($_POST['addDoc'])) {
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                             id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./images/images.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                            <span class="d-none d-sm-inline mx-1">anthony</span>
+                            <span class="d-none d-sm-inline mx-1"><?= $_SESSION['adminfname'] ?></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
 
-                            <li><a class="dropdown-item" href="./php/Controller/logout.php">Sign out</a></li>
+                            <li><a class="dropdown-item" href="logout">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -145,23 +227,30 @@ if (isset($_POST['addDoc'])) {
                                 <th scope="col">#</th>
                                 <th scope="col">Patient name</th>
                                 <th scope="col">Birth date</th>
-                                <th scope="col">Medical</th>
-                                <th scope="col">Diseace</th>
-                                <th scope="col">Sex</th>
-                                <th scope="col">Test</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Joined_at</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2000-01-01</td>
-                                <td>Panadol</td>
-                                <td>Corona</td>
-                                <td>Male</td>
-                                <td>PCR</td>
-                            </tr>
 
+                        <tbody>
+                            <?php $res = $user->getPatients();
+                            $i = 1;
+                            while ($row = mysqli_fetch_row($res)) {
+
+                            ?>
+                            <tr>
+                                <th scope="row"><?= $i ?></th>
+                                <td><?= $row[0] . " " . $row[1] ?></td>
+                                <td><?= $row[2] ?></td>
+                                <td><?= $row[3] ?></td>
+                                <td><?= $row[4] ?></td>
+                                <td><?= $row[5] ?></td>
+                                <td><?= $row[6] ?></td>
+                            </tr>
+                            <?php $i++;
+                            } ?>
                         </tbody>
                     </table>
                     <table class="table">
@@ -169,72 +258,77 @@ if (isset($_POST['addDoc'])) {
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Doctor name</th>
-                                <th scope="col">Age</th>
-                                <th scope="col">Sex</th>
-                                <th scope="col">Certificate</th>
-                                <th scope="col">Shedule</th>
+                                <th scope="col">Birth year</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Joined_at</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2000-01-01</td>
-                                <td>Panadol</td>
-                                <td>Corona</td>
-                                <td>Male</td>
-                            </tr>
+                            <?php $res = $user->getDoctors();
+                            $i = 1;
+                            while ($row = mysqli_fetch_row($res)) {
 
+                            ?>
+                            <tr>
+                                <th scope="row"><?= $i ?></th>
+                                <td><?= $row[0] . " " . $row[1] ?></td>
+                                <td><?= $row[2] ?></td>
+                                <td><?= $row[3] ?></td>
+                                <td><?= $row[4] ?></td>
+                                <td><?= $row[5] ?></td>
+                                <td><?= $row[6] ?></td>
+                            </tr>
+                            <?php $i++;
+                            } ?>
                         </tbody>
                     </table>
+                    <?php
+                    $res = $user->getNurses();
+                    $i = 1;
+                    $row = mysqli_fetch_row($res);
+                    if ($row != null) {
+
+
+                    ?>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nurse name</th>
-                                <th scope="col">Age</th>
-                                <th scope="col">Sex</th>
-                                <th scope="col">Certificate</th>
-                                <th scope="col">Shedule</th>
+                                <th scope="col">Birth date</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Joined_at</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2000-01-01</td>
-                                <td>Panadol</td>
-                                <td>Corona</td>
-                                <td>Male</td>
-                            </tr>
+                            <?php
+                                while ($row = mysqli_fetch_row($res)) {
 
+                                ?>
+                            <tr>
+
+                                <th scope="row"><?= $i ?></th>
+                                <td><?= $row[0] . " " . $row[1] ?></td>
+                                <td><?= $row[2] ?></td>
+                                <td><?= $row[3] ?></td>
+                                <td><?= $row[4] ?></td>
+                                <td><?= $row[5] ?></td>
+                                <td><?= $row[6] ?></td>
+                            </tr>
+                            <?php $i++;
+                                } ?>
                         </tbody>
                     </table>
-                    <table class="table">
-                        <thead>
-                            <th>News</th>
-                            <th>Title</th>
-                            <th>Date published</th>
-                            <th>Published by</th>
-                            <th>Action</th>
-                        </thead>
-                        <tbody>
-                            <?php while ($row = mysqli_fetch_assoc($res)) { ?>
-                            <tr>
-                                <td><?= $row['id'] ?></td>
-                                <td><?= $row['title'] ?></td>
-                                <td><?= $row['created_at'] ?></td>
-                                <td><?= $row['published_by'] ?></td>
-                                <td><a href="">Edit</a> <a href="">Delete</a></td>
-                            </tr>
-                            <?php } ?>
+                    <?php } ?>
+                    <div>Total number of patients:<span><?php $user->countUsers(4) ?></span></div>
 
-                        </tbody>
-                    </table>
-                    <div>Total number of patients:<span>4</span></div>
-
-                    <div>Total number of doctor:<span>4</span></div>
-                    <div>Total number of nurse:<span>4</span></div>
+                    <div>Total number of doctor:<span><?php $user->countUsers(2) ?></span></div>
+                    <div>Total number of nurse:<span><?php $user->countUsers(3) ?></span></div>
                 </div>
 
                 <div class="" id="Medical" style="display: none;">
@@ -260,8 +354,42 @@ if (isset($_POST['addDoc'])) {
 
                         </tbody>
                     </table>
+
                     <div>Total number of medicals:</div>
                     <div>Total number of tests:</div>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="exampleInputName" class="form-label">Medical name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="medname" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputName" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="meddesc" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-lable">Quantity</label>
+
+                            <input type="range" name="qtymed" min="1" max="100" value="50" class="slider" id="myRange">
+                            <span id="demo"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-lable">Price</label>
+
+                            <input type="number" class="price" name="price">
+
+                        </div>
+
+                        <button type="submit" name="addMedical">Add Medical</button>
+                    </form>
+                    <script>
+                    var slider = document.getElementById("myRange");
+                    var output = document.getElementById("demo");
+                    output.innerHTML = slider.value;
+
+                    slider.oninput = function() {
+                        output.innerHTML = this.value;
+                    }
+                    </script>
                 </div>
                 <form id="addDoctor" style="display:none ;" method="POST">
                     <div class="mb-3">
@@ -301,35 +429,40 @@ if (isset($_POST['addDoc'])) {
 
                     <button type="submit" class="btn btn-primary" name="addDoc">Add</button>
                 </form>
-                <form id="addNurse" style="display:none ;">
+                <form id="addNurse" style="display:none ;" method="POST">
                     <div class="mb-3">
                         <label for="exampleInputName" class="form-label">Nurse name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="nurse" required>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="fnurse" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputGenre" class="form-label">Genre</label><br>
+                        <label for="exampleInputName" class="form-label">Last name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="lnurse" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="enurse" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="unurse" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="pnurse" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputGenre" class="form-label">Gender</label><br>
                         <select name="genre">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputAge" class="form-label">Age</label>
-                        <input type="number" name="agedoctor" class="form-control">
+                        <label for="exampleInputAge" class="form-label">Birth</label>
+                        <input type="date" name="agenurse" class="form-control">
 
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputCertificate" class="form-label">Certificate</label>
-                        <input type="number" name="certificateNurse" class="form-control">
 
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputShedule" class="form-label">Schedule(shift)</label>
-                        <select class="form-control" name="shift">
-                            <option value="Am">AM</option>
-                            <option value="Pm">PM</option>
-                        </select>
-                    </div>
                     <button type="submit" class="btn btn-primary" name="addNur">Add</button>
                 </form>
                 <div id="statistics" style="display:none ;">
@@ -547,25 +680,25 @@ if (isset($_POST['addDoc'])) {
                 <form method="post" id="ad" enctype="multipart/form-data" style="text-align:center ;display:none">
                     <div class="form-floating inputs">
                         <input type="text" class="form-control borders" id="floatingInput" placeholder="Username"
-                            required>
+                            name="uadmin" required>
                         <label for="floatingInput">Username</label>
                     </div>
                     <div class="form-floating inputs">
-                        <input type="text" class="form-control borders" id="floatingInput"
+                        <input type="text" class="form-control borders" id="floatingInput" name="fadmin"
                             placeholder="name@example.com" required>
                         <label for="floatingInput">First name</label>
                     </div>
                     <div class="form-floating inputs">
-                        <input type="text" class="form-control borders" id="floatingInput"
+                        <input type="text" class="form-control borders" id="floatingInput" name="ladmin"
                             placeholder="name@example.com" required>
                         <label for="floatingInput">Last name</label>
                     </div>
                     <div class="form-floating inputs">
-                        <input type="date" class="form-control borders" id="floatingInput" required>
+                        <input type="date" class="form-control borders" id="floatingInput" required name="ageadmin">
                         <label for="floatingInput">Date of birth</label>
                     </div>
                     <div class="form-floating inputs">
-                        <select name="gender" id="floatingInput" class="form-control borders" required>
+                        <select name="genre" id="floatingInput" class="form-control borders" required>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
 
@@ -574,22 +707,18 @@ if (isset($_POST['addDoc'])) {
                     </div>
                     <div class="form-floating inputs">
                         <input type="email" class="form-control borders" id="floatingPassword" placeholder="Email"
-                            required>
+                            name="eadmin" required>
                         <label for="floatingPassword">Email</label>
                     </div>
                     <div class="form-floating inputs">
                         <input type="password" class="form-control borders" id="floatingPassword" placeholder="Password"
-                            required>
+                            name="padmin" required>
                         <label for="floatingPassword">Password</label>
                     </div>
-                    <div class="form-floating inputs ">
-                        <input type="password" class="form-control borders" id="floatingPassword" placeholder="Password"
-                            required>
-                        <label for="floatingPassword">Confirm Password</label>
-                    </div>
 
-                    <button class="w-100 btn btn-lg btn-primary" type="submit"
-                        style="background-color:#000000 ;">Add</button>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" name="addadmin"
+                        style="background-color:#000000 ;">Add Admin</button>
                 </form>
                 <form action="" method="post" id="new" style="display:none ;" enctype="multipart/form-data">
                     Title:

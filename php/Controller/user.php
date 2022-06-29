@@ -40,7 +40,7 @@ class user extends Model
             $select = mysqli_query($this->getConnection(), "select * from users");
             $row = mysqli_fetch_assoc($select);
             $_SESSION['fname'] = $row['first_name'];
-            header("location:user");
+            header("location:login");
         } else {
             echo "error occured";
         }
@@ -63,9 +63,51 @@ class user extends Model
         $res = mysqli_query($this->getConnection(), $query);
         if ($res) {
 
-            header("location:nurse");
+            echo "<script>alert('Nurse added successfully give it the username and password')</script>";
         } else {
             echo "error occured";
         }
+    }
+    public function registerAdmin(array $field)
+    {
+        $query = parent::insert($field, $this->table);
+        $res = mysqli_query($this->getConnection(), $query);
+        if ($res) {
+
+            echo "<script>alert('Admin added successfully give it the username and password')</script>";
+        } else {
+            echo "error occured";
+        }
+    }
+    public function findByEmailUsername($username, $email)
+    {
+        $query = parent::Read('username,email', $this->table, 'username= "' . $username . '" or email="' . $email . '"');
+        $result = mysqli_query(self::getConnection(), $query);
+        return $result;
+    }
+    public function getPatients()
+    {
+        $query = parent::Read('first_name,last_name,year_of_birth,gender,username,email,created_at', $this->table, 'role_id=4');
+        $res = mysqli_query($this->getConnection(), $query);
+        return $res;
+    }
+    public function getDoctors()
+    {
+        $query = parent::Read('first_name,last_name,year_of_birth,gender,username,email,created_at', $this->table, 'role_id=2');
+        $res = mysqli_query($this->getConnection(), $query);
+        return $res;
+    }
+    public function getNurses()
+    {
+        $query = parent::Read('first_name,last_name,year_of_birth,gender,username,email,created_at', $this->table, 'role_id=3');
+        $res = mysqli_query($this->getConnection(), $query);
+        return $res;
+    }
+    public function countUsers($role)
+    {
+        $query = "Select count(id) from " . $this->table . " where role_id=" . $role;
+        $res = mysqli_query($this->getConnection(), $query);
+        $total = mysqli_fetch_assoc($res);
+        echo $total['count(id)'];
     }
 }

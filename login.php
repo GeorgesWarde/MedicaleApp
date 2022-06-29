@@ -3,19 +3,14 @@
 include_once './php/Models/model.php';
 
 include_once './php/Controller/user.php';
-if (isset($_SESSION['fname'])) {
-  header("location:user");
-}
-if (isset($_SESSION['doctorfname'])) {
-  header("location:doctor");
-}
+
 $user = new user;
 
 if (isset($_POST['login'])) {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-  $_SESSION['fname'] = $username;
-  $user->findByUsername($username, $password);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $user->findByUsername($username, $password);
 }
 
 ?>

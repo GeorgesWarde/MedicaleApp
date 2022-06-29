@@ -2,9 +2,8 @@
 // session_start();
 include_once './php/Models/model.php';
 include_once './php/Controller/user.php';
-if (isset($_SESSION['fname'])) {
-    header("location:user");
-}
+
+$user = new user;
 if (isset($_POST['registeruser'])) {
     $field = [
         'first_name' => $_POST['fname'],
@@ -16,11 +15,21 @@ if (isset($_POST['registeruser'])) {
         'role_id' => 4,
         'email' => $_POST['email']
     ];
-    if ($_POST['password'] == $_POST['confirmpass']) {
-        $user = new user;
-        $user->register($field);
+    $result = $user->findByEmailUsername($_POST['uname'], $_POST['email']);
+    $row = mysqli_fetch_row($result);
+    if ($row) {
+        if ($field['email'] == $row[1]) {
+            echo "email already exist";
+        } else if ($field['username'] == $row[0]) {
+            echo "username already exist";
+        }
     } else {
-        echo "password not match";
+        if ($_POST['password'] == $_POST['confirmpass']) {
+
+            $user->register($field);
+        } else {
+            echo "password not match";
+        }
     }
 }
 
