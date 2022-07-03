@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2022 at 10:01 PM
+-- Generation Time: Jul 04, 2022 at 12:13 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -230,9 +230,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `year_of_birth`, `gender`, `username`, `password`, `role_id`, `email`, `created_at`, `creator`, `creator_ip`, `dep_id`, `studies`) VALUES
 (32, 'nour', 'saliba', '2000-09-16', 'Female', 'nour12', 'ccbc1770bb10486495d127a7d65c252b', 4, 'nour@gmail.com', '2022-06-29 20:20:32', NULL, NULL, NULL, ''),
 (33, 'anthony', 'saliba', '0000-00-00', 'male', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'admin@med.com', '2022-06-29 20:36:16', NULL, NULL, NULL, ''),
-(34, 'nour', 'saliba', '2000-09-16', 'female', 'nourS', 'ccbc1770bb10486495d127a7d65c252b', 2, 'nour.saliba@med.com', '2022-06-29 21:04:40', 'anthony', '102.168.0.102', NULL, ''),
-(35, 'anthony', 'saliba', '2000-01-01', 'Male', 'anthony12', '202cb962ac59075b964b07152d234b70', 4, 'anthony@med.com', '2022-06-29 23:14:51', NULL, NULL, NULL, ''),
-(36, 'Sonia', 'saab', '1996-12-12', 'female', 'soniasaab', 'd31cb1e2b7902e8e9b4d1793e94c38a0', 3, 'sonia.saab@med.com', '2022-07-03 18:56:53', 'anthony', '102.168.0.106', NULL, NULL);
+(34, 'nour', 'saliba', '2000-09-16', 'female', 'nourS', 'ccbc1770bb10486495d127a7d65c252b', 2, 'nour.saliba@med.com', '2022-06-29 21:04:40', 'anthony', '102.168.0.102', 7, 'Lebanese Univerity - Hadath'),
+(37, 'peter', 'saliba', '2001-08-21', 'male', 'peter12', '51dc30ddc473d43a6011e9ebba6ca770', 2, 'peter.saliba@med.com', '2022-07-03 23:05:15', 'anthony', '102.168.0.106', 7, 'Lebanese Univerity - Hadath');
 
 --
 -- Indexes for dumped tables
@@ -358,7 +357,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables

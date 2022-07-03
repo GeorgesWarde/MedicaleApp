@@ -6,12 +6,14 @@ include_once './php/Controller/news.php';
 include_once './php/Controller/file.php';
 include_once './php/Controller/user.php';
 include_once './php/Controller/medical.php';
+include_once './php/Controller/appointment.php';
 if (!isset($_SESSION['adminfname'])) {
     header("location:login");
 }
 $news = new news;
 $file = new file;
 $user = new user;
+$dep = new appointment;
 if (isset($_POST['addnews'])) {
 
     $field = [
@@ -39,6 +41,8 @@ if (isset($_POST['addDoc'])) {
         'email' => $_POST['edoctor'],
         'creator' => $_SESSION['adminfname'],
         'creator_ip' => gethostbyname(gethostname()),
+        'dep_id' => $_POST['dep'],
+        'studies' => $_POST['studies']
     ];
     $result = $user->findByEmailUsername($_POST['udoctor'], $_POST['edoctor']);
     $row = mysqli_fetch_row($result);
@@ -113,6 +117,7 @@ if (isset($_POST['addMedical'])) {
     ];
     $med->AddMedical($field);
 }
+$dep = $dep->findDepartments();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -285,13 +290,13 @@ if (isset($_POST['addMedical'])) {
                         </tbody>
                     </table>
                     <?php
-                    $res = $user->getNurses();
+                    $nurse = $user->getNurses();
                     $i = 1;
+                    $query = "Select id from users where role_id=3";
+                    $model = new Model;
+                    $res = mysqli_query($model->getConnection(), $query);
                     $row = mysqli_fetch_row($res);
-                    if ($row != null) {
-
-
-                    ?>
+                    if ($row != null) { ?>
                     <table class="table">
                         <thead>
                             <tr>
@@ -307,18 +312,18 @@ if (isset($_POST['addMedical'])) {
                         </thead>
                         <tbody>
                             <?php
-                                while ($row = mysqli_fetch_row($res)) {
+                                while ($rows = mysqli_fetch_assoc($nurse)) {
 
                                 ?>
                             <tr>
 
                                 <th scope="row"><?= $i ?></th>
-                                <td><?= $row[0] . " " . $row[1] ?></td>
-                                <td><?= $row[2] ?></td>
-                                <td><?= $row[3] ?></td>
-                                <td><?= $row[4] ?></td>
-                                <td><?= $row[5] ?></td>
-                                <td><?= $row[6] ?></td>
+                                <td><?= $rows['first_name'] . " " . $rows['last_name'] ?></td>
+                                <td><?= $rows['year_of_birth'] ?></td>
+                                <td><?= $rows['gender'] ?></td>
+                                <td><?= $rows['username'] ?></td>
+                                <td><?= $rows['email'] ?></td>
+                                <td><?= $rows['created_at'] ?></td>
                             </tr>
                             <?php $i++;
                                 } ?>
@@ -430,7 +435,15 @@ if (isset($_POST['addMedical'])) {
 
                     </div>
 
+                    <div class="mb-3">
+                        Department:
+                        <select name="dep">
+                            <?php while ($row = mysqli_fetch_assoc($dep)) { ?>
+                            <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+                            <?php } ?>
+                        </select>
 
+                    </div>
 
                     <button type="submit" class="btn btn-primary" name="addDoc">Add</button>
                 </form>
@@ -720,6 +733,7 @@ if (isset($_POST['addMedical'])) {
                             name="padmin" required>
                         <label for="floatingPassword">Password</label>
                     </div>
+
 
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit" name="addadmin"
