@@ -56,11 +56,11 @@ if (!isset($_SESSION['nursefname'])) {
                         <th scope="col">First</th>
                         <th scope="col">Last</th>
                         <th scope="col">Date of birth</th>
-                        <th scope="col">Test</th>
+                        <th scope="col">Lab</th>
                         <th scope="col">Gender</th>
                         <th scope="col">Phone number</th>
                         <th scope="col">Date visit</th>
-                        <th scope="col">Time</th>
+
                         <th scope="col">Disease</th>
                         <th scope="col">Symptoms</th>
                         <th scope="col">Action</th>
@@ -77,10 +77,10 @@ if (!isset($_SESSION['nursefname'])) {
                         <td>Male</td>
                         <td>878</td>
                         <td>1-9-8006</td>
-                        <td>13:09</td>
+
                         <td>Common cold</td>
                         <td>a blocked or runny nose,a sore throat.,headaches.</td>
-                        <td><a href="medical.php">Edit preExam</a></td>
+                        <td><a href="preexam">Fill preExam</a></td>
 
                     </tr>
 

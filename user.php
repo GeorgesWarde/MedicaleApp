@@ -11,7 +11,7 @@ if (!isset($_SESSION['fname'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Anthony</title>
+    <title>Welcome <?= $_SESSION['fname'] ?></title>
     <link rel="stylesheet" href="style/style.css">
 </head>
 
@@ -41,7 +41,7 @@ if (!isset($_SESSION['fname'])) {
                 <div class="col-md-3">
                     <div class="box" id="box">
                         <a href="#labs">Our labs</a>
-                        <a href="#make">Make appointment</a>
+                        <a href="#make">Our department</a>
                         <a href="#check">Check labs result</a>
 
                     </div>
@@ -97,13 +97,11 @@ if (!isset($_SESSION['fname'])) {
                     <div id="make">
                         <div class="row" style="margin-top:30px ;">
                             <div class="col-md-6">
-                                <h1>Choose a department to make a appointment</h1>
+                                <h3>Choose a department to make a appointment</h3>
                             </div>
                             <div class="col-md-6">
-                                <div><a href="make">Make an appointment</a></div>
-                                <div><a href="make">Make an appointment</a></div>
-                                <div><a href="make">Make an appointment</a></div>
-                                <div><a href="make">Make an appointment</a></div>
+                                <div><a href="appointment" class="clickme">Click Me</a></div>
+
                             </div>
                         </div>
                     </div>

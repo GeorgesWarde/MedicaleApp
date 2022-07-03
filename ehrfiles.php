@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,14 @@
     <title>EHR Files</title>
     <link rel="stylesheet" href="./style/style.css">
 </head>
+
 <body>
     <?php include_once './require/header.php'; ?>
     <div class="ehr">
         <div class="container-xl">
             <h2>Patient e-file form</h2>
             <form action="" method="post">
-               
+
                 <div class="firstname">
                     First name:
                     <input type="text" name="fname" id="" placeholder="first name">
@@ -22,7 +24,7 @@
                     Last name:
                     <input type="text" name="lname" id="" placeholder="last name">
                 </div>
-               
+
                 <div class="firstname">
                     Date of birth:
                     <input type="date" name="dateBirth" id="">
@@ -56,22 +58,20 @@
                     Date of Visit:
                     <input type="date" name="dateVisit" id="">
                 </div>
-                
-               
-                <div class="firstname">
-                    Symptoms:
-                    <input type="text" name="symptoms" id="">
-                </div>
-                <div class="firstname">
-                    Allergy:
-                    <input type="text" name="allergy" id="">
-                </div>
                 <div class="firstname">
                     Test Recomended:
                     <select name="Test" id="">
                         <option value="male">Blood Test</option>
                         <option value="female">Dexa Scan</option>
-                        <option value="female">Covid-19</option>
+                        <option value="female">ctscan</option>
+                        <option value="female">lunge scan</option>
+
+                    </select>
+                </div>
+                <div class="firstname">
+                    Medication Recomended:
+                    <select name="Test" id="">
+                        <option value="male">Panadol</option>
 
 
                     </select>
@@ -88,4 +88,5 @@
     </div>
     <?php include_once './require/footer.php'; ?>
 </body>
+
 </html>

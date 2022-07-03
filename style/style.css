@@ -964,6 +964,13 @@ select {
   opacity: 1;
 }
 
+.clickme {
+  background-color: #000000;
+  padding: 18px 47px;
+  /* margin: 50px; */
+}
+
+
 /*sticky*/
 .sticky {
   position: fixed;

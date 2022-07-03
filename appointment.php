@@ -1,3 +1,14 @@
+<?php
+session_start();
+include_once './php/Models/model.php';
+include_once './php/Controller/appointment.php';
+
+$appointment = new appointment;
+$dep = $appointment->findDepartments();
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +39,7 @@
                             <a href="#existing" class="existing">Existing Patient</a><br>
                         </div>
                         <div>
-                            <a href="#New" class="existing">New Patient</a><br>
+                            <a href="#New" class="existing">Our Service</a><br>
                         </div>
                         <div>
                             <a href="#department" class="existing">Department List</a><br>
@@ -43,17 +54,17 @@
                     <div class="row block1" id="existing">
                         <h2>Existing patients</h2>
                         <p>In-person and virtual appointments are both available for our patients.<a
-                                href="infoCovid.php">Learn more about coming to BMC, and book an appointment below.</a>
+                                href="infoCovid.php">Learn more about coming to LMC, and book an appointment below.</a>
                         </p>
                         <h3>Make an Appointment by Phone</h3>
                         <p>See our department listings to find the direct contact number for the department you wish to
-                            make an appointment with. If you need help finding a phone number, call us at 617.638.8000.
+                            make an appointment with. If you need help finding a phone number, call us at
+                            +961.03.299.000
                         </p>
                     </div>
                     <div class="block1" id="New">
-                        <h2>New Patients</h2>
-                        <p>We're glad you've chosen BMC for your care! Please call the department you wish to make an
-                            appointment with to get started. .<a href="Registration.php">Click to register.</a> </p>
+                        <h2>Our Service</h2>
+                        <img src="./images/Screen Shot 2021-07-28 at 2.58.55 PM.webp" width="100%">
                     </div>
                     <div class="block1" id="department">
                         <h2>List of department</h2>
@@ -63,18 +74,24 @@
                                     <th scope="col">Department</th>
                                     <th scope="col">PhoneNumber</th>
                                     <th scope="col">created</th>
+                                    <th scope="col">Action</th>
 
 
                                 </tr>
 
                             </thead>
                             <tbody>
+                                <?php
+                                while ($row = mysqli_fetch_assoc($dep)) {
+                                ?>
                                 <tr>
-                                    <td>Family Medicine</td>
-                                    <td>76197840</td>
-                                    <td>20-20-2022</td>
+                                    <td><?= $row['name'] ?></td>
+                                    <td><?= $row['phone'] ?></td>
+                                    <td><?= $row['created_at'] ?></td>
+                                    <td><a href="department?id=<?= $row['id'] ?>">visit</a></td>
 
                                 </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
 
@@ -93,7 +110,7 @@
                         </ul>
 
                         </p>
-                        <a href="login.php">Prepare for your visit</a>
+                        <a href="#department">Prepare for your visit</a>
                     </div>
                 </div>
             </div>

@@ -424,6 +424,11 @@ if (isset($_POST['addMedical'])) {
                         <input type="date" name="agedoctor" class="form-control">
 
                     </div>
+                    <div class="mb-3">
+                        <label for="exampleInputAge" class="form-label">Studied at</label>
+                        <input type="text" name="studies" class="form-control">
+
+                    </div>
 
 
 

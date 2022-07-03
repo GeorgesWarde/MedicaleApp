@@ -19,14 +19,22 @@ include_once './php/config.php';
 
                     <li class="nav-item dropdown navbar-items ">
 
-                        <a class="nav-link " href="appointment">Make an appointment</a>
+                        <a class="nav-link " href="mychart">My chart</a>
 
                     </li>
-
+                    <li class="nav-item dropdown navbar-items">
+                        <?php
+                        if ($_SESSION) { ?>
+                        <a class="nav-link" href="user">Home</a>
+                        <?php } ?>
+                    </li>
+                    <?php
+                    if (!$_SESSION) { ?>
                     <li class="nav-item dropdown navbar-items">
 
                         <a class="nav-link" href="login">Login</a>
                     </li>
+                    <?php } ?>
                     <li class="nav-item dropdown navbar-items">
                         <?php
                         if ($_SESSION) { ?>

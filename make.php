@@ -1,3 +1,12 @@
+<?php
+session_start();
+include_once './php/Models/model.php';
+include_once './php/Controller/appointment.php';
+$app = new appointment;
+$id = $_GET['id'];
+$dep = $app->findByDepartments($id);
+$row = mysqli_fetch_row($dep);
+?>
 <!Doctype html>
 <html>
 
@@ -28,10 +37,10 @@
                             <div class="col-md-6">
                                 <label for="">Patient name</label><br>
                                 <input type="text" name="patientName" id="" placeholder="Patient name" disabled
-                                    value="anthony">
+                                    value="<?= $_SESSION['fname'] ?>">
                             </div>
                             <div class="col-md-6">
-                                <label for="">Select date</label><br>
+                                <label for="">Visit date</label><br>
                                 <input type="date" name="dateAppointment" id="" placeholder="Patient name">
                             </div>
                         </div>
@@ -43,7 +52,7 @@
                             <div class="col-md-6">
                                 <label for="">Select department</label><br>
                                 <select name="department" style="width:100% ;">
-                                    <option value="1">Dentist</option>
+                                    <option value="<?= $row[0] ?>"><?= $row[1] ?></option>
                                 </select>
                             </div>
                         </div>

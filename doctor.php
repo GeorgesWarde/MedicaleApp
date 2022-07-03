@@ -83,8 +83,8 @@ if (!isset($_SESSION['doctorfname'])) {
                                 <th scope="col">Gender</th>
                                 <th scope="col">Phone number</th>
                                 <th scope="col">Date visit</th>
-                                <th scope="col">Time</th>
-                                <th scope="col">Disease</th>
+
+                                <th scope="col">Allergy</th>
                                 <th scope="col">Symptoms</th>
                                 <th scope="col">Action</th>
 
@@ -100,12 +100,12 @@ if (!isset($_SESSION['doctorfname'])) {
                                 <td>Male</td>
                                 <td>878</td>
                                 <td>1-9-8006</td>
-                                <td>13:09</td>
+
                                 <td>Common cold</td>
                                 <td>a blocked or runny nose,a sore throat.,headaches.</td>
                                 <td><a href="ehrfiles.php" style="font-size:12px ;">EHR e-file</a>
-                                    <a href="ehrfiles.php" style="font-size:12px ;">Result</a>
-                                </td>
+                                    <a href="preexam.php" style="font-size:12px ;">View preexam</a>
+                                    < </td>
 
                             </tr>
 

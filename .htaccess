@@ -24,7 +24,7 @@ RewriteRule ^nurse nurse.php
 RewriteRule ^mychart mychart.php
 RewriteRule ^chart mychart.php
 RewriteRule ^myChart mychart.php
-
+         
 RewriteRule ^registration Registration.php
 RewriteRule ^register Registration.php
 

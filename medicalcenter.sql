@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2022 at 11:44 PM
+-- Generation Time: Jul 03, 2022 at 10:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -24,14 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `allergies`
+-- Table structure for table `appointment`
 --
 
-DROP TABLE IF EXISTS `allergies`;
-CREATE TABLE `allergies` (
-  `id` int(100) NOT NULL COMMENT '1',
-  `name` varchar(45) DEFAULT NULL,
-  `description` mediumtext NOT NULL
+DROP TABLE IF EXISTS `appointment`;
+CREATE TABLE `appointment` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `visit_at` datetime NOT NULL,
+  `dep_id` int(11) NOT NULL,
+  `allergie` varchar(100) NOT NULL,
+  `symptoms` varchar(100) NOT NULL,
+  `lab_id` int(11) NOT NULL,
+  `doc_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -43,33 +48,19 @@ CREATE TABLE `allergies` (
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `department`
 --
 
-INSERT INTO `department` (`id`, `name`) VALUES
-(4, 'Cardiology'),
-(5, 'Family medicine'),
-(6, 'Radiology');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ehr_medication`
---
-
-DROP TABLE IF EXISTS `ehr_medication`;
-CREATE TABLE `ehr_medication` (
-  `ehr_id` int(11) NOT NULL,
-  `medication_id` int(11) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
-  `dosage` decimal(10,0) NOT NULL,
-  `times_per_day` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `department` (`id`, `name`, `phone`, `created_at`) VALUES
+(7, 'Cardiology', '03299566', '2022-07-02'),
+(8, 'Family medicine', '03299147', '2022-07-02'),
+(9, 'Radiology', '03299188', '2022-07-02');
 
 -- --------------------------------------------------------
 
@@ -88,20 +79,34 @@ CREATE TABLE `ehr_patients` (
   `date` date NOT NULL,
   `user_id` int(11) NOT NULL,
   `gender` varchar(45) NOT NULL,
-  `doctor_id` int(11) NOT NULL
+  `doctor_id` int(11) NOT NULL,
+  `payment` varchar(50) DEFAULT NULL,
+  `med_id` int(11) NOT NULL,
+  `lab_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ehr_patients_allergies`
+-- Table structure for table `labs`
 --
 
-DROP TABLE IF EXISTS `ehr_patients_allergies`;
-CREATE TABLE `ehr_patients_allergies` (
-  `ehr_patient_id` int(11) NOT NULL,
-  `allergy_id` int(11) NOT NULL
+DROP TABLE IF EXISTS `labs`;
+CREATE TABLE `labs` (
+  `id` int(100) NOT NULL COMMENT '1',
+  `name` varchar(45) DEFAULT NULL,
+  `description` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `labs`
+--
+
+INSERT INTO `labs` (`id`, `name`, `description`) VALUES
+(1, 'Blood test', 'A blood test is a laboratory analysis performed on a blood sample that is usually extracted from a vein in the arm using a hypodermic needle, or via fingerprick.'),
+(2, 'CT scan', 'A CT scan, also known as computed tomography scan is a medical imaging technique used in radiology to obtain detailed internal images of the body noninvasively for diagnostic purposes.'),
+(3, 'Lunge scan', 'A lung scan is an imaging test to look at your lungs and help diagnose certain lung problems.'),
+(4, 'Dexa scan', 'A procedure that measures the amount of calcium and other minerals in a bone by passing x-rays with two different energy levels through the bone.');
 
 -- --------------------------------------------------------
 
@@ -157,45 +162,19 @@ INSERT INTO `news` (`id`, `title`, `content`, `created_at`, `published_by`, `ima
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pain_types`
---
-
-DROP TABLE IF EXISTS `pain_types`;
-CREATE TABLE `pain_types` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `description` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `pre_exams`
 --
 
 DROP TABLE IF EXISTS `pre_exams`;
 CREATE TABLE `pre_exams` (
   `id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `created_at` datetime NOT NULL,
   `temperature` int(11) NOT NULL,
   `pulse_rate` int(11) NOT NULL,
   `blood_pressure` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `ehr_patient_id` int(11) NOT NULL,
-  `pain_type_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `problem_types`
---
-
-DROP TABLE IF EXISTS `problem_types`;
-CREATE TABLE `problem_types` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `description` mediumtext NOT NULL
+  `symptoms` varchar(255) NOT NULL,
+  `allergie` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -217,20 +196,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'Admin'),
 (2, 'Doctor'),
-(3, 'Patient'),
+(3, 'nurse'),
 (4, 'patient');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tokens`
---
-
-DROP TABLE IF EXISTS `tokens`;
-CREATE TABLE `tokens` (
-  `username` varchar(45) NOT NULL,
-  `token` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -252,28 +219,32 @@ CREATE TABLE `users` (
   `created_at` datetime NOT NULL,
   `creator` varchar(30) DEFAULT NULL,
   `creator_ip` varchar(50) DEFAULT NULL,
-  `dep_id` int(11) DEFAULT NULL
+  `dep_id` int(11) DEFAULT NULL,
+  `studies` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `year_of_birth`, `gender`, `username`, `password`, `role_id`, `email`, `created_at`, `creator`, `creator_ip`, `dep_id`) VALUES
-(32, 'nour', 'saliba', '2000-09-16', 'Female', 'nour12', 'ccbc1770bb10486495d127a7d65c252b', 4, 'nour@gmail.com', '2022-06-29 20:20:32', NULL, NULL, NULL),
-(33, 'anthony', 'saliba', '0000-00-00', 'male', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'admin@med.com', '2022-06-29 20:36:16', NULL, NULL, NULL),
-(34, 'nour', 'saliba', '2000-09-16', 'female', 'nourS', 'ccbc1770bb10486495d127a7d65c252b', 2, 'nour.saliba@med.com', '2022-06-29 21:04:40', 'anthony', '102.168.0.102', NULL),
-(35, 'anthony', 'saliba', '2000-01-01', 'Male', 'anthony12', '202cb962ac59075b964b07152d234b70', 4, 'anthony@med.com', '2022-06-29 23:14:51', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `year_of_birth`, `gender`, `username`, `password`, `role_id`, `email`, `created_at`, `creator`, `creator_ip`, `dep_id`, `studies`) VALUES
+(32, 'nour', 'saliba', '2000-09-16', 'Female', 'nour12', 'ccbc1770bb10486495d127a7d65c252b', 4, 'nour@gmail.com', '2022-06-29 20:20:32', NULL, NULL, NULL, ''),
+(33, 'anthony', 'saliba', '0000-00-00', 'male', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'admin@med.com', '2022-06-29 20:36:16', NULL, NULL, NULL, ''),
+(34, 'nour', 'saliba', '2000-09-16', 'female', 'nourS', 'ccbc1770bb10486495d127a7d65c252b', 2, 'nour.saliba@med.com', '2022-06-29 21:04:40', 'anthony', '102.168.0.102', NULL, ''),
+(35, 'anthony', 'saliba', '2000-01-01', 'Male', 'anthony12', '202cb962ac59075b964b07152d234b70', 4, 'anthony@med.com', '2022-06-29 23:14:51', NULL, NULL, NULL, ''),
+(36, 'Sonia', 'saab', '1996-12-12', 'female', 'soniasaab', 'd31cb1e2b7902e8e9b4d1793e94c38a0', 3, 'sonia.saab@med.com', '2022-07-03 18:56:53', 'anthony', '102.168.0.106', NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `allergies`
+-- Indexes for table `appointment`
 --
-ALTER TABLE `allergies`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk1` (`dep_id`),
+  ADD KEY `fk3` (`user_id`);
 
 --
 -- Indexes for table `department`
@@ -282,25 +253,20 @@ ALTER TABLE `department`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ehr_medication`
---
-ALTER TABLE `ehr_medication`
-  ADD PRIMARY KEY (`ehr_id`,`medication_id`);
-
---
 -- Indexes for table `ehr_patients`
 --
 ALTER TABLE `ehr_patients`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_FK` (`user_id`),
-  ADD KEY `FKDOC` (`doctor_id`);
+  ADD KEY `FKDOC` (`doctor_id`),
+  ADD KEY `fkmed` (`med_id`),
+  ADD KEY `fklab` (`lab_id`);
 
 --
--- Indexes for table `ehr_patients_allergies`
+-- Indexes for table `labs`
 --
-ALTER TABLE `ehr_patients_allergies`
-  ADD PRIMARY KEY (`ehr_patient_id`,`allergy_id`),
-  ADD KEY `ALLERGIES_ID` (`allergy_id`);
+ALTER TABLE `labs`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `medications`
@@ -315,37 +281,17 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pain_types`
---
-ALTER TABLE `pain_types`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `pre_exams`
 --
 ALTER TABLE `pre_exams`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `EHR_ID` (`ehr_patient_id`),
-  ADD KEY `pain_id` (`pain_type_id`),
   ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `problem_types`
---
-ALTER TABLE `problem_types`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tokens`
---
-ALTER TABLE `tokens`
-  ADD PRIMARY KEY (`username`);
 
 --
 -- Indexes for table `users`
@@ -361,28 +307,28 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `allergies`
+-- AUTO_INCREMENT for table `appointment`
 --
-ALTER TABLE `allergies`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT COMMENT '1';
+ALTER TABLE `appointment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `ehr_medication`
---
-ALTER TABLE `ehr_medication`
-  MODIFY `ehr_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `ehr_patients`
 --
 ALTER TABLE `ehr_patients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '1', AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `labs`
+--
+ALTER TABLE `labs`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT COMMENT '1', AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `medications`
@@ -397,21 +343,9 @@ ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `pain_types`
---
-ALTER TABLE `pain_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `pre_exams`
 --
 ALTER TABLE `pre_exams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `problem_types`
---
-ALTER TABLE `problem_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -424,18 +358,33 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD CONSTRAINT `fk1` FOREIGN KEY (`dep_id`) REFERENCES `department` (`id`),
+  ADD CONSTRAINT `fk3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
 -- Constraints for table `ehr_patients`
 --
 ALTER TABLE `ehr_patients`
   ADD CONSTRAINT `FK2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `FKDOC` FOREIGN KEY (`doctor_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `FKDOC` FOREIGN KEY (`doctor_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `fklab` FOREIGN KEY (`lab_id`) REFERENCES `labs` (`id`),
+  ADD CONSTRAINT `fkmed` FOREIGN KEY (`med_id`) REFERENCES `medications` (`id`);
+
+--
+-- Constraints for table `pre_exams`
+--
+ALTER TABLE `pre_exams`
+  ADD CONSTRAINT `fk_user_pre` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `users`
