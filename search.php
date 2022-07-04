@@ -4,12 +4,12 @@ $con = new Model;
 $con = $con->getConnection();
 $search = $_GET['search'];
 
-$query = "select first_name,last_name from users where role_id=2 and (first_name like '%{$search}%' or last_name like '%{$search}%')";
+$query = "select first_name,last_name,studies,specialist,department.name from users,department where role_id=2 and (first_name like '%{$search}%' or last_name like '%{$search}%') and (users.dep_id=department.id)";
 
 $res = mysqli_query($con, $query);
 while ($row = mysqli_fetch_assoc($res)) {
 
-  echo $row['first_name'] . " " . $row['last_name'] . "<br>";
+  echo $row['first_name'] . " " . $row['last_name'] ." ".$row['studies'] . " ".$row['specialist']." ".$row['name']. "<br>";
 }
 // $sql = "SELECT name,price,image,description FROM product,category WHERE product.name = '" . $q . "' and product.cat=category.catid";
 // $result = mysqli_query($con, $sql);

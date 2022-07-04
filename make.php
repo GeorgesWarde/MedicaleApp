@@ -1,11 +1,40 @@
 <?php
-session_start();
 include_once './php/Models/model.php';
 include_once './php/Controller/appointment.php';
+include_once './php/Controller/user.php';
+include_once './php/Controller/labs.php';
 $app = new appointment;
+$user=new user;
+$lab=new Labs;
+$name=$_SESSION['fname'];
+$idUser=$_SESSION['id'];
+// die($idUser);
 $id = $_GET['id'];
 $dep = $app->findByDepartments($id);
 $row = mysqli_fetch_row($dep);
+$user=$user->findBySession($name);
+$rowUser=mysqli_fetch_row($user);
+$doc=$app->findDoctorByAvailabilityIdName($id);
+$lab=$lab->findLabs();
+if(isset($_POST['submit'])){
+$field=[
+    'user_id'=>$_SESSION['id'],
+    'visit_at'=>$_POST['dateAppointment'],
+    'dep_id'=>$_POST['department'],
+    'allergie'=>$_POST['disease'],
+    'symptoms'=>$_POST['symptoms'],
+    'lab_id'=>$_POST['test'],
+    'doc_id'=>$_POST['doctor'],
+    'phone'=>$_POST['phoneNumber']
+];
+$add=$app->AddAppointment($field);
+if($add){
+echo "<script>alert('Your appointment successfully added we will back to you As Soon As Possible')</script>";
+}else{
+    echo "<script>alert('Error occured')</script>";
+
+}
+}
 ?>
 <!Doctype html>
 <html>
@@ -47,7 +76,7 @@ $row = mysqli_fetch_row($dep);
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Phone number</label><br>
-                                <input type="number" name="phoneNumber" id="" placeholder="Patient name">
+                                <input type="number" name="phoneNumber" id="" placeholder="Your number">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Select department</label><br>
@@ -59,14 +88,11 @@ $row = mysqli_fetch_row($dep);
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Birth date</label><br>
-                                <input type="text" name="agePatient" id="" value="2022-02-02" disabled>
+                                <input type="text" name="agePatient" id="" value="<?=$rowUser[0]?>" disabled>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Gender</label><br>
-                                <select name="gender" id="" style="width:100% ;">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
+                                <input type="text" name="gender" id="" value="<?=$rowUser[1]?>" disabled>
                             </div>
                         </div>
                         <div class="row">
@@ -85,13 +111,17 @@ $row = mysqli_fetch_row($dep);
                             <div class="col-md-6">
                                 <label for="">Labs</label><br>
                                 <select name="test" style="width:100% ;">
-                                    <option value="1">Blood test</option>
+                                <?php while($row=mysqli_fetch_assoc($lab)){ ?>
+                                    <option value="<?=$row['id']?>"><?=$row['name']?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Doctor</label><br>
                                 <select name="doctor" id="" style="width: 100%;">
-                                    <option value="1">Dr.Georges wardeh</option>
+                                <?php while($find=mysqli_fetch_row($doc)){ ?>
+                                    <option value="<?=$find[0]?>">Dr.<?=$find[1]." ".$find[2]?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>

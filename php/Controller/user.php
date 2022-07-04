@@ -25,6 +25,7 @@ class user extends Model
             }
             if ($row[7] == 4) {
                 $_SESSION['fname'] = $row[1];
+                $_SESSION['id']=$row[0];
                 header("location:user");
             }
         } else {
@@ -109,5 +110,10 @@ class user extends Model
         $res = mysqli_query($this->getConnection(), $query);
         $total = mysqli_fetch_assoc($res);
         echo $total['count(id)'];
+    }
+    public function findBySession($name){
+        $query=parent::Read('year_of_birth,gender',$this->table,'first_name="'.$name.'"');
+        $res=mysqli_query($this->getConnection(),$query);
+        return $res;
     }
 }

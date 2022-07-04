@@ -14,6 +14,7 @@ $cardiology = "A branch of medicine that specializes in diagnosing and treating 
 $family = "General practice / family medicine is defined as the medical specialty that manages common and long-term illnesses in children and adults, focusing on overall health and well-being. ";
 $radiology = "Radiology is a branch of medicine that uses imaging technology to diagnose and treat disease. Radiology may be divided into two different areas, diagnostic radiology and interventional radiology. Doctors who specialize in radiology are called radiologists.";
 $doc = $appointment->findDoctorBydepartment($id);
+$docAvailable=$appointment->findDoctorByAvailability($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,20 +111,15 @@ $doc = $appointment->findDoctorBydepartment($id);
 
 
                                         <h4 class="available">Available Doctors this week</h4>
-                                        <div class="doctorList1" style="width:100%; padding-top:10px; margin-top:8px;">
+                                        <div>
+                                        <?php while($row=mysqli_fetch_assoc($docAvailable)){?>
                                             <div>
-                                                <h4>Dr Georges Warde</h4>
-                                                <h6> Neurology Department Stroke Specialist</h6>
+                                                <h4>Dr <?=$row['first_name'] ." ". $row['last_name']?></h4>
+                                                <h6> <?=$row['specialist']?></h6>
                                             </div>
-                                            <p style="color:white;"> Available on Monday 8am,thuesday 9pm.</p>
+<?php } ?>
                                         </div>
-                                        <div class="doctorList1" style="width:100%; padding-top:10px; margin-top:8px;">
-                                            <div>
-                                                <h4>Dr Georges Warde</h4>
-                                                <h6> Neurology Department Brain Injury Specialist</h6>
-                                            </div>
-                                            <p style="color:white;"> Available on Monday 8am,thuesday 9pm.</p>
-                                        </div>
+                                       
 
 
                                     </div>

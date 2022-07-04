@@ -105,7 +105,7 @@ if (!isset($_SESSION['doctorfname'])) {
                                 <td>a blocked or runny nose,a sore throat.,headaches.</td>
                                 <td><a href="ehrfiles.php" style="font-size:12px ;">EHR e-file</a>
                                     <a href="preexam.php" style="font-size:12px ;">View preexam</a>
-                                    < </td>
+                                     </td>
 
                             </tr>
 
