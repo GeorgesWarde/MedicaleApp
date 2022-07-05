@@ -42,7 +42,9 @@ if (isset($_POST['addDoc'])) {
         'creator' => $_SESSION['adminfname'],
         'creator_ip' => gethostbyname(gethostname()),
         'dep_id' => $_POST['dep'],
-        'studies' => $_POST['studies']
+        'studies' => $_POST['studies'],
+        'available'=>$_POST['av'],
+        'specialist'=>$_POST['specialist']
     ];
     $result = $user->findByEmailUsername($_POST['udoctor'], $_POST['edoctor']);
     $row = mysqli_fetch_row($result);
@@ -264,10 +266,10 @@ $dep = $dep->findDepartments();
                                 <th scope="col">#</th>
                                 <th scope="col">Doctor name</th>
                                 <th scope="col">Birth year</th>
-                                <th scope="col">Gender</th>
-                                <th scope="col">Username</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Joined_at</th>
+                                <th>Availability</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -280,10 +282,10 @@ $dep = $dep->findDepartments();
                                 <th scope="row"><?= $i ?></th>
                                 <td><?= $row[0] . " " . $row[1] ?></td>
                                 <td><?= $row[2] ?></td>
-                                <td><?= $row[3] ?></td>
-                                <td><?= $row[4] ?></td>
                                 <td><?= $row[5] ?></td>
                                 <td><?= $row[6] ?></td>
+                                <td><?=$row[7]?></td>
+                                <td><a href="edit?id=<?=$row[8]?>">Edit</a></td>
                             </tr>
                             <?php $i++;
                             } ?>
@@ -442,6 +444,21 @@ $dep = $dep->findDepartments();
                             <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
                             <?php } ?>
                         </select>
+
+                    </div>
+                    <div class="mb-3">
+                        Available:
+                        <select name="av">
+                            
+                            <option value="available">Available</option>
+                            <option value="not available">Not Available</option>
+
+                        </select>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputAge" class="form-label">Specialist</label>
+                        <input type="text" name="specialist" class="form-control">
 
                     </div>
 

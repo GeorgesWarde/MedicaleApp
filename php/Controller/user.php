@@ -17,6 +17,7 @@ class user extends Model
             }
             if ($row[7] == 2) {
                 $_SESSION['doctorfname'] = $row[1];
+                $_SESSION['id']=$row[0];
                 header("location:doctor");
             }
             if ($row[7] == 3) {
@@ -94,7 +95,7 @@ class user extends Model
     }
     public function getDoctors()
     {
-        $query = parent::Read('first_name,last_name,year_of_birth,gender,username,email,created_at', $this->table, 'role_id=2');
+        $query = parent::Read('first_name,last_name,year_of_birth,gender,username,email,created_at,available,id', $this->table, 'role_id=2');
         $res = mysqli_query($this->getConnection(), $query);
         return $res;
     }

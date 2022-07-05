@@ -1,9 +1,12 @@
 <?php
-session_start();
+include_once './php/Models/model.php';
+include_once './php/Controller/appointment.php';
+include_once './php/Controller/user.php';
 if (!isset($_SESSION['nursefname'])) {
     header("location:login");
 }
-
+$app=new appointment;
+$patient=$app->findPatientByApp();
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +46,7 @@ if (!isset($_SESSION['nursefname'])) {
 
     <div class="row">
         <div class="col-12 case" style="text-align:center ;margin-top:30px;">
-            <h2>Patient Case</h2>
+            <h2>Appointment patients Case</h2>
         </div>
 
     </div>
@@ -52,7 +55,6 @@ if (!isset($_SESSION['nursefname'])) {
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">First</th>
                         <th scope="col">Last</th>
                         <th scope="col">Date of birth</th>
@@ -60,7 +62,7 @@ if (!isset($_SESSION['nursefname'])) {
                         <th scope="col">Gender</th>
                         <th scope="col">Phone number</th>
                         <th scope="col">Date visit</th>
-
+<th>Department</th>
                         <th scope="col">Disease</th>
                         <th scope="col">Symptoms</th>
                         <th scope="col">Action</th>
@@ -68,21 +70,22 @@ if (!isset($_SESSION['nursefname'])) {
                     </tr>
                 </thead>
                 <tbody>
+                    <?php while($row=mysqli_fetch_row($patient)){ ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>2022</td>
-                        <td>PCR</td>
-                        <td>Male</td>
-                        <td>878</td>
-                        <td>1-9-8006</td>
-
-                        <td>Common cold</td>
-                        <td>a blocked or runny nose,a sore throat.,headaches.</td>
-                        <td><a href="preexam">Fill preExam</a></td>
+                    <td><?=$row[1]?></td>
+                                <td><?=$row[2]?></td>
+                                <td><?=$row[3]?></td>
+                                <td><?=$row[26]?></td>
+                                <td><?=$row[4]?></td>
+                                <td><?=$row[24]?></td>
+                                <td><?=$row[18]?></td>
+                                <td><?=$row[27]?></td>
+                                <td><?=$row[20]?></td>
+                                <td><?=$row[21]?></td>
+                        <td><a href="preexam?id=<?=$row[0]?>">Fill preExam</a></td>
 
                     </tr>
+                    <?php } ?>
 
                 </tbody>
             </table>
