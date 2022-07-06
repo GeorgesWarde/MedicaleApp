@@ -120,6 +120,7 @@ if (isset($_POST['addMedical'])) {
     $med->AddMedical($field);
 }
 $dep = $dep->findDepartments();
+$med=$med->findMed();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -196,7 +197,7 @@ $dep = $dep->findDepartments();
                         </li>
 
                         <li>
-                            <a href="#" class="nav-link px-0 align-middle  text-white" onclick="statShow()">
+                            <a href="statistics" class="nav-link px-0 align-middle  text-white" onclick="statShow()">
                                 <i class="fa-solid fa-stairs"></i><span
                                     class="ms-1 d-none d-sm-inline">Statistics</span> </a>
                         </li>
@@ -342,7 +343,6 @@ $dep = $dep->findDepartments();
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Medical name</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Qty</th>
@@ -350,20 +350,18 @@ $dep = $dep->findDepartments();
                             </tr>
                         </thead>
                         <tbody>
+                            <?php while($row=mysqli_fetch_assoc($med)){ ?>
+                    
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>2000-01-01</td>
-                                <td>Panadol</td>
-                                <td>Corona</td>
+                                <td><?=$row['name']?></td>
+                                <td><?=$row['price']?></td>
+                                <td><?=$row['qty']?></td>
+                                <td><?=$row['stockId']?></td>
 
                             </tr>
-
+<?php } ?>
                         </tbody>
                     </table>
-
-                    <div>Total number of medicals:</div>
-                    <div>Total number of tests:</div>
                     <form method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="exampleInputName" class="form-label">Medical name</label>
@@ -501,45 +499,13 @@ $dep = $dep->findDepartments();
                     <button type="submit" class="btn btn-primary" name="addNur">Add</button>
                 </form>
                 <div id="statistics" style="display:none ;">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Symptoms</th>
-                                <th scope="col">Nbr patients</th>
-                                <th scope="col">Percentage</th>
+                <div class="row">
+                    <div class="col-12">
+                    <div id="piechart" style="width: 900px; height: 500px;"></div>
 
+                    </div>
+                </div>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Diabets</th>
-                                <td>40</td>
-                                <td>35%</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Gender</th>
-                                <th scope="col">Percentage</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row">Male</td>
-                                <td>90%</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">Female</td>
-                                <td>90%</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
                 </div>
                 <form id="blood" method="post" enctype="multipart/form-data" style="display:none ;">
                     <div class="row">
@@ -771,7 +737,10 @@ $dep = $dep->findDepartments();
         </div>
     </div>
 </body>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script src="Js/admin.js"></script>
+<script src="js/chart.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

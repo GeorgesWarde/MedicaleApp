@@ -117,4 +117,14 @@ class user extends Model
         $res=mysqli_query($this->getConnection(),$query);
         return $res;
     }
+    public function countPatientByGender($gender){
+        $query=parent::Read('count(*)',$this->table,'role_id=4 and gender="'.$gender.'"');
+        $res=mysqli_query($this->getConnection(),$query);
+        return $res;
+    }
+    public function countDoctorByAvailability($av){
+        $query=parent::Read('count(*)',$this->table,'role_id=2 and available="'.$av.'"');
+        $res=mysqli_query($this->getConnection(),$query);
+        return $res;
+    }
 }

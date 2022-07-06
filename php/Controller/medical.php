@@ -15,4 +15,9 @@ class medical extends Model
             echo "error occured";
         }
     }
+    public function findMed(){
+        $query=parent::Read('*',$this->table,'');
+        $res=mysqli_query($this->getConnection(),$query);
+        return $res;
+    }
 }
