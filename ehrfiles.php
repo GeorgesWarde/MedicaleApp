@@ -1,3 +1,42 @@
+<?php
+include './php/Models/model.php';
+include './php/Controller/user.php';
+include './php/Controller/appointment.php';
+include './php/Controller/ehrfiles.php';
+include './php/Controller/medical.php';
+if (!isset($_SESSION['doctorfname'])) {
+    header("location:login");
+}
+$med = new medical;
+$med = $med->findMed();
+
+$ehr = new ehrfiles;
+$quer = "select first_name,last_name,gender,year_of_birth from users where id=" . $_GET['id'];
+$res = mysqli_query((new Model)->getConnection(), $quer);
+$row = mysqli_fetch_assoc($res);
+if (isset($_POST['submit'])) {
+    $field = [
+
+        'blood_type' => $_POST['typeBlood'],
+        'date' => $_POST['dateVisit'],
+        'user_id' => $_GET['id'],
+        'doctor_id' => $_SESSION['id'],
+        'payment' => $_POST['payment'],
+        'med_id' => $_POST['med']
+    ];
+    $insert = $ehr->addehr($field);
+    $query = (new Model)->update('appointment', 'ehrfiles="filled"', 'user_id=' . $_GET['id']);
+    // die($query);
+    if ($insert) {
+        $res = mysqli_query((new Model)->getConnection(), $query);
+        echo "check the ehrfile on database";
+    } else {
+        echo "error occured";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,16 +57,18 @@
 
                 <div class="firstname">
                     First name:
-                    <input type="text" name="fname" id="" placeholder="first name">
+                    <input type="text" name="fname" id="" placeholder="first name" value="<?= $row['first_name'] ?>"
+                        disabled>
                 </div>
                 <div class="firstname">
                     Last name:
-                    <input type="text" name="lname" id="" placeholder="last name">
+                    <input type="text" name="lname" id="" placeholder="last name" value="<?= $row['last_name'] ?>"
+                        disabled>
                 </div>
 
                 <div class="firstname">
                     Date of birth:
-                    <input type="date" name="dateBirth" id="">
+                    <input type="date" name="dateBirth" id="" value="<?= $row['year_of_birth'] ?>" disabled>
                 </div>
                 <div class="firstname">
                     Blood Type:
@@ -43,16 +84,8 @@
                     </select>
                 </div>
                 <div class="firstname">
-                    City:
-                    <input type="text" name="city" id="" placeholder="City">
-                </div>
-                <div class="firstname">
                     Gender:
-                    <select name="gender" id="">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-
-                    </select>
+                    <input type="text" name="gender" id="" value="<?= $row['gender'] ?>" disabled>
                 </div>
                 <div class="firstname">
                     Date of Visit:
@@ -70,9 +103,10 @@
                 </div>
                 <div class="firstname">
                     Medication Recomended:
-                    <select name="Test" id="">
-                        <option value="male">Panadol</option>
-
+                    <select name="med" id="">
+                        <?php while ($row = mysqli_fetch_row($med)) { ?>
+                        <option value="<?= $row[0] ?>"><?= $row[1] ?></option>
+                        <?php } ?>
 
                     </select>
                 </div>

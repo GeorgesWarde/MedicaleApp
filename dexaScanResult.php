@@ -1,3 +1,15 @@
+<?php
+include './php/Models/model.php';
+include './php/Controller/results.php';
+session_start();
+if (!isset($_SESSION['fname'])) {
+    header("location:login");
+}
+$result = new result;
+$lab = $result->findAll($_GET['idU'], $_GET['idL']);
+$row = mysqli_fetch_row($lab);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +26,7 @@
 <body>
     <?php include_once './require/header.php' ?>
     <div id="tab">
-        <h3 style="justify-content:center;align-items:center;display:flex;">Anthony Saliba </h3>
+        <h3 style="justify-content:center;align-items:center;display:flex;"><?= $_SESSION['fname'] ?></h3>
         <div class="container" style="color:#00556f">
             <div class="row align-items-start">
                 <div class="col" style="overflow-x: auto;">
@@ -30,14 +42,14 @@
                             </tr>
                             <tr>
 
-                                <th>5.42</th>
-                                <th>5.73</th>
-                                <th>1.057</th>
-                                <th>1.9</th>
-                                <th>2.6</th>
+                                <th><?= $row[22] ?></th>
+                                <th><?= $row[23] ?></th>
+                                <th><?= $row[24] ?></th>
+                                <th><?= $row[25] ?></th>
+                                <th><?= $row[26] ?></th>
 
                             </tr>
-                          
+
 
 
                         </thead>
@@ -46,7 +58,8 @@
             </div>
         </div>
     </div>
-    <div class="container-xl"><button style="padding:5px;background-color:#00556f;color:white;border-radius:3px;" onclick="createpdf()">Print your Test</button>*Bring the test with you when you visit our center</div>
+    <div class="container-xl"><button style="padding:5px;background-color:#00556f;color:white;border-radius:3px;"
+            onclick="createpdf()">Print your Test</button>*Bring the test with you when you visit our center</div>
 
     <?php include_once './require/footer.php' ?>
 </body>

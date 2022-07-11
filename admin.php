@@ -7,6 +7,7 @@ include_once './php/Controller/file.php';
 include_once './php/Controller/user.php';
 include_once './php/Controller/medical.php';
 include_once './php/Controller/appointment.php';
+include './php/Controller/results.php';
 if (!isset($_SESSION['adminfname'])) {
     header("location:login");
 }
@@ -19,7 +20,7 @@ if (isset($_POST['addnews'])) {
     $field = [
         'title' => $_POST['title'],
         'content' => $_POST['content'],
-        'published_by' => 'anthony',
+        'published_by' => $_SESSION['adminfname'],
         'image' => $file->getFile('file')
     ];
     $news->insert_news($field);
@@ -43,8 +44,8 @@ if (isset($_POST['addDoc'])) {
         'creator_ip' => gethostbyname(gethostname()),
         'dep_id' => $_POST['dep'],
         'studies' => $_POST['studies'],
-        'available'=>$_POST['av'],
-        'specialist'=>$_POST['specialist']
+        'available' => $_POST['av'],
+        'specialist' => $_POST['specialist']
     ];
     $result = $user->findByEmailUsername($_POST['udoctor'], $_POST['edoctor']);
     $row = mysqli_fetch_row($result);
@@ -120,7 +121,70 @@ if (isset($_POST['addMedical'])) {
     $med->AddMedical($field);
 }
 $dep = $dep->findDepartments();
-$med=$med->findMed();
+$med = $med->findMed();
+$result = new result;
+$users = $result->findusers();
+$users2 = $result->findusers();
+$users3 = $result->findusers();
+$users4 = $result->findusers();
+if (isset($_POST['addresultBlood'])) {
+    $field = [
+        'lab_id' => 1,
+        'user_id' => $_POST['patient'],
+        'sodium' => $_POST['sodium'],
+        'potasium' => $_POST['potasium'],
+        'Chloriode' => $_POST['chloriode'],
+        'Bicarbonate' => $_POST['bicarbonate'],
+        'Urea' => $_POST['urea'],
+        'Creatinine' => $_POST['creatinine'],
+        'eGFR' => $_POST['egfr'],
+        'Calcium' => $_POST['calcium'],
+        'Phosphate' => $_POST['phosphate'],
+        'Magnesium' => $_POST['magnesium'],
+        'Albumin' => $_POST['albumin'],
+        'Haemoglobin' => $_POST['haemoglobin'],
+        'white' => $_POST['white'],
+        'Platelets' => $_POST['platelets'],
+        'Thyroid' => $_POST['thyroid'],
+        'triiodothyronine' => $_POST['triiodothyronine'],
+        'Follicide' => $_POST['follicide'],
+        'Testosterone' => $_POST['testosterone'],
+        'Blood' => $_POST['glucose']
+    ];
+    $result->addresult($field);
+}
+if (isset($_POST['addresultDexa'])) {
+    $field = [
+        'lab_id' => 4,
+        'user_id' => $_POST['patient'],
+        'Area' => $_POST['area'],
+        'BMC' => $_POST['bmd'],
+        'BMD' => $_POST['bmd'],
+        'Tscore' => $_POST['t-score'],
+        'Zscore' => $_POST['z-score']
+    ];
+    $result->addresult($field);
+}
+if (isset($_POST['addctscan'])) {
+    $field = [
+        'lab_id' => 2,
+        'user_id' => $_POST['patient'],
+        'ct_1' => $file->getFile('pic1'),
+        'ct_2' => $file->getFile('pic2'),
+        'ct_3' => $file->getFile('pic3'),
+        'ct_4' => $file->getFile('pic4')
+    ];
+    $result->addresult($field);
+}
+if (isset($_POST['addlungescan'])) {
+    $field = [
+        'lab_id' => 3,
+        'user_id' => $_POST['patient'],
+        'lunge_front' => $file->getFile('pic1'),
+        'lunge_back' => $file->getFile('pic2'),
+    ];
+    $result->addresult($field);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -160,28 +224,32 @@ $med=$med->findMed();
                                 onclick="showMenu()">
                                 <i class="fa-solid fa-plus dash"></i> <span
                                     class="ms-1 d-none d-sm-inline ">Labs/Medical</span> </a>
-                            <ul class="collapse  nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="#" class="nav-link px-0" onclick="medShow()"> <span
-                                            class="d-sm-inline">Medical </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0" onclick="bloodshow()"> <span
-                                            class="d-sm-inline">Blood Lab</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0" onclick="dexashow()"> <span
-                                            class="d-sm-inline">DexaScan Lab</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0" onclick="lungeshow()"> <span
-                                            class="d-sm-inline">LungeScan Lab</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0" onclick="ctshow()"> <span
-                                            class="d-sm-inline">ctScan Lab</a>
-                                </li>
-                            </ul>
+                            <div class="flex-column">
+                                <ul class="collapse  nav  ms-1" id="submenu1" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="#" class="nav-link px-0" onclick="medShow()"> <span
+                                                class="d-sm-inline">Medical </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0" onclick="bloodshow()"> <span
+                                                class="d-sm-inline">Blood Lab<br></a>
+                                    </li>
+                                    <li style="width:100% ;">
+                                        <a href="#" class="nav-link px-0" onclick="dexashow()"> <span
+                                                class="d-sm-inline">DexaScan Lab</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0" onclick="lungeshow()"> <span
+                                                class="d-sm-inline">LungeScan Lab</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0" onclick="ctshow()"> <span
+                                                class="d-sm-inline">ctScan Lab</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
                         </li>
                         <li>
                             <a href="#" class="nav-link px-0 align-middle text-white" onclick="docShow()">
@@ -285,8 +353,8 @@ $med=$med->findMed();
                                 <td><?= $row[2] ?></td>
                                 <td><?= $row[5] ?></td>
                                 <td><?= $row[6] ?></td>
-                                <td><?=$row[7]?></td>
-                                <td><a href="edit?id=<?=$row[8]?>">Edit</a></td>
+                                <td><?= $row[7] ?></td>
+                                <td><a href="edit?id=<?= $row[8] ?>">Edit</a></td>
                             </tr>
                             <?php $i++;
                             } ?>
@@ -350,16 +418,16 @@ $med=$med->findMed();
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while($row=mysqli_fetch_assoc($med)){ ?>
-                    
+                            <?php while ($row = mysqli_fetch_assoc($med)) { ?>
+
                             <tr>
-                                <td><?=$row['name']?></td>
-                                <td><?=$row['price']?></td>
-                                <td><?=$row['qty']?></td>
-                                <td><?=$row['stockId']?></td>
+                                <td><?= $row['name'] ?></td>
+                                <td><?= $row['price'] ?></td>
+                                <td><?= $row['qty'] ?></td>
+                                <td><?= $row['stockId'] ?></td>
 
                             </tr>
-<?php } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                     <form method="POST" enctype="multipart/form-data">
@@ -447,7 +515,7 @@ $med=$med->findMed();
                     <div class="mb-3">
                         Available:
                         <select name="av">
-                            
+
                             <option value="available">Available</option>
                             <option value="not available">Not Available</option>
 
@@ -499,19 +567,23 @@ $med=$med->findMed();
                     <button type="submit" class="btn btn-primary" name="addNur">Add</button>
                 </form>
                 <div id="statistics" style="display:none ;">
-                <div class="row">
-                    <div class="col-12">
-                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="piechart" style="width: 900px; height: 500px;"></div>
 
+                        </div>
                     </div>
-                </div>
 
                 </div>
                 <form id="blood" method="post" enctype="multipart/form-data" style="display:none ;">
                     <div class="row">
                         <div class="col-md-6">
-                            Patient:
-                            <input type="text" name="patient" id="" style="width:100% ;" placeholder="Name">
+                            Patient
+                            <select name="patient" style="width:100% ;">
+                                <?php while ($row = mysqli_fetch_row($users)) { ?>
+                                <option value="<?= $row[0] ?>"><?= $row[1] . " " . $row[2] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="col-md-6">
                             Sodium (mmol/L):
@@ -625,8 +697,12 @@ $med=$med->findMed();
                 <form id="dexa" method="post" enctype="multipart/form-data" style="display:none ;">
                     <div class="row">
                         <div class="col-md-6">
-                            Patient:
-                            <input type="text" name="patientDexa" id="" required style="width:100% ;">
+                            Patient
+                            <select name="patient" style="width:100% ;">
+                                <?php while ($row = mysqli_fetch_row($users2)) { ?>
+                                <option value="<?= $row[0] ?>"><?= $row[1] . " " . $row[2] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="col-md-6">
                             BMC(g):
@@ -640,7 +716,7 @@ $med=$med->findMed();
                         </div>
                         <div class="col-md-6">
                             Z-score:
-                            <input type="text" name="zscore" id="" required style="width:100% ;">
+                            <input type="text" name="z-score" id="" required style="width:100% ;">
                         </div>
                     </div>
                     <div class="row">
@@ -650,22 +726,38 @@ $med=$med->findMed();
                         </div>
                         <div class="col-md-6">
                             T-score:
-                            <input type="text" name="tscore" id="" required style="width:100% ;">
+                            <input type="text" name="t-score" id="" required style="width:100% ;">
                         </div>
                     </div>
                     <input type="submit" value="add result" name="addresultDexa" class="btn btn-primary">
 
                 </form>
                 <form id="lunge" method="post" enctype="multipart/form-data" style="display:none ;">
-                    Scan 1:
+                    <div class="col-md-6">
+                        Patient
+                        <select name="patient" style="width:100% ;">
+                            <?php while ($row = mysqli_fetch_row($users3)) { ?>
+                            <option value="<?= $row[0] ?>"><?= $row[1] . " " . $row[2] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    Front:
                     <input type="file" name="pic1" id="">
-                    Scan 2:
+                    Back:
                     <input type="file" name="pic2">
                     <input type="submit" value="add scan" name="addlungescan" class="btn btn-primary"
                         style="text-transform:uppercase ;">
 
                 </form>
                 <form id="ct" method="post" enctype="multipart/form-data" style="display:none ;">
+                    <div class="col-md-6">
+                        Patient
+                        <select name="patient" style="width:100% ;">
+                            <?php while ($row = mysqli_fetch_row($users4)) { ?>
+                            <option value="<?= $row[0] ?>"><?= $row[1] . " " . $row[2] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                     Scan 1:
                     <input type="file" name="pic1" id="">
                     Scan 2:

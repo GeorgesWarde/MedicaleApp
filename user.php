@@ -1,8 +1,14 @@
 <?php
+include_once './php/Models/model.php';
+include_once './php/Controller/results.php';
 session_start();
 if (!isset($_SESSION['fname'])) {
     header("location:login");
 }
+$labs = new result;
+$labs = $labs->findLabsById($_SESSION['id']);
+// $row = mysqli_fetch_row($labs);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,18 +114,33 @@ if (!isset($_SESSION['fname'])) {
                     <div id="check">
                         <div class="row" style="margin-top: 30px;">
                             <h3 align="center">Results</h3>
+                            <?php while ($row = mysqli_fetch_assoc($labs)) { ?>
+
+                            <?php if ($row['lab_id'] == 1) { ?>
                             <div class="col-3">
-                                <a href="bloodresult">Blood Result</a>
+                                <a href="bloodresult?idU=<?= $_SESSION['id'] ?>&idL=<?= $row['lab_id'] ?>">Blood
+                                    Result</a>
                             </div>
+                            <?php } ?>
+                            <?php if ($row['lab_id'] == 3) { ?>
                             <div class="col-3">
-                                <a href="lungescan">Lunge scan Result</a>
+                                <a href="lungescan?idU=<?= $_SESSION['id'] ?>&idL=<?= $row['lab_id'] ?>">Lunge scan
+                                    Result</a>
                             </div>
+                            <?php } ?>
+                            <?php if ($row['lab_id'] == 4) { ?>
                             <div class="col-3">
-                                <a href="dexascanresult">Dexa Scan Result</a>
+                                <a href="dexascanresult?idU=<?= $_SESSION['id'] ?>&idL=<?= $row['lab_id'] ?>">Dexa Scan
+                                    Result</a>
                             </div>
+                            <?php } ?>
+                            <?php if ($row['lab_id'] == 2) { ?>
                             <div class="col-3">
-                                <a href="ctscanresult">Ct Scan Result</a>
+                                <a href="ctscanresult?idU=<?= $_SESSION['id'] ?>&idL=<?= $row['lab_id'] ?>">Ct Scan
+                                    Result</a>
                             </div>
+                            <?php }
+                            } ?>
                         </div>
                     </div>
                 </div>

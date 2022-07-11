@@ -24,9 +24,15 @@ include_once './php/config.php';
                     </li>
                     <li class="nav-item dropdown navbar-items">
                         <?php
-                        if ($_SESSION) { ?>
-                        <a class="nav-link" href="user">Home</a>
-                        <?php } ?>
+                        if (isset($_SESSION['fname'])) {
+                            echo "  <a class='nav-link' href='user'>Home</a>";
+                        } else if (isset($_SESSION['doctorfname'])) {
+                            echo ' <a class="nav-link" href="doctor">Home</a>';
+                        } else if (isset($_SESSION['adminfname'])) {
+                            echo ' <a class="nav-link" href="admin">Home</a>';
+                        } else if (isset($_SESSION['nursefname'])) {
+                            echo ' <a class="nav-link" href="nurse">Home</a>';
+                        } ?>
                     </li>
                     <?php
                     if (!$_SESSION) { ?>

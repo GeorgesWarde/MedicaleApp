@@ -1,5 +1,33 @@
 <?php
-session_start();
+include_once './php/Models/model.php';
+
+include './php/Controller/user.php';
+include_once './php/Controller/preexam.php';
+if (!isset($_SESSION['nursefname'])) {
+    header("location:login");
+}
+$pre = new Preexams;
+
+$query = "select first_name,last_name from users where id=" . $_GET['id'];
+$res = mysqli_query((new Model)->getConnection(), $query);
+$row = mysqli_fetch_assoc($res);
+if (isset($_POST['submit'])) {
+    $field = [
+        'temperature' => $_POST['temp'],
+        'pulse_rate' => $_POST['pulse'],
+        'blood_pressure' => $_POST['blood'],
+        'user_id' => $_GET['id'],
+    ];
+    $query = (new Model)->update('appointment', 'preexam="filled"', 'user_id=' . $_GET['id']);
+    // die($query);
+    $insert = $pre->insertPre($field);
+    if ($insert) {
+        $res = mysqli_query((new Model)->getConnection(), $query);
+        echo "check the preexam on database";
+    } else {
+        echo "error occured";
+    }
+}
 
 ?>
 
@@ -23,11 +51,11 @@ session_start();
 
                 <div class="firstname">
                     First name:
-                    <input type="text" name="fname" id="">
+                    <input type="text" name="fname" id="" value="<?= $row['first_name'] ?>" disabled>
                 </div>
                 <div class="firstname">
                     Last name:
-                    <input type="text" name="lname" id="">
+                    <input type="text" name="lname" id="" value="<?= $row['last_name'] ?>" disabled>
                 </div>
 
                 <div class="firstname">
@@ -44,15 +72,7 @@ session_start();
                     <input type="number" name="blood" id="">
                 </div>
 
-                <div class="firstname">
-                    Symptoms
-                    <input type="text" name="symptoms" id="">
-                </div>
 
-                <div class="firstname">
-                    Allergie
-                    <input type="text" name="allergie" id="">
-                </div>
 
 
                 <div class="submit">

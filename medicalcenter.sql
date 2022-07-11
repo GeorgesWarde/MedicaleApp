@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2022 at 02:16 PM
+-- Generation Time: Jul 11, 2022 at 12:19 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.26
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `medicalcenter`
 --
-CREATE DATABASE IF NOT EXISTS `medicalcenter` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `medicalcenter`;
 
 -- --------------------------------------------------------
 
@@ -35,22 +33,24 @@ CREATE TABLE `appointment` (
   `user_id` int(11) NOT NULL,
   `visit_at` datetime NOT NULL,
   `dep_id` int(11) NOT NULL,
-  `allergie` varchar(100) NOT NULL,
-  `symptoms` varchar(100) NOT NULL,
+  `allergie` varchar(100) DEFAULT NULL,
+  `symptoms` varchar(100) DEFAULT NULL,
   `lab_id` int(11) NOT NULL,
   `doc_id` int(11) NOT NULL,
   `phone` varchar(30) NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL,
+  `ehrfiles` enum('filled','not') NOT NULL DEFAULT 'not',
+  `preexam` enum('filled','not') NOT NULL DEFAULT 'not'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`id`, `user_id`, `visit_at`, `dep_id`, `allergie`, `symptoms`, `lab_id`, `doc_id`, `phone`, `created_at`) VALUES
-(1, 32, '0000-00-00 00:00:00', 7, 'dust mites.', 'Sneezing,Runny nose', 1, 34, '21312', '2022-07-04 14:56:40'),
-(2, 32, '0000-00-00 00:00:00', 8, 'dust mites.', 'Sneezing,Runny nose', 4, 42, '76197840', '2022-07-05 08:56:02'),
-(3, 32, '1212-12-12 00:00:00', 8, 'dust mites.', '', 1, 42, '76197840', '2022-07-05 08:56:40');
+INSERT INTO `appointment` (`id`, `user_id`, `visit_at`, `dep_id`, `allergie`, `symptoms`, `lab_id`, `doc_id`, `phone`, `created_at`, `ehrfiles`, `preexam`) VALUES
+(1, 32, '0000-00-00 00:00:00', 7, 'dust mites.', 'Sneezing,Runny nose', 1, 34, '21312', '2022-07-04 14:56:40', 'filled', 'filled'),
+(5, 43, '2022-07-08 13:10:00', 8, NULL, NULL, 2, 42, '12334', '2022-07-08 13:10:44', 'not', 'not'),
+(6, 46, '2022-07-11 12:10:00', 9, 'headache', NULL, 1, 45, '76197840', '2022-07-11 12:10:42', 'filled', 'filled');
 
 -- --------------------------------------------------------
 
@@ -84,19 +84,22 @@ INSERT INTO `department` (`id`, `name`, `phone`, `created_at`) VALUES
 DROP TABLE IF EXISTS `ehr_patients`;
 CREATE TABLE `ehr_patients` (
   `id` int(11) NOT NULL COMMENT '1',
-  `first_name` varchar(45) NOT NULL,
-  `last_name` varchar(45) NOT NULL,
-  `date_of_birth` date NOT NULL,
   `blood_type` varchar(45) NOT NULL,
-  `city` varchar(45) NOT NULL,
   `date` date NOT NULL,
   `user_id` int(11) NOT NULL,
-  `gender` varchar(45) NOT NULL,
   `doctor_id` int(11) NOT NULL,
   `payment` varchar(50) DEFAULT NULL,
   `med_id` int(11) NOT NULL,
-  `lab_id` int(11) NOT NULL
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ehr_patients`
+--
+
+INSERT INTO `ehr_patients` (`id`, `blood_type`, `date`, `user_id`, `doctor_id`, `payment`, `med_id`, `created_at`) VALUES
+(2, 'A+', '0000-00-00', 32, 34, '50000', 1, '2022-07-08 17:09:08'),
+(3, 'A+', '2022-07-11', 46, 45, '150000', 2, '2022-07-11 12:12:04');
 
 -- --------------------------------------------------------
 
@@ -185,10 +188,16 @@ CREATE TABLE `pre_exams` (
   `temperature` int(11) NOT NULL,
   `pulse_rate` int(11) NOT NULL,
   `blood_pressure` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `symptoms` varchar(255) NOT NULL,
-  `allergie` varchar(100) NOT NULL
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pre_exams`
+--
+
+INSERT INTO `pre_exams` (`id`, `created_at`, `temperature`, `pulse_rate`, `blood_pressure`, `user_id`) VALUES
+(3, '2022-07-08 15:35:32', 112, 1, 1, 32),
+(4, '2022-07-11 12:11:24', 39, 98, 12, 46);
 
 -- --------------------------------------------------------
 
@@ -207,24 +216,24 @@ CREATE TABLE `results` (
   `Bicarbonate` text DEFAULT NULL,
   `Urea` text DEFAULT NULL,
   `Creatinine` text DEFAULT NULL,
-  `eGFR` int(11) DEFAULT NULL,
-  `Corrected Calcium` text DEFAULT NULL,
+  `eGFR` text DEFAULT NULL,
+  `Calcium` text DEFAULT NULL,
   `Phosphate` text DEFAULT NULL,
   `Magnesium` text DEFAULT NULL,
   `Albumin` text DEFAULT NULL,
   `Haemoglobin` text DEFAULT NULL,
-  `White Cell Count` text DEFAULT NULL,
+  `white` text DEFAULT NULL,
   `Platelets` text DEFAULT NULL,
   `Thyroid` text DEFAULT NULL,
-  `triiodothyronine` int(11) DEFAULT NULL,
+  `triiodothyronine` text DEFAULT NULL,
   `Follicide` text DEFAULT NULL,
   `Testosterone` text DEFAULT NULL,
   `Blood` text DEFAULT NULL,
   `Area` text DEFAULT NULL,
-  `BMC` int(11) DEFAULT NULL,
-  `BMD` int(11) DEFAULT NULL,
-  `T-score` text DEFAULT NULL,
-  `Z-score` text DEFAULT NULL,
+  `BMC` text DEFAULT NULL,
+  `BMD` text DEFAULT NULL,
+  `Tscore` text DEFAULT NULL,
+  `Zscore` text DEFAULT NULL,
   `ct_1` text DEFAULT NULL,
   `ct_2` text DEFAULT NULL,
   `ct_3` text DEFAULT NULL,
@@ -233,6 +242,17 @@ CREATE TABLE `results` (
   `lunge_back` text DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `results`
+--
+
+INSERT INTO `results` (`id`, `lab_id`, `user_id`, `sodium`, `potasium`, `Chloriode`, `Bicarbonate`, `Urea`, `Creatinine`, `eGFR`, `Calcium`, `Phosphate`, `Magnesium`, `Albumin`, `Haemoglobin`, `white`, `Platelets`, `Thyroid`, `triiodothyronine`, `Follicide`, `Testosterone`, `Blood`, `Area`, `BMC`, `BMD`, `Tscore`, `Zscore`, `ct_1`, `ct_2`, `ct_3`, `ct_4`, `lunge_front`, `lunge_back`, `created_at`) VALUES
+(3, 1, 32, '12', '33', '12', '121', '12', '111', '11', '22', '212', '23', '11', '33', '12', '324', '11', '22', '3321', '1223', '44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-07-09 17:00:41'),
+(4, 4, 32, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '12', '12', '12', '12', '12', NULL, NULL, NULL, NULL, NULL, NULL, '2022-07-10 16:19:11'),
+(5, 2, 43, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '421424217picturea.jpg', '1095803872pictureb.jpg', '1769334415picturec.jpg', '1349768902pictured.jpg', NULL, NULL, '2022-07-10 17:55:55'),
+(6, 3, 43, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1146678641lungepicture2.jpg', '2072260251lungescana.jpg', '2022-07-10 18:09:13'),
+(7, 1, 46, '3.4', '22', '1.2', '5.5', '15', '6', '20', '13', '27', '25', '32', '26', '35', '366', '42', '1.2', '550', '50.2', '24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-07-11 12:17:34');
 
 -- --------------------------------------------------------
 
@@ -287,11 +307,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `year_of_birth`, `gender`, `username`, `password`, `role_id`, `email`, `created_at`, `creator`, `creator_ip`, `dep_id`, `studies`, `available`, `specialist`) VALUES
+(1, 'Sonia', 'saab', '2342-12-12', 'female', 'soniasaab', 'd31cb1e2b7902e8e9b4d1793e94c38a0', 3, 'sonia.saab@med.com', '2022-07-08 11:44:31', 'anthony', '102.168.0.102', NULL, NULL, NULL, NULL),
 (32, 'nour', 'saliba', '2000-09-16', 'Female', 'nour12', 'ccbc1770bb10486495d127a7d65c252b', 4, 'nour@gmail.com', '2022-06-29 20:20:32', NULL, NULL, NULL, '', '', ''),
 (33, 'anthony', 'saliba', '0000-00-00', 'male', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'admin@med.com', '2022-06-29 20:36:16', NULL, NULL, NULL, '', '', ''),
-(34, 'nour', 'saliba', '2000-09-16', 'female', 'nourS', 'ccbc1770bb10486495d127a7d65c252b', 2, 'nour.saliba@med.com', '2022-06-29 21:04:40', 'anthony', '102.168.0.102', 7, 'Lebanese Univerity - Hadath', 'available', 'heart disease'),
-(37, 'peter', 'saliba', '2001-08-21', 'male', 'peter12', '51dc30ddc473d43a6011e9ebba6ca770', 2, 'peter.saliba@med.com', '2022-07-03 23:05:15', 'anthony', '102.168.0.106', 7, 'Lebanese Univerity - Hadath', 'not available', ''),
-(42, 'nabih', 'saliba', '1966-06-16', 'male', 'nabihsaliba', '835aea20a2fdf4ebe6bddfa1a55621b4', 2, 'nabih@med.com', '2022-07-05 07:34:24', 'anthony', '10.20.80.83', 8, 'Lebanese university', 'available', 'general medical');
+(34, 'nour', 'saliba', '2000-09-16', 'female', 'nourS', 'ccbc1770bb10486495d127a7d65c252b', 2, 'nour.saliba@med.com', '2022-06-29 21:04:40', 'anthony', '102.168.0.102', 7, 'Lebanese Univerity - Hadath', 'not available', 'heart disease'),
+(37, 'peter', 'saliba', '2001-08-21', 'male', 'peter12', '51dc30ddc473d43a6011e9ebba6ca770', 2, 'peter.saliba@med.com', '2022-07-03 23:05:15', 'anthony', '102.168.0.106', 7, 'Lebanese Univerity - Hadath', 'available', ''),
+(42, 'nabih', 'saliba', '1966-06-16', 'male', 'nabihsaliba', '835aea20a2fdf4ebe6bddfa1a55621b4', 2, 'nabih@med.com', '2022-07-05 07:34:24', 'anthony', '10.20.80.83', 8, 'Lebanese university', 'available', 'general medical'),
+(43, 'Georges', 'warde', '1111-11-11', 'Male', 'georges_wardeh', 'a5d502e66f116d4bd040613df88e074b', 4, 'georges_warde@med.com', '2022-07-08 13:09:30', NULL, NULL, NULL, NULL, NULL, NULL),
+(44, 'georges', 'wardeh', '2012-12-12', 'Male', 'georges', 'a5d502e66f116d4bd040613df88e074b', 1, 'grg@med.com', '2022-07-11 12:04:35', 'anthony', '102.168.0.104', NULL, NULL, NULL, NULL),
+(45, 'nadine', 'saliba', '2002-05-17', 'female', 'nad', '938a800650dda9e8aba505177c4cc6bd', 2, 'nad@med.com', '2022-07-11 12:08:11', 'georges', '102.168.0.104', 9, 'Lebanese Univerity - Hadath', 'available', 'radiologue'),
+(46, 'anthony', 'saliba', '2000-01-01', 'Male', 'anthony', '63b07e828bf016e976ff95d6ee07a105', 4, 'ant@med.com', '2022-07-11 12:09:28', NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -318,8 +343,7 @@ ALTER TABLE `ehr_patients`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_FK` (`user_id`),
   ADD KEY `FKDOC` (`doctor_id`),
-  ADD KEY `fkmed` (`med_id`),
-  ADD KEY `fklab` (`lab_id`);
+  ADD KEY `fkmed` (`med_id`);
 
 --
 -- Indexes for table `labs`
@@ -377,7 +401,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -389,7 +413,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `ehr_patients`
 --
 ALTER TABLE `ehr_patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '1', AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '1', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `labs`
@@ -413,13 +437,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `pre_exams`
 --
 ALTER TABLE `pre_exams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -431,7 +455,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Constraints for dumped tables
@@ -450,14 +474,13 @@ ALTER TABLE `appointment`
 ALTER TABLE `ehr_patients`
   ADD CONSTRAINT `FK2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `FKDOC` FOREIGN KEY (`doctor_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `fklab` FOREIGN KEY (`lab_id`) REFERENCES `labs` (`id`),
   ADD CONSTRAINT `fkmed` FOREIGN KEY (`med_id`) REFERENCES `medications` (`id`);
 
 --
 -- Constraints for table `pre_exams`
 --
 ALTER TABLE `pre_exams`
-  ADD CONSTRAINT `fk_user_pre` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `fk_user_pre` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `results`

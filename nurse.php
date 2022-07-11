@@ -5,8 +5,8 @@ include_once './php/Controller/user.php';
 if (!isset($_SESSION['nursefname'])) {
     header("location:login");
 }
-$app=new appointment;
-$patient=$app->findPatientByApp();
+$app = new appointment;
+$patient = $app->findPatientByApp();
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +62,7 @@ $patient=$app->findPatientByApp();
                         <th scope="col">Gender</th>
                         <th scope="col">Phone number</th>
                         <th scope="col">Date visit</th>
-<th>Department</th>
+                        <th>Department</th>
                         <th scope="col">Disease</th>
                         <th scope="col">Symptoms</th>
                         <th scope="col">Action</th>
@@ -70,19 +70,23 @@ $patient=$app->findPatientByApp();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($row=mysqli_fetch_row($patient)){ ?>
+                    <?php while ($row = mysqli_fetch_row($patient)) { ?>
                     <tr>
-                    <td><?=$row[1]?></td>
-                                <td><?=$row[2]?></td>
-                                <td><?=$row[3]?></td>
-                                <td><?=$row[26]?></td>
-                                <td><?=$row[4]?></td>
-                                <td><?=$row[24]?></td>
-                                <td><?=$row[18]?></td>
-                                <td><?=$row[27]?></td>
-                                <td><?=$row[20]?></td>
-                                <td><?=$row[21]?></td>
-                        <td><a href="preexam?id=<?=$row[0]?>">Fill preExam</a></td>
+                        <td><?= $row[1] ?></td>
+                        <td><?= $row[2] ?></td>
+                        <td><?= $row[3] ?></td>
+                        <td><?= $row[28] ?></td>
+                        <td><?= $row[4] ?></td>
+                        <td><?= $row[24] ?></td>
+                        <td><?= $row[18] ?></td>
+                        <td><?= $row[29] ?></td>
+                        <td><?= $row[20] ?></td>
+                        <td><?= $row[21] ?></td>
+                        <td><a href="preexam?id=<?= $row[0] ?>"><?php if ($row[27] == "filled") {
+                                                                        echo "";
+                                                                    } else {
+                                                                        echo "Fill preexam";
+                                                                    } ?></a></td>
 
                     </tr>
                     <?php } ?>
