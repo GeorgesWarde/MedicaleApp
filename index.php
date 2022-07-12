@@ -6,6 +6,7 @@ include_once './php/Controller/news.php';
 $news = new news;
 $res = $news->getNews();
 $latest = $news->getLatestNews();
+$latestnews = $news->getLatestNews();
 ?>
 <!doctype html>
 <html lang="en">
@@ -66,6 +67,7 @@ $latest = $news->getLatestNews();
 
     </div>
     <div>
+        <?php if ($row = mysqli_fetch_row($latestnews) > 0) { ?>
         <h1 class="newsText">Latest News</h1>
         <div class="thirdWrapper roundedCorners2">
 
@@ -92,6 +94,7 @@ $latest = $news->getLatestNews();
 
             </section>
         </div>
+        <?php } ?>
     </div>
     <div class="section">
         <div class="container-xl">
@@ -128,15 +131,15 @@ $latest = $news->getLatestNews();
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <?php
-            $count = 0;
-            while ($row = mysqli_fetch_assoc($res)) {
-            ?>
+                        $count = 0;
+                        while ($row = mysqli_fetch_assoc($res)) {
+                        ?>
                         <div class="carousel-item <?php if ($count == 0) {
-                                          echo "active";
-                                        } ?> image">
+                                                            echo "active";
+                                                        } ?> image">
                             <?php
-                if ($row['image'] != NULL) {
-                ?>
+                                if ($row['image'] != NULL) {
+                                ?>
                             <img src="./public/uploads/<?= $row['image'] ?>" class="d-block w-100" alt="...">
                             <?php } else { ?>
                             <img src="./images/patientpIC.jpg" class="d-block w-100" alt="...">
@@ -144,13 +147,13 @@ $latest = $news->getLatestNews();
 
                             <div class="text"><?= $row['content'] ?></div>
                             <div class="date"><?php
-                                  $date = $row['created_at'];
-                                  echo date('F Y H:i', strtotime($date)); ?></div>
+                                                    $date = $row['created_at'];
+                                                    echo date('F Y H:i', strtotime($date)); ?></div>
                         </div>
 
                         <?php
-              $count++;
-            } ?>
+                            $count++;
+                        } ?>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                         data-bs-slide="prev">
